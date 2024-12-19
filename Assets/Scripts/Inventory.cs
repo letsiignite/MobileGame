@@ -81,4 +81,24 @@ public class Inventory : MonoBehaviour
         };
         Debug.Log(builder);
     }
+
+    public void ConsumeItem(string itemName)
+    {
+        if (itemList.ContainsKey(itemName))
+        {
+            itemList[itemName] -= 1;
+            if (itemList[itemName] <= 0)
+            {
+                itemList.Remove(itemName);
+            }
+        }
+    }
+
+    public void UseItemTool(string toolName)
+    {
+        if (itemList.ContainsKey(toolName))
+            //Right Hand this item
+            //Need Discussion for now
+            Debug.Log(toolName);
+    }
 }

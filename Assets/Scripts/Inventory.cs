@@ -4,10 +4,13 @@ using UnityEngine.UI;
 
 public class Inventory : MonoBehaviour
 {
-    [Header("Item Pick up")]
+    [Header("Item")]
     [SerializeField] private Button itemPickUpButton;
     [SerializeField] private RectTransform itemPickUpImage;
     [SerializeField] private LayerMask itemLayer;
+    [SerializeField] private int fullSlotCount = 2;
+    [SerializeField] private int totalCapacity = 10;
+    [SerializeField] private int currentCapacity = 0;
 
     [Header("Colliders")]
     [SerializeField] private float overlapSphereRadius = 5;
@@ -64,6 +67,12 @@ public class Inventory : MonoBehaviour
 
     public void PickUpItem()
     {
+        if(currentCapacity + nearestCollider.GetComponent<Item>().GetWeight() > totalCapacity || itemList.Count >= fullSlotCount)
+        {
+            Debug.Log("Overloaded!! Can't add more to bag!");
+            return;
+        }
+
         if (itemList.ContainsKey(nearestCollider.name)) 
         {
             itemList[nearestCollider.name] += 1;
@@ -72,14 +81,14 @@ public class Inventory : MonoBehaviour
         {
             itemList.Add(nearestCollider.name, 1);
         }
+        currentCapacity += nearestCollider.GetComponent<Item>().GetWeight();
         Destroy(nearestCollider.gameObject);
-        Debug.Log(itemList.Count);
+
         string builder = "";
-        foreach (KeyValuePair<string, int> item in itemList) 
+        foreach (var item in itemList) 
         {
             builder += "Key : " + item.Key + " Value : " + item.Value + "\n";
         };
-        Debug.Log(builder);
     }
 
     public void ConsumeItem(string itemName)

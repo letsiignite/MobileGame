@@ -4,13 +4,14 @@ using UnityEngine.UI;
 public class DoorOpen : MonoBehaviour
 {
     public float DistanceOpen = 3f; // Distance to detect the door
-    public GameObject button; // UI Button GameObject
-    public Button uiButton; // Button component for interaction
+    private GameObject button; // UI Button GameObject
+    private Button uiButton; // Button component for interaction
     private DoorScript.Door detectedDoor; // Reference to the detected door
 
     void Start()
     {
-        // Get the Button component from the assigned button GameObject
+        // Find the button GameObject by tag
+        button = GameObject.FindGameObjectWithTag("DoorButton");
         if (button != null)
         {
             uiButton = button.GetComponent<Button>();
@@ -18,12 +19,13 @@ public class DoorOpen : MonoBehaviour
             {
                 uiButton.onClick.AddListener(OpenDoor); // Add OpenDoor as a listener for button clicks
             }
-        }
 
-        // Initially, hide the button
-        if (button != null)
-        {
+            // Initially, hide the button
             button.SetActive(false);
+        }
+        else
+        {
+            Debug.LogWarning("No GameObject with tag 'DoorButton' found!");
         }
     }
 
@@ -39,7 +41,10 @@ public class DoorOpen : MonoBehaviour
             if (door != null)
             {
                 detectedDoor = door; // Keep a reference to the detected door
-                button.SetActive(true); // Show the UI button
+                if (button != null)
+                {
+                    button.SetActive(true); // Show the UI button
+                }
 
                 // Open the door if the 'E' key is pressed
                 if (Input.GetKeyDown(KeyCode.E))
@@ -76,4 +81,5 @@ public class DoorOpen : MonoBehaviour
         }
         detectedDoor = null;
     }
+
 }

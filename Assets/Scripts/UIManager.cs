@@ -14,6 +14,7 @@ public class UIManager : MonoBehaviour
     [SerializeField] float TopPosY, MiddlePosY;
     [SerializeField] float TweenDuration;
     
+    
     private void Start()
     {
         StartMenu.SetActive(true);
@@ -29,6 +30,7 @@ public class UIManager : MonoBehaviour
         StartMenu.SetActive(false);
         Time.timeScale= 1.0f;
         PauseBtn.SetActive(true);
+        
 
     }
     public void OnClickOptionBtn()

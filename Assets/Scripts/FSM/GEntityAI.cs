@@ -1,4 +1,3 @@
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -9,9 +8,12 @@ public class GEntityAI : MonoBehaviour
     [HideInInspector] public Vector3 startPosition;
     [HideInInspector] public NavMeshAgent agent;
     [HideInInspector] public LineOfSight los;
+    [HideInInspector] public bool playerIsNearby;
     private GEState currentState;
 
     public WanderState wanderState = new();
+    public AlertState alertState = new();
+    public ChaseState chaseState = new();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -34,5 +36,17 @@ public class GEntityAI : MonoBehaviour
     {
         currentState = nextState;
         currentState.EnterState(this);
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if(other.gameObject == playerRef)
+        {
+            playerIsNearby = true;
+        }
+        else
+        {
+            playerIsNearby = false;
+        }
     }
 }

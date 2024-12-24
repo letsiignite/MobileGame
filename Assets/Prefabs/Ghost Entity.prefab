@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 3360495215040015941}
   - component: {fileID: 8006887691953462135}
   - component: {fileID: 4776835767142718168}
+  - component: {fileID: 5404673890962794609}
   m_Layer: 0
   m_Name: Ghost Entity
   m_TagString: Untagged
@@ -51,6 +52,7 @@ MonoBehaviour:
   startPosition: {x: 0, y: 0, z: 0}
   agent: {fileID: 0}
   los: {fileID: 0}
+  playerIsNearby: 0
 --- !u!114 &8006887691953462135
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -96,6 +98,27 @@ NavMeshAgent:
   m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
+--- !u!135 &5404673890962794609
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2426916978471912164}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 128
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 127
+  m_LayerOverridePriority: 1
+  m_IsTrigger: 1
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Radius: 2.5
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6089780622385764402
 GameObject:
   m_ObjectHideFlags: 0

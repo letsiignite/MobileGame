@@ -1,5 +1,3 @@
-using UnityEngine;
-
 public abstract class GEState
 {
     public string name;

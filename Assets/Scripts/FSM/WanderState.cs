@@ -19,6 +19,7 @@ public class WanderState : GEState
         if (geAI.los.visibleEnemy.Contains(geAI.playerRef)) 
         {
             //Switch To Alert State
+            geAI.SwitchState(geAI.alertState);
         }
         else if(geAI.los.visibleEnemy.Count != 0)
         {
@@ -29,10 +30,8 @@ public class WanderState : GEState
             if (walkPointSet)
             {
                 geAI.agent.SetDestination(destPoint);
-                Debug.Log(Vector3.Distance(geAI.agent.transform.position, geAI.agent.destination) + " : " + geAI.agent.transform.position + ", " + geAI.agent.destination + ", " + destPoint);
                 if (Vector3.Distance(geAI.agent.transform.position, geAI.agent.destination) <= geAI.agent.stoppingDistance)
                 {
-                    Debug.Log("Passed 2");
                     walkPointSet = false;
                 }
             }

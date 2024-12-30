@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 46b0a710a371d495a9803b6502ce3a88
+timeCreated: 1546831343
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136629
+  packageName: Low Poly Megapack - Lite
+  packageVersion: 1.3
+  assetPath: Assets/MegaPack1Lite/ToolsAndWeapons/Prefabs/shield_metal.prefab
+  uploadId: 306539

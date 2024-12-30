@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: bd2c741c3998d49398b7f26e9092bb8b
+timeCreated: 1546831526
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136629
+  packageName: Low Poly Megapack - Lite
+  packageVersion: 1.3
+  assetPath: Assets/MegaPack1Lite/RomanCityPack1Lite/Prefabs/Models/Standard/roman_tree_cyprus_med.prefab
+  uploadId: 306539

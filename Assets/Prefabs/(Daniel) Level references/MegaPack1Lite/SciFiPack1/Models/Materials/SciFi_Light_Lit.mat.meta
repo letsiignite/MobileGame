@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 5ae75521746814e8ab226fe606c8ed79
+timeCreated: 1502821861
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136629
+  packageName: Low Poly Megapack - Lite
+  packageVersion: 1.3
+  assetPath: Assets/MegaPack1Lite/SciFiPack1/Models/Materials/SciFi_Light_Lit.mat
+  uploadId: 306539

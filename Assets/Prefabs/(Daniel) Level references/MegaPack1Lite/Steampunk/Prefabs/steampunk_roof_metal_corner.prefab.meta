@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 2ea08d63ee4fe4ef5ba5bf382a2c5e9b
+timeCreated: 1546831158
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136629
+  packageName: Low Poly Megapack - Lite
+  packageVersion: 1.3
+  assetPath: Assets/MegaPack1Lite/Steampunk/Prefabs/steampunk_roof_metal_corner.prefab
+  uploadId: 306539

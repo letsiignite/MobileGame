@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 8c03ba28cef4d44e6b5a0e8b1621771b
+timeCreated: 1546831533
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136629
+  packageName: Low Poly Megapack - Lite
+  packageVersion: 1.3
+  assetPath: Assets/MegaPack1Lite/RomanCityPack1Lite/Prefabs/Models/Standard/roman_roof_tile_slanted.prefab
+  uploadId: 306539

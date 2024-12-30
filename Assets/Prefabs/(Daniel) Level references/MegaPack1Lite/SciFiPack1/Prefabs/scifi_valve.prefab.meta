@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 55b220e9f10744702b7262e5f8a0b838
+timeCreated: 1546830891
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136629
+  packageName: Low Poly Megapack - Lite
+  packageVersion: 1.3
+  assetPath: Assets/MegaPack1Lite/SciFiPack1/Prefabs/scifi_valve.prefab
+  uploadId: 306539

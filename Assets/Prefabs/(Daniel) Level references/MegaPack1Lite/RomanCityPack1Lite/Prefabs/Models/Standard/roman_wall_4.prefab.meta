@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: e51dacf9e37604c14a6831a59a1dcbc7
+timeCreated: 1546831534
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136629
+  packageName: Low Poly Megapack - Lite
+  packageVersion: 1.3
+  assetPath: Assets/MegaPack1Lite/RomanCityPack1Lite/Prefabs/Models/Standard/roman_wall_4.prefab
+  uploadId: 306539

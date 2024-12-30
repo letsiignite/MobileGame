@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 162e69f8e56ed43d8b503fac3c8da1c2
+timeCreated: 1546831158
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136629
+  packageName: Low Poly Megapack - Lite
+  packageVersion: 1.3
+  assetPath: Assets/MegaPack1Lite/Steampunk/Prefabs/steampunk_valve_3.prefab
+  uploadId: 306539

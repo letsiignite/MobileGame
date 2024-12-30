@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 36fd6c2b72c3d48f0803d98b24c355be
+timeCreated: 1546831152
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136629
+  packageName: Low Poly Megapack - Lite
+  packageVersion: 1.3
+  assetPath: Assets/MegaPack1Lite/Steampunk/Prefabs/steampunk_piping_vertical.prefab
+  uploadId: 306539

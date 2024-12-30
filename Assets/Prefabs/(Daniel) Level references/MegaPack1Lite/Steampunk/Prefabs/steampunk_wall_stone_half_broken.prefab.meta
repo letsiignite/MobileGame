@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: db8f1309c32f1470aa58c64d3b4fee67
+timeCreated: 1546831160
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136629
+  packageName: Low Poly Megapack - Lite
+  packageVersion: 1.3
+  assetPath: Assets/MegaPack1Lite/Steampunk/Prefabs/steampunk_wall_stone_half_broken.prefab
+  uploadId: 306539

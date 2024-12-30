@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: c108272a27501428cb268a4bd9bee877
+timeCreated: 1555694340
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136629
+  packageName: Low Poly Megapack - Lite
+  packageVersion: 1.3
+  assetPath: Assets/MegaPack1Lite/EnchantedForestPack1/Prefabs/enchantedforest_log.prefab
+  uploadId: 306539

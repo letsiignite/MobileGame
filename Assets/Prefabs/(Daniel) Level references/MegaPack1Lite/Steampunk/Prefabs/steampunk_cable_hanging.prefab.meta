@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: d0ec3bcef18bc4a8ca8edfdaac57e911
+timeCreated: 1546831163
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136629
+  packageName: Low Poly Megapack - Lite
+  packageVersion: 1.3
+  assetPath: Assets/MegaPack1Lite/Steampunk/Prefabs/steampunk_cable_hanging.prefab
+  uploadId: 306539

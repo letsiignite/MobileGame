@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 4be1d20979fdf4813add8859c5dd4c88
+timeCreated: 1546831151
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136629
+  packageName: Low Poly Megapack - Lite
+  packageVersion: 1.3
+  assetPath: Assets/MegaPack1Lite/Steampunk/Prefabs/steampunk_road_1_grate.prefab
+  uploadId: 306539

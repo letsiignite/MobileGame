@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: d61eb9bc178fc4ab8b652cb3edc513a2
+timeCreated: 1546829111
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136629
+  packageName: Low Poly Megapack - Lite
+  packageVersion: 1.3
+  assetPath: Assets/MegaPack1Lite/GreekPack1Lite/Prefabs/Objects/Optimized/greek_roof_1.prefab
+  uploadId: 306539

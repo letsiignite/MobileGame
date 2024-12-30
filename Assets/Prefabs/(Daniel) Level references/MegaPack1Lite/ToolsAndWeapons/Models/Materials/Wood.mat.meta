@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 7592c63eb57ba437e807f0b4cf8560d8
+timeCreated: 1520980817
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136629
+  packageName: Low Poly Megapack - Lite
+  packageVersion: 1.3
+  assetPath: Assets/MegaPack1Lite/ToolsAndWeapons/Models/Materials/Wood.mat
+  uploadId: 306539

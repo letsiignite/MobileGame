@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 59df19ce6f8e647159d9bee24a6a0af2
+timeCreated: 1546829041
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136629
+  packageName: Low Poly Megapack - Lite
+  packageVersion: 1.3
+  assetPath: Assets/MegaPack1Lite/GreekPack1Lite/Prefabs/Objects/greek_stairs_stone_corner.prefab
+  uploadId: 306539

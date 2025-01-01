@@ -17,12 +17,13 @@ namespace StarterAssets
 		[Tooltip("Sprint speed of the character in m/s")]
 		public float SprintSpeed = 6.0f;
 		[Tooltip("Rotation speed of the character")]
-		public float RotationSpeed = 1.0f;
-		[Tooltip("Acceleration and deceleration")]
+		public float RotationSpeed_x = 12.5f;
+        public float RotationSpeed_y = 7.5f;
+        [Tooltip("Acceleration and deceleration")]
 		public float SpeedChangeRate = 10.0f;
 
 		[Space(10)]
-		[Tooltip("The height the player can jump")]
+		[Tooltip("The height the player can jump")]	
 		public float JumpHeight = 1.2f;
 		[Tooltip("The character uses its own gravity value. The engine default is -9.81f")]
 		public float Gravity = -15.0f;
@@ -47,21 +48,32 @@ namespace StarterAssets
 		[Tooltip("The follow target set in the Cinemachine Virtual Camera that the camera will follow")]
 		public GameObject CinemachineCameraTarget;
 		[Tooltip("How far in degrees can you move the camera up")]
-		public float TopClamp = 90.0f;
+		public float TopClamp = 50.0f;
 		[Tooltip("How far in degrees can you move the camera down")]
-		public float BottomClamp = -90.0f;
+		public float BottomClamp = -80.0f;
 
-		// cinemachine
-		private float _cinemachineTargetPitch;
+        [Header("Crouch Settings")]
+        [Tooltip("Movement speed when crouching")]
+        public float CrouchSpeed = 2.0f;
+
+        // Internal state for crouch
+        private bool _isCrouching = false;
+
+        // cinemachine
+        private float _cinemachineTargetPitch;
 
 		// player
 		private float _speed;
 		private float _rotationVelocity;
 		private float _verticalVelocity;
 		private float _terminalVelocity = 53.0f;
+        private float _normalHeight;  // To store the original height of the player
+        private float _crouchHeight; // To store the crouched height
+        private float _baseHeight;     // Original height from CharacterController
+        private float _currentScale;   // Current scale factor of the player
 
-		// timeout deltatime
-		private float _jumpTimeoutDelta;
+        // timeout deltatime
+        private float _jumpTimeoutDelta;
 		private float _fallTimeoutDelta;
 
 	
@@ -72,7 +84,7 @@ namespace StarterAssets
 		private StarterAssetsInputs _input;
 		private GameObject _mainCamera;
 
-		private const float _threshold = 0.01f;
+		private const float _threshold = 0.001f;
 
 		private bool IsCurrentDeviceMouse
 		{
@@ -104,9 +116,18 @@ namespace StarterAssets
 #else
 			Debug.LogError( "Starter Assets package is missing dependencies. Please use Tools/Starter Assets/Reinstall Dependencies to fix it");
 #endif
+            // Store the base height from the CharacterController
+            _baseHeight = _controller.height;
 
-			// reset our timeouts on start
-			_jumpTimeoutDelta = JumpTimeout;
+            // Initialize the current scale
+            _currentScale = transform.localScale.y;
+
+            // Dynamically calculate crouch height
+            _normalHeight = _baseHeight * _currentScale;
+            _crouchHeight = _normalHeight / 3;
+
+            // reset our timeouts on start
+            _jumpTimeoutDelta = JumpTimeout;
 			_fallTimeoutDelta = FallTimeout;
 		}
 
@@ -114,7 +135,9 @@ namespace StarterAssets
 		{
 			JumpAndGravity();
 			GroundedCheck();
-			Move();
+			GetCurrHeight();
+			HandleCrouch();
+            Move();
 		}
 
 		private void LateUpdate()
@@ -137,8 +160,8 @@ namespace StarterAssets
 				//Don't multiply mouse input by Time.deltaTime
 				float deltaTimeMultiplier = IsCurrentDeviceMouse ? 1.0f : Time.deltaTime;
 				
-				_cinemachineTargetPitch += _input.look.y * RotationSpeed * deltaTimeMultiplier;
-				_rotationVelocity = _input.look.x * RotationSpeed * deltaTimeMultiplier;
+				_cinemachineTargetPitch += _input.look.y * RotationSpeed_y * deltaTimeMultiplier;
+				_rotationVelocity = _input.look.x * RotationSpeed_x * deltaTimeMultiplier;
 
 				// clamp our pitch rotation
 				_cinemachineTargetPitch = ClampAngle(_cinemachineTargetPitch, BottomClamp, TopClamp);
@@ -150,17 +173,30 @@ namespace StarterAssets
 				transform.Rotate(Vector3.up * _rotationVelocity);
 			}
 		}
+		private void GetCurrHeight()
+		{
+            float newScale = transform.localScale.y;
+            if (Mathf.Abs(newScale - _currentScale) > 0.01f) // Small threshold to avoid floating-point errors
+            {
+                _currentScale = newScale;
 
+                // Recalculate heights based on the new scale
+                _normalHeight = _baseHeight * _currentScale;
+                _crouchHeight = _normalHeight / 3;
+            }
+        }
 		private void Move()
 		{
-			// set target speed based on move speed, sprint speed and if sprint is pressed
-			float targetSpeed = _input.sprint ? SprintSpeed : MoveSpeed;
+            // set target speed based on move speed, sprint speed and if sprint is pressed
+            // Set target speed based on crouch state
+            float targetSpeed = _isCrouching ? CrouchSpeed : (_input.sprint ? SprintSpeed : MoveSpeed);
 
-			// a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
 
-			// note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
-			// if there is no input, set the target speed to 0
-			if (_input.move == Vector2.zero) targetSpeed = 0.0f;
+            // a simplistic acceleration and deceleration designed to be easy to remove, replace, or iterate upon
+
+            // note: Vector2's == operator uses approximation so is not floating point error prone, and is cheaper than magnitude
+            // if there is no input, set the target speed to 0
+            if (_input.move == Vector2.zero) targetSpeed = 0.0f;
 
 			// a reference to the players current horizontal velocity
 			float currentHorizontalSpeed = new Vector3(_controller.velocity.x, 0.0f, _controller.velocity.z).magnitude;
@@ -197,8 +233,42 @@ namespace StarterAssets
 			// move the player
 			_controller.Move(inputDirection.normalized * (_speed * Time.deltaTime) + new Vector3(0.0f, _verticalVelocity, 0.0f) * Time.deltaTime);
 		}
+        private void HandleCrouch()
+        {
+            
+            if (_input.crouch)
+            {
+                if (!_isCrouching)
+                {
+                    EnterCrouch();
+                }
+                else
+                {
+                    ExitCrouch();
+                }
 
-		private void JumpAndGravity()
+                // Prevent repeated toggles while the button is held
+                _input.crouch = false;
+            }
+        }
+
+        private void EnterCrouch()
+        {
+            _controller.height = _crouchHeight; // Lower height
+            _controller.center = new Vector3(_controller.center.x, _crouchHeight / 2, _controller.center.z);
+            _isCrouching = true;
+            Debug.Log("Crouch: ON");
+        }
+
+        private void ExitCrouch()
+        {
+            _controller.height = _normalHeight; // Restore height
+			_controller.center = new Vector3(_controller.center.x, _normalHeight / 2, _controller.center.z);
+            _isCrouching = false;
+            Debug.Log("Crouch: OFF");
+        }
+
+        private void JumpAndGravity()
 		{
 			if (Grounded)
 			{

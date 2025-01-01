@@ -2,10 +2,15 @@ using UnityEngine;
 
 public class SaveLoadData : MonoBehaviour
 {
-    // this is test script
+    public static SaveLoadData saveDatainstance;
     public int sanityMeter = 1;
     public float timeTaken = 1.0f;
     public string checkPointName = "LetsIgnite";
+
+    private void Start()
+    {
+        saveDatainstance = this;
+    }
 
     #region UI Methods
     public void ChangeLevel(int amount)

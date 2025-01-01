@@ -16,7 +16,7 @@ public class WanderState : GEState
     public override void UpdateState(GEntityAI geAI)
     {
         //detecting villagers and player and changing state if detected
-        if (geAI.los.visibleEnemy.Contains(geAI.playerRef)) 
+        if (geAI.los.visibleEnemy.Contains(geAI.playerRef) || geAI.playerIsNearby) 
         {
             //Switch To Alert State
             geAI.SwitchState(geAI.alertState);

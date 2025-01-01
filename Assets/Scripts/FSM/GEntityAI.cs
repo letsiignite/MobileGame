@@ -4,6 +4,8 @@ using UnityEngine.AI;
 public class GEntityAI : MonoBehaviour
 {
     public GameObject playerRef;
+    public float chaseTime = 2f;
+    public float alertTime = 4f;
 
     [HideInInspector] public Vector3 startPosition;
     [HideInInspector] public NavMeshAgent agent;
@@ -14,6 +16,7 @@ public class GEntityAI : MonoBehaviour
     public WanderState wanderState = new();
     public AlertState alertState = new();
     public ChaseState chaseState = new();
+    public InfectState infectState = new();
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -40,6 +43,7 @@ public class GEntityAI : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        Debug.Log(other.name);
         if(other.gameObject == playerRef)
         {
             playerIsNearby = true;

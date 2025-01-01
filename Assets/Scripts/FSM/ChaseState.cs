@@ -3,7 +3,6 @@ using UnityEngine;
 public class ChaseState : GEState
 {
     private float timer = 0f;
-    private float waitTime = 2f;
 
     public override void EnterState(GEntityAI geAI)
     {
@@ -14,15 +13,22 @@ public class ChaseState : GEState
     public override void UpdateState(GEntityAI geAI)
     {
         timer += Time.deltaTime;
-        if (geAI.los.visibleEnemy.Contains(geAI.playerRef) && timer <= waitTime)
+        if (geAI.los.visibleEnemy.Contains(geAI.playerRef))
         {
+            Debug.Log("Pass 1");
             geAI.agent.SetDestination(geAI.playerRef.transform.position);
+            timer = 0f;
         }
-        else if(!geAI.los.visibleEnemy.Contains(geAI.playerRef))
+        else if(!geAI.los.visibleEnemy.Contains(geAI.playerRef) || timer > geAI.chaseTime)
         {
+            Debug.Log("Pass 2");
             timer = 0f;
             geAI.alertState.reAlert = true;
             geAI.SwitchState(geAI.alertState);
+        }
+        else
+        {
+
         }
     }
 }

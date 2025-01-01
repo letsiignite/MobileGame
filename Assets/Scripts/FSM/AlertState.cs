@@ -8,7 +8,6 @@ public class AlertState : GEState
     private float rangeOfSearch = 5f;
     private bool walkPointSet;
     private float timer = 0f;
-    private float waitTime = 4f;
 
     public bool reAlert;
 
@@ -21,7 +20,10 @@ public class AlertState : GEState
     public override void UpdateState(GEntityAI geAI)
     {
         timer += Time.deltaTime;
-        if (geAI.playerIsNearby && timer <= waitTime)
+
+        //player in range and timer within search time.
+
+        if (geAI.playerIsNearby && timer <= geAI.alertTime)
         {
             if (walkPointSet) 
             {
@@ -36,13 +38,18 @@ public class AlertState : GEState
                 GetWayPoint(geAI);
             }
         }
-        else if (geAI.los.visibleEnemy.Contains(geAI.playerRef) && timer <= waitTime)
+
+        //player in sight and timer is within search time
+
+        else if (geAI.los.visibleEnemy.Contains(geAI.playerRef) && timer <= geAI.alertTime)
         {
-            Debug.Log(timer + " : Chase");
             timer = 0f;
             geAI.SwitchState(geAI.chaseState);
         }
-        else if (!(geAI.los.visibleEnemy.Contains(geAI.playerRef) || geAI.playerIsNearby) && timer > waitTime)
+
+        //if player escaped the entity and not in range within 
+
+        else if (!(geAI.los.visibleEnemy.Contains(geAI.playerRef) || geAI.playerIsNearby) && timer > geAI.alertTime && Vector3.Distance(geAI.agent.transform.position, geAI.agent.destination) <= geAI.agent.stoppingDistance)
         {
             Debug.Log(timer + " : Wander");
             timer = 0f;
@@ -63,7 +70,7 @@ public class AlertState : GEState
                 GetWayPoint(geAI);
             }
 
-            if(timer > waitTime)
+            if(timer > geAI.alertTime)
             {
                 geAI.SwitchState(geAI.wanderState);
             }

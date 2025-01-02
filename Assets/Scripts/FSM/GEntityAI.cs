@@ -43,12 +43,15 @@ public class GEntityAI : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        Debug.Log(other.name);
         if(other.gameObject == playerRef)
         {
             playerIsNearby = true;
         }
-        else
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject == playerRef)
         {
             playerIsNearby = false;
         }

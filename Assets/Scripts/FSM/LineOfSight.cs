@@ -24,7 +24,7 @@ public class LineOfSight : MonoBehaviour
         while (true)
         {
             findVisibleTargets();
-            yield return new WaitForSeconds(0.2f);
+            yield return new WaitForSeconds(0.02f);
         }
     }
 

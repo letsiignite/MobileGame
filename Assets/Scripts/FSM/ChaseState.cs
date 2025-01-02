@@ -15,13 +15,11 @@ public class ChaseState : GEState
         timer += Time.deltaTime;
         if (geAI.los.visibleEnemy.Contains(geAI.playerRef))
         {
-            Debug.Log("Pass 1");
             geAI.agent.SetDestination(geAI.playerRef.transform.position);
             timer = 0f;
         }
         else if(!geAI.los.visibleEnemy.Contains(geAI.playerRef) || timer > geAI.chaseTime)
         {
-            Debug.Log("Pass 2");
             timer = 0f;
             geAI.alertState.reAlert = true;
             geAI.SwitchState(geAI.alertState);

@@ -6,7 +6,7 @@ public class VillagerMovement : MonoBehaviour
 {
     private List<Transform> points = new List<Transform>();
     private NavMeshAgent agent;
-    private Animator animator;
+    private VillagerContext villagerContext;
     private bool isMoving = true;
     private int currentTargetIndex = 0;
     private float pathDeviation = 10.0f; // Amount of random deviation from target
@@ -16,7 +16,7 @@ public class VillagerMovement : MonoBehaviour
     {
         // Get the NavMeshAgent and Animator components
         agent = GetComponent<NavMeshAgent>();
-        animator = GetComponent<Animator>();
+        villagerContext = GetComponent<VillagerContext>();
 
         // Start moving if points are set
         if (points.Count > 0)
@@ -64,9 +64,9 @@ public class VillagerMovement : MonoBehaviour
             agent.SetPath(path);
 
             // Trigger the run animation
-            if (animator != null)
+            if (villagerContext != null)
             {
-                animator.SetTrigger("Run");
+                villagerContext.SetState(new RunningState());
             }
 
             // Move to the next point in the list, looping if necessary
@@ -88,9 +88,9 @@ public class VillagerMovement : MonoBehaviour
         }
 
         // Trigger an idle or stop animation
-        if (animator != null)
+        if (villagerContext != null)
         {
-            animator.SetTrigger("Idle");
+            villagerContext.SetState(new IdleState());
         }
     }
 }

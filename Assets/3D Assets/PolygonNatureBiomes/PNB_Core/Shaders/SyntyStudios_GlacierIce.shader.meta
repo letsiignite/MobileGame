@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 631dd370b5f4f674ea2638c37c7db6ba
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  preprocessorOverride: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 234254
+  packageName: POLYGON Swamp Marshland - Nature Biomes - Low Poly 3D Art by Synty
+  packageVersion: 1.9.0
+  assetPath: Assets/PolygonNatureBiomes/PNB_Core/Shaders/SyntyStudios_GlacierIce.shader
+  uploadId: 703392

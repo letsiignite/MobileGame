@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 0d2dba3f749d6b745803a44053077a4f
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 234254
+  packageName: POLYGON Swamp Marshland - Nature Biomes - Low Poly 3D Art by Synty
+  packageVersion: 1.9.0
+  assetPath: Assets/PolygonNatureBiomes/PNB_Core/Shaders/SyntyStudios_Skybox_NoFog.shader
+  uploadId: 703392

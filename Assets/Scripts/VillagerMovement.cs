@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -17,6 +18,7 @@ public class VillagerMovement : MonoBehaviour
         // Get the NavMeshAgent and Animator components
         agent = GetComponent<NavMeshAgent>();
         villagerContext = GetComponent<VillagerContext>();
+
 
         // Start moving if points are set
         if (points.Count > 0)
@@ -80,18 +82,49 @@ public class VillagerMovement : MonoBehaviour
 
     public void StopMovement()
     {
+        //Debug.Log("Stopping villager movement....");
         // Stop the villager from moving
-        isMoving = false;
+        if(isMoving==true)
+        {
+            isMoving = false;
+            if (agent != null)
+            {
+                agent.isStopped = true;
+            }
+
+            // Trigger an idle or stop animation
+            if (villagerContext != null)
+            {
+                villagerContext.SetState(new IdleState());
+                Debug.Log("changed state to Idle");
+            }
+            else
+            {
+                Debug.Log("villagerContext is null");
+            }
+            StartCoroutine(ResumeAfterDelay(5f));
+        }
+    }
+    private IEnumerator ResumeAfterDelay(float delay)
+    {
+        // Wait for the specified delay
+        yield return new WaitForSeconds(delay);
+
+        // Resume moving
+        isMoving = true;
         if (agent != null)
         {
-            agent.isStopped = true;
+            agent.isStopped = false;
         }
 
-        // Trigger an idle or stop animation
+        // Trigger the running state
         if (villagerContext != null)
         {
-            villagerContext.SetState(new IdleState());
+            villagerContext.SetState(new RunningState());
         }
+
+        // Move to the next point
+        MoveToRandomPoint();
     }
 }
 

@@ -39,10 +39,10 @@ public class VillagerSpawner : MonoBehaviour
         GameObject villager = Instantiate(randomPrefab, spawnPoint.position, Quaternion.identity);
 
         // Pass the spawn points to the VillagerMovement script
-        VillagerMovement villagerMovement = villager.GetComponent<VillagerMovement>();
-        if (villagerMovement != null)
+        VillagerContext villagerContext = villager.GetComponent<VillagerContext>();
+        if (villagerContext != null)
         {
-            villagerMovement.SetPoints(spawnPoints);
+            villagerContext.SetPoints(spawnPoints);
         }
     }
 }

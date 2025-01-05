@@ -19,10 +19,22 @@ public class InfectState : GEState
         else if(geAI.los.visibleEnemy.Count != 0)
         {
             targetVillager = geAI.los.visibleEnemy[0];
+            VillagerContext villagerContext = targetVillager.GetComponent<VillagerContext>();
             geAI.agent.SetDestination(targetVillager.transform.position);
-            if(Vector3.Distance(geAI.agent.transform.position, geAI.agent.destination) <= geAI.agent.stoppingDistance)
+            if (Vector3.Distance(geAI.agent.transform.position, geAI.agent.destination) <= geAI.agent.stoppingDistance)
             {
-                //Get Component and call function to freeze player
+                 //Debug.Log("calling Stopmovement in infect");
+                //Get Component and call function to make player infected
+                if (villagerContext != null)
+                {
+                    // Call StopMovement/infected function in VillagerMovement 
+                    villagerContext.StopMovement();
+                    geAI.SwitchState(geAI.alertState);
+                }
+                else
+                {
+                    Debug.LogError("VillagerMovement script is not attached to the target villager.");
+                }
             }
         }
         else

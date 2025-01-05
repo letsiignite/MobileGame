@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: bf225c7d88103412cb986408540d68ca
+timeCreated: 1546829110
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136629
+  packageName: Low Poly Megapack - Lite
+  packageVersion: 1.3
+  assetPath: Assets/MegaPack1Lite/GreekPack1Lite/Prefabs/Objects/Optimized/greek_wall_2.prefab
+  uploadId: 306539

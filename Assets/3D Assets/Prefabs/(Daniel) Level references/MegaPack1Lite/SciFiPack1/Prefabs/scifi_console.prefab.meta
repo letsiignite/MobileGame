@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: cb0d26a0663294a4a8a126034fd91708
+timeCreated: 1546830889
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136629
+  packageName: Low Poly Megapack - Lite
+  packageVersion: 1.3
+  assetPath: Assets/MegaPack1Lite/SciFiPack1/Prefabs/scifi_console.prefab
+  uploadId: 306539

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: a3ef4e19be42f428382902f1d0c625ce
+timeCreated: 1546831750
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136629
+  packageName: Low Poly Megapack - Lite
+  packageVersion: 1.3
+  assetPath: Assets/MegaPack1Lite/VictorianPack/Prefabs/victorian_lamppost.prefab
+  uploadId: 306539

@@ -1,0 +1,17 @@
+fileFormatVersion: 2
+guid: 1845de137dab50442872a68bcff7c0cd
+ShaderImporter:
+  externalObjects: {}
+  defaultTextures: []
+  nonModifiableTextures: []
+  preprocessorOverride: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 234254
+  packageName: POLYGON Swamp Marshland - Nature Biomes - Low Poly 3D Art by Synty
+  packageVersion: 1.9.0
+  assetPath: Assets/PolygonNatureBiomes/PNB_Core/Shaders/SyntyStudios_SulphurPools.shader
+  uploadId: 703392

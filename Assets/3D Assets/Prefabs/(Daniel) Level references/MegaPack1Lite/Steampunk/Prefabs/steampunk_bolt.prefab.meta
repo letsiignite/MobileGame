@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 4ac6a0c237bd244a590115cdda3fcb8c
+timeCreated: 1546831161
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136629
+  packageName: Low Poly Megapack - Lite
+  packageVersion: 1.3
+  assetPath: Assets/MegaPack1Lite/Steampunk/Prefabs/steampunk_bolt.prefab
+  uploadId: 306539

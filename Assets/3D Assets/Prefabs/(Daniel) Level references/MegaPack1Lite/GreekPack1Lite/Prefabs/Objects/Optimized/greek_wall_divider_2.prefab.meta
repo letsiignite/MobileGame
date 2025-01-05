@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: c9456250607d8475ab62d445a8db0bc2
+timeCreated: 1546829114
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136629
+  packageName: Low Poly Megapack - Lite
+  packageVersion: 1.3
+  assetPath: Assets/MegaPack1Lite/GreekPack1Lite/Prefabs/Objects/Optimized/greek_wall_divider_2.prefab
+  uploadId: 306539

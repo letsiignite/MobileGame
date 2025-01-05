@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: b971507b6040f46ec98389e7b7a1e69e
+timeCreated: 1546831751
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136629
+  packageName: Low Poly Megapack - Lite
+  packageVersion: 1.3
+  assetPath: Assets/MegaPack1Lite/VictorianPack/Prefabs/victorian_steps.prefab
+  uploadId: 306539

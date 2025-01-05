@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 710af2bca24854d46b7bddab13c374b5
+timeCreated: 1502820432
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136629
+  packageName: Low Poly Megapack - Lite
+  packageVersion: 1.3
+  assetPath: Assets/MegaPack1Lite/SciFiPack1/Models/Materials/SciFi_Accent.mat
+  uploadId: 306539

@@ -7,7 +7,7 @@ using UnityEngine.UI;
 
 namespace UI
 {
-    public class MainMenu : MonoBehaviour
+    public class InGameMenu : MonoBehaviour
     {
         [SerializeField]
         private List<GameObject> uiObjectsToHideOnPause;
@@ -16,10 +16,16 @@ namespace UI
         [SerializeField]
         private Button pauseButton;
         private List<Action> pauseListners;
+
+        private void Awake()
+        {
+            pauseListners = new List<Action>();
+        }
+
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-
+            Invoke("OnPauseClicked", 3);
         }
 
         private void OnPauseClicked()
@@ -43,14 +49,11 @@ namespace UI
         }
 
         public void AddPauseListners(Action callback)
-        { 
+        {
+            Debug.Log(" Adding Pause Listener");
             pauseListners.Add(callback);    
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
+        
     }
 }

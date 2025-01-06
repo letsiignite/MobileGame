@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI;
+using UI;
 
 public class GEntityAI : MonoBehaviour
 {
@@ -18,14 +19,19 @@ public class GEntityAI : MonoBehaviour
     public ChaseState chaseState = new();
     public InfectState infectState = new();
 
+    public InGameMenu pause;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        startPosition = transform.position;
+        pause = GameObject.Find("GameplayUI").GetComponent<InGameMenu>();
+       startPosition = transform.position;
         agent = GetComponent<NavMeshAgent>();
         los = GetComponent<LineOfSight>();
         currentState = wanderState;
         currentState.EnterState(this);
+        pause.AddPauseListners(OnPause);
+       
     }
 
     // Update is called once per frame
@@ -33,6 +39,16 @@ public class GEntityAI : MonoBehaviour
     {
         //Debug.Log(currentState.name);
         currentState.UpdateState(this);
+    }
+
+    private void OnPause()
+    {
+        //SwitchState(freez)
+    }
+
+    public void Init(InGameMenu inGameMenu)
+    { 
+        pause = inGameMenu;
     }
 
     public void SwitchState(GEState nextState)

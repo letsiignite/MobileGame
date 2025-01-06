@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UI;
 
 public class VillagerContext : MonoBehaviour
 {
@@ -15,13 +16,17 @@ public class VillagerContext : MonoBehaviour
     public IdleState idleState = new();
     public RunningState runningState = new();
 
+    public InGameMenu pause;
+
     void Start()
     {
+        pause = GameObject.Find("GameplayUI").GetComponent<InGameMenu>();
         Animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
 
         // Initialize with the Running state
         SetState(runningState);
+        pause.AddPauseListners(OnPause);
     }
     public void SetPoints(List<Transform> spawnPoints)
     {
@@ -45,5 +50,11 @@ public class VillagerContext : MonoBehaviour
         {
             isMoving = false;
         }
+    }
+
+    public void OnPause()
+    {
+        Debug.Log(" Villagers On Pause");
+        SetState(idleState);
     }
 }

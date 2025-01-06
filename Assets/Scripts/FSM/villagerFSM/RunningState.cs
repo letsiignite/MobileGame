@@ -47,7 +47,7 @@ public class RunningState : IVillagerState
     }
     public void UpdateState(VillagerContext context)
     {
-        Debug.Log("Character is running...");
+        //Debug.Log("Character is running...");
         if (context.isMoving && context.agent.remainingDistance <= context.agent.stoppingDistance && !context.agent.pathPending)
         {
             // Move to the next random point

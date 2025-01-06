@@ -28,7 +28,7 @@ public class InfectState : GEState
                 if (villagerContext != null)
                 {
                     // Call StopMovement/infected function in VillagerMovement 
-                    villagerContext.StopMovement();
+                    villagerContext.InfectVillager();
                     geAI.SwitchState(geAI.alertState);
                 }
                 else

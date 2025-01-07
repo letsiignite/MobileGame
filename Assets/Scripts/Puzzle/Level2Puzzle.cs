@@ -8,9 +8,9 @@ public class Level2Puzzle : MonoBehaviour
 
     private bool isTriggered = false;
 
-    void OnTriggerEnter(Collider other)
+    void OnCollisionEnter(Collision other)
     {
-        if (other.CompareTag("Pendant"))
+        if (other.gameObject.CompareTag("Pendant"))
         {
             isTriggered = true;
         }

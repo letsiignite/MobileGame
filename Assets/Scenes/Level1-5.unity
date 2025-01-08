@@ -69238,7 +69238,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &428540564
 Transform:
   m_ObjectHideFlags: 0
@@ -69266,11 +69266,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c2e216dd44a54a47b5c560d64a6bcb7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_Hint: {fileID: 11400000, guid: 75d76a37d8780c949bd637d954ada3e7, type: 2}
-  hintobect_List:
-  - {fileID: 1654982193}
-  - {fileID: 700582939}
-  - {fileID: 1358153708}
+  hintobject_List: []
 --- !u!65 &428540566
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -109764,7 +109760,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &700582940
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -109848,7 +109844,7 @@ Transform:
   m_GameObject: {fileID: 700582939}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 33.867424, y: -19.593054, z: 87.54864}
+  m_LocalPosition: {x: 14.7, y: 1.9, z: 51.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -210595,7 +210591,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1358153709
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -210679,7 +210675,7 @@ Transform:
   m_GameObject: {fileID: 1358153708}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 33.867424, y: -19.593054, z: 87.54864}
+  m_LocalPosition: {x: 10.4, y: 0, z: 50.5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -260310,8 +260306,10 @@ GameObject:
   - component: {fileID: 1654982196}
   - component: {fileID: 1654982195}
   - component: {fileID: 1654982194}
+  - component: {fileID: 1654982198}
+  - component: {fileID: 1654982199}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Shrine
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -260400,12 +260398,42 @@ Transform:
   m_GameObject: {fileID: 1654982193}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 33.867424, y: -19.593054, z: 87.54864}
+  m_LocalPosition: {x: 12.62, y: 0, z: 50.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1654982198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654982193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ef25d9a5438a324ea07b6233de78d10, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  HintText: shrine triggers cubes
+  htype: 0
+  h_enableObjects:
+  - {fileID: 700582939}
+  - {fileID: 1358153708}
+--- !u!114 &1654982199
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1654982193}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2d25f30d27447d14ab1a8e6b3c131e62, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  h_object: {fileID: 0}
 --- !u!1 &1656353669
 GameObject:
   m_ObjectHideFlags: 0

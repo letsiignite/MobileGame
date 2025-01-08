@@ -11,7 +11,7 @@ public class LevelProgression : MonoBehaviour
     [SerializeField] private GameObject gate5;
     [SerializeField] private GameObject gate6;
     [SerializeField] private GameObject gate7;
-    [SerializeField] private GameObject gate8;
+    //[SerializeField] private GameObject gate8;
 
     [Header("LevelTaskGates")]
     [SerializeField] private GameObject level4Gate;
@@ -101,17 +101,15 @@ public class LevelProgression : MonoBehaviour
     private void UpdateGateStates()
     {
         UpdateGateState(gate1, !isLevel1Completed, "Gate1 GameObject is not assigned!");
-        UpdateGateState(gate2, isLevel3Completed || !isLevel2Completed, "Gate2 GameObject is not assigned!");
-        UpdateGateState(gate3, !isLevel3Completed, "Gate3 GameObject is not assigned!");
+        UpdateGateState(gate2, isLevel3Completed || !isLevel2Completed && !isLevel1Completed, "Gate2 GameObject is not assigned!");
+        UpdateGateState(gate3, !isLevel3Completed && !isLevel2Completed, "Gate3 GameObject is not assigned!");
         UpdateGateState(gate4, !isLevel3Completed && !isLevel2Completed, "Gate4 GameObject is not assigned!");
         // Set gate5 inactive if level 4 is completed
         UpdateGateState(gate5, !isLevel3Completed && !isLevel4Completed, "Gate5 GameObject is not assigned!");
 
         UpdateGateState(gate6, !isLevel3Completed, "Gate5 GameObject is not assigned!");
         UpdateGateState(gate7, !isLevel5Completed, "Gate5 GameObject is not assigned!");
-        UpdateGateState(gate8, !isLevel5Completed, "Gate5 GameObject is not assigned!");
-
-
+        //UpdateGateState(gate8, !isLevel5Completed, "Gate5 GameObject is not assigned!");
     }
 
     // Helper method to update gate state with optional warning

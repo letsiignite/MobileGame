@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class DeathInfo : MonoBehaviour
 {
+    [SerializeField]
+    private string deathCause;
     public void Init()
     {
         //take reference of UI panel script

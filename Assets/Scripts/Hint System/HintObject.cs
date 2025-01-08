@@ -10,8 +10,10 @@ public enum HintType
 public class HintObject : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    public string HintText;
-    public HintType htype;
+    [SerializeField]
+    private string HintText;
+    [SerializeField]
+    private HintType htype;
     public List<GameObject> h_enableObjects;
     private Animator animator;
     private AudioClip clip;

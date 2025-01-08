@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 4b51bcf68979347aabba81cc5e212f72
+timeCreated: 1546831752
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136629
+  packageName: Low Poly Megapack - Lite
+  packageVersion: 1.3
+  assetPath: Assets/MegaPack1Lite/VictorianPack/Prefabs/victorian_roof_siding_top.prefab
+  uploadId: 306539

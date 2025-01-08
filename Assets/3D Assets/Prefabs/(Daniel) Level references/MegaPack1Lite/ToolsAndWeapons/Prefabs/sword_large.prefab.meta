@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: adcd8e0f993d343d8bd27434f15383b1
+timeCreated: 1546831344
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136629
+  packageName: Low Poly Megapack - Lite
+  packageVersion: 1.3
+  assetPath: Assets/MegaPack1Lite/ToolsAndWeapons/Prefabs/sword_large.prefab
+  uploadId: 306539

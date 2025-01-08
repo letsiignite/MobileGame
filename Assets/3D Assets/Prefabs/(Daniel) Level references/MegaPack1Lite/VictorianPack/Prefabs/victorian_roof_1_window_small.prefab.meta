@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: f59d3534ce19b4974a823ca8f8560caf
+timeCreated: 1546831746
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136629
+  packageName: Low Poly Megapack - Lite
+  packageVersion: 1.3
+  assetPath: Assets/MegaPack1Lite/VictorianPack/Prefabs/victorian_roof_1_window_small.prefab
+  uploadId: 306539

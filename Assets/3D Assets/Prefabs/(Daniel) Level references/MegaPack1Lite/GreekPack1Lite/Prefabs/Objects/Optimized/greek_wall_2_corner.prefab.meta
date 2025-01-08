@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 71cab83f08c1b4fc5b6aca6be2779aac
+timeCreated: 1546829112
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136629
+  packageName: Low Poly Megapack - Lite
+  packageVersion: 1.3
+  assetPath: Assets/MegaPack1Lite/GreekPack1Lite/Prefabs/Objects/Optimized/greek_wall_2_corner.prefab
+  uploadId: 306539

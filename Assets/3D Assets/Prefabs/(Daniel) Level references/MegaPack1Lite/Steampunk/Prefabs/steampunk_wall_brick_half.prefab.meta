@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: f328a35bb46e84cdba6cf01a1c5c994a
+timeCreated: 1546831156
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136629
+  packageName: Low Poly Megapack - Lite
+  packageVersion: 1.3
+  assetPath: Assets/MegaPack1Lite/Steampunk/Prefabs/steampunk_wall_brick_half.prefab
+  uploadId: 306539

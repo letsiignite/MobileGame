@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: eacd269d724c846a58893cc0250db2ea
+timeCreated: 1497036299
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136629
+  packageName: Low Poly Megapack - Lite
+  packageVersion: 1.3
+  assetPath: Assets/MegaPack1Lite/RomanCityPack1Lite/Models/Roman/Materials/Roman_Combined.mat
+  uploadId: 306539

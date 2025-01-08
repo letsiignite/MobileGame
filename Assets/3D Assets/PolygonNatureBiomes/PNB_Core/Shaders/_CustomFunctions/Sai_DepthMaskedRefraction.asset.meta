@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e8291053a8c19b44d9e8c33748602d4f
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 234254
+  packageName: POLYGON Swamp Marshland - Nature Biomes - Low Poly 3D Art by Synty
+  packageVersion: 1.9.0
+  assetPath: Assets/PolygonNatureBiomes/PNB_Core/Shaders/_CustomFunctions/Sai_DepthMaskedRefraction.asset
+  uploadId: 703392

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 107230376c9b54c3b9c433abe7a919e0
+timeCreated: 1546831154
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136629
+  packageName: Low Poly Megapack - Lite
+  packageVersion: 1.3
+  assetPath: Assets/MegaPack1Lite/Steampunk/Prefabs/steampunk_wall_stones.prefab
+  uploadId: 306539

@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 1cc08a3f4c4ff4ebb980be82aa6556b9
+timeCreated: 1542533694
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136629
+  packageName: Low Poly Megapack - Lite
+  packageVersion: 1.3
+  assetPath: Assets/MegaPack1Lite/VictorianPack/Models/Materials/Victorian_Light_Glass_Lit.mat
+  uploadId: 306539

@@ -1,7 +1,14 @@
 fileFormatVersion: 2
-guid: 4ee6a89a1a6655c4db14d0aae7acb36c
+guid: b392ad1865038ad4cbb182a7c333c9eb
 TextScriptImporter:
   externalObjects: {}
   userData: 
   assetBundleName: 
   assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 71426
+  packageName: Furnished Cabin
+  packageVersion: 1.3
+  assetPath: Assets/Resources/BillingMode.json
+  uploadId: 483043

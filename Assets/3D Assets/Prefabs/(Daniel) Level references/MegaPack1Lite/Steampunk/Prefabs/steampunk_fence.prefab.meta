@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: f815c8b7b23044c29bc726b9648c8edb
+timeCreated: 1546831155
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136629
+  packageName: Low Poly Megapack - Lite
+  packageVersion: 1.3
+  assetPath: Assets/MegaPack1Lite/Steampunk/Prefabs/steampunk_fence.prefab
+  uploadId: 306539

@@ -1272,6 +1272,7 @@ MonoBehaviour:
   uiObjectsToHideOnPause: []
   pausePanel: {fileID: 7626243044515490734}
   pauseButton: {fileID: 5483829232150054396}
+  interactButton: {fileID: 0}
 --- !u!1 &6119892277956270173
 GameObject:
   m_ObjectHideFlags: 0
@@ -2299,7 +2300,7 @@ MonoBehaviour:
   containerRect: {fileID: 1327948959210740938}
   handleRect: {fileID: 6939468130081397917}
   clampToMagnitude: 1
-  magnitudeMultiplier: 0.5
+  magnitudeMultiplier: 0.01
   invertXOutputValue: 0
   invertYOutputValue: 1
   touchZoneOutputEvent:

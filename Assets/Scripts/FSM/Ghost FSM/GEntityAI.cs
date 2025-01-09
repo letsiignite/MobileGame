@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
+using Game;
+
 
 public class GEntityAI : MonoBehaviour
 {
@@ -12,6 +14,8 @@ public class GEntityAI : MonoBehaviour
     [HideInInspector] public LineOfSight los;
     [HideInInspector] public bool playerIsNearby;
     private GEState currentState;
+    private GameManager gameManager;
+    private bool isPaused = false;
 
     public WanderState wanderState = new();
     public AlertState alertState = new();
@@ -55,5 +59,17 @@ public class GEntityAI : MonoBehaviour
         {
             playerIsNearby = false;
         }
+    }
+
+    public void Init(GameManager manager)
+    { 
+        gameManager = manager;
+        gameManager.AddPauseListners(OnPause);
+    }
+
+    public void OnPause()
+    {
+        //Debug.Log(" Villagers On Pause");
+        isPaused = true;
     }
 }

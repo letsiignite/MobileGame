@@ -6,7 +6,7 @@ using System;
 using System.Collections.Generic;
 
 
-namespace ui
+namespace UI
 {
     public class UIManager : MonoBehaviour
     {
@@ -18,18 +18,15 @@ namespace ui
         [SerializeField] RectTransform PausePanelRect;
         [SerializeField] float TopPosY, MiddlePosY;
         [SerializeField] float TweenDuration;
-        private List<Action> pauseListners;
+        [SerializeField] InGameMenu inGameMenu;
+        [SerializeField] DeathInfo deathInfo;
 
 
         private void Awake()
         {
-            pauseListners = new List<Action>();
+           
         }
 
-        public void AddPauseListners(Action callback)
-        { 
-            pauseListners.Add(callback);
-        }
         private void Start()
         {
             StartMenu.SetActive(true);
@@ -39,6 +36,18 @@ namespace ui
             WarningPanel.SetActive(false);
 
         }
+
+        public void AddPauseListners(Action callback)
+        {
+            inGameMenu.AddPauseListners(callback);
+        }
+
+        public void DeathDisplay(string cause)
+        { 
+            deathInfo.gameObject.SetActive(true);
+            deathInfo.DeathDisplay(cause);
+        }
+
         public void OnClickPLayBtn()
         {
             //SceneManager.LoadScene("SampleScene");
@@ -97,11 +106,6 @@ namespace ui
         void PausePanelIn()
         {
             PausePanelRect.DOAnchorPosY(MiddlePosY, TweenDuration).SetUpdate(true);
-            foreach (Action a in pauseListners)
-            { 
-                a.Invoke();
-            }
-
         }
         async Task PausePanelOut()
         {

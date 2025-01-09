@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using UI;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -45,7 +46,7 @@ namespace Game
         private void InitAllObjects()
         {
             ghostAi.Init(this);
-
+            villagerContext = FindObjectsByType<VillagerContext>(FindObjectsSortMode.None).ToList();
             foreach (VillagerContext context in villagerContext)
             {
                 context.Init(this);

@@ -66,5 +66,6 @@ public class VillagerContext : MonoBehaviour
     public void Init(GameManager manager)
     {
         gameManager = manager;
+        gameManager.AddPauseListners(OnPause);
     }
 }

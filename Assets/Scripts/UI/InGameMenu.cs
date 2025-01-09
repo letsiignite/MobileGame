@@ -27,7 +27,7 @@ namespace UI
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         { 
-          Invoke("OnPauseClicked", 3);
+        
             interactButton.onClick.AddListener(pickup);
         }
 

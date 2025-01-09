@@ -19,7 +19,7 @@ public class WanderState : GEState
         if (geAI.los.visibleEnemy.Contains(geAI.playerRef) || geAI.playerIsNearby) 
         {
             //Switch To Alert State
-            Debug.Log(geAI.playerIsNearby);
+            //Debug.Log(geAI.playerIsNearby);
             geAI.SwitchState(geAI.alertState);
         }
         else if(geAI.los.visibleEnemy.Count != 0)

@@ -8,13 +8,15 @@ public class VillagerContext : MonoBehaviour
     private IVillagerState _currentState;
     public List<Transform> points = new List<Transform>();
     public NavMeshAgent agent;
-    public bool isMoving = true;
+    public bool isNotInfected = true;
+    public bool isPaused = false;
     public int currentTargetIndex = 0;
     public float pathDeviation = 10.0f;
     public Animator Animator { get; private set; } // Reference to the Animator
 
-    public IdleState idleState = new();
+    public InfectedState infectedState = new();
     public RunningState runningState = new();
+    public PausedState pausedState = new();
 
     public InGameMenu pause;
 
@@ -35,6 +37,7 @@ public class VillagerContext : MonoBehaviour
     void Update()
     {
         //Debug.Log(currentState.name);
+        //Debug.Log(_currentState);
         _currentState.UpdateState(this);
     }
     public void SetState(IVillagerState newState)
@@ -42,19 +45,19 @@ public class VillagerContext : MonoBehaviour
         _currentState = newState;
         _currentState.HandleState(this);
     }
-    public void StopMovement()
+    public void InfectVillager()
     {
-        Debug.Log("Stopping villager movement....");
+        //Debug.Log("Stopping villager movement....");
         // Stop the villager from moving
-        if (isMoving == true)
+        if (isNotInfected == true)
         {
-            isMoving = false;
+            isNotInfected = false;
         }
     }
 
     public void OnPause()
     {
-        Debug.Log(" Villagers On Pause");
-        SetState(idleState);
+        //Debug.Log(" Villagers On Pause");
+        isPaused = true;
     }
 }

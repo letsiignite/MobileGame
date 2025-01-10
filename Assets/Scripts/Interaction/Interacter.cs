@@ -26,7 +26,6 @@ public class Interacter : MonoBehaviour
                 else
                 {
                     Vector3 touchPosWorld = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-                    Vector2 touchPosWorld2D = new Vector2(touchPosWorld.x, touchPosWorld.y);
 
                     RaycastHit hitInformation;
                     if (Physics.Raycast(touchPosWorld, Camera.main.transform.forward, out hitInformation)) 

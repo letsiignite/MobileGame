@@ -4,10 +4,15 @@ namespace Interactable
 {
     public class BaseInteractableObject : MonoBehaviour, IBaseInteractableObject
     {
+        public string name;
         public void HandlePlayerInteraction()
         {
-           // Here we must trigger the action - add to inventory (water, food and collectabels will go to inventory),
-           // trigger the hint (if it is a hint object) or trigger the related event or animation, etc.
+            // Here we must trigger the action - add to inventory (water, food and collectabels will go to inventory),
+            // trigger the hint (if it is a hint object) or trigger the related event or animation, etc.
+            if (gameObject.GetComponent<HintObject>() != null)
+            { 
+            
+            }
         }
 
         public void OnFocus()

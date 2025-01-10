@@ -2,6 +2,7 @@ using UnityEngine;
 using DG.Tweening;
 using System.Threading.Tasks;
 using System;
+using TMPro;
 
 namespace UI
 {
@@ -17,6 +18,7 @@ namespace UI
         [SerializeField] float TweenDuration;
         [SerializeField] InGameMenu inGameMenu;
         [SerializeField] DeathInfo deathInfo;
+        [SerializeField] TMP_Text hintAndWarningText;
 
 
         private void Awake()
@@ -32,6 +34,11 @@ namespace UI
             //PauseBtn.SetActive(false);
             //WarningPanel.SetActive(false);
 
+        }
+
+        public void ShowHintsAndWarnings(String msg)
+        { 
+            hintAndWarningText.text = msg;
         }
 
         public void AddPauseListners(Action callback)

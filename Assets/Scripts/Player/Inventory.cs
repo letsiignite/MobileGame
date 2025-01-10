@@ -104,7 +104,7 @@ public class Inventory : MonoBehaviour
     /// Used to remove Item from lists
     /// </summary>
     /// <param name="itemName"></param>
-    public void ConsumeItem(GameObject itemName)
+    public bool ConsumeItem(GameObject itemName)
     {
         if (itemList.ContainsKey(itemName.name))
         {
@@ -112,8 +112,10 @@ public class Inventory : MonoBehaviour
             if (itemList[itemName.name].Count <= 0)
             {
                 itemList.Remove(itemName.name);
+                return true;
             }
         }
+        return false;
     }
 
     public void UseItemTool(string toolName)

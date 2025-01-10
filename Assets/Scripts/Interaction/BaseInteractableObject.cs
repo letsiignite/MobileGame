@@ -1,3 +1,4 @@
+using Puzzle;
 using UnityEngine;
 
 namespace Interactable
@@ -5,7 +6,9 @@ namespace Interactable
     public enum InteractType
     {
         CONSUME_ITEM,
-        PICKUP_ITEM
+        PICKUP_ITEM,
+        PUZZLE_ITEM,
+        HINT_ITEM
     }
 
     public class BaseInteractableObject : MonoBehaviour, IBaseInteractableObject
@@ -20,22 +23,29 @@ namespace Interactable
         }
 
         private HintObject hintObject;
+        private PuzzleObject puzzleObject;
 
         public void HandlePlayerInteraction()
         {
             // Here we must trigger the action - add to inventory (water, food and collectables will go to inventory),
             // trigger the hint (if it is a hint object) or trigger the related event or animation, etc.
-            if(TryGetComponent<HintObject>(out hintObject))
+            if (TryGetComponent<HintObject>(out hintObject))
             {
                 hintObject.TriggerHint();
             }
-            if(interactType == InteractType.CONSUME_ITEM)
+            if (interactType == InteractType.CONSUME_ITEM)
             {
                 playerRef.GetComponent<Inventory>().ConsumeItem(gameObject);
             }
-            else
+            else if (interactType == InteractType.PICKUP_ITEM)
             {
                 playerRef.GetComponent<Inventory>().PickUpItem(gameObject);
+            }
+            else if(interactType == InteractType.PUZZLE_ITEM)
+            {
+                TryGetComponent<PuzzleObject>(out puzzleObject);
+                puzzleObject.OnInteraction();
+
             }
         }
 

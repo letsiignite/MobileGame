@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 public class Interacter : MonoBehaviour
 {
-    private bool cloaseToInteractableObject = false;
+    private bool closeToInteractableObject = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -44,7 +44,7 @@ public class Interacter : MonoBehaviour
     {
         if (other.gameObject.GetComponent<IBaseInteractableObject>() != null)
         {
-            cloaseToInteractableObject = true;
+            closeToInteractableObject = true;
         }
     }
 }

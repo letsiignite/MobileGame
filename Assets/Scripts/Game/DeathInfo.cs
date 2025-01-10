@@ -16,8 +16,6 @@ namespace UI
         public void Init(GameObject deathPanelReference)
         {
             // Assign the panel reference passed from the GameManager
-            
-
             if (deathPanel != null)
             {
                 Debug.Log("Death panel reference initialized.");
@@ -43,13 +41,13 @@ namespace UI
         private string GetDeathMessage(string cause)
         {
             Dictionary<string, string> deathCause = new Dictionary<string, string>
-        {
-            { "Ghost", "You were caught by a ghost." },
-            { "Trap", "You fell into a trap." },
-            { "Water", "You drowned in water." },
-            { "Sanity", "You lost your sanity." },
-            { "Food", "You succumbed to starvation." }
-        };
+            {
+                { "Ghost", "You were caught by a ghost." },
+                { "Trap", "You fell into a trap." },
+                { "Water", "You drowned in water." },
+                { "Sanity", "You lost your sanity." },
+                { "Food", "You succumbed to starvation." }
+            };
 
             if (deathCause.ContainsKey(cause))
             {

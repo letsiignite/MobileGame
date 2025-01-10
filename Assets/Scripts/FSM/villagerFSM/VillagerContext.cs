@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 using UI;
+using Game;
 
 public class VillagerContext : MonoBehaviour
 {
@@ -12,23 +13,24 @@ public class VillagerContext : MonoBehaviour
     public bool isPaused = false;
     public int currentTargetIndex = 0;
     public float pathDeviation = 10.0f;
+    private GameManager gameManager;
     public Animator Animator { get; private set; } // Reference to the Animator
 
     public InfectedState infectedState = new();
     public RunningState runningState = new();
     public PausedState pausedState = new();
 
-    public InGameMenu pause;
+    
 
     void Start()
     {
-        pause = GameObject.Find("GameplayUI").GetComponent<InGameMenu>();
+        
         Animator = GetComponent<Animator>();
         agent = GetComponent<NavMeshAgent>();
 
         // Initialize with the Running state
         SetState(runningState);
-        pause.AddPauseListners(OnPause);
+       
     }
     public void SetPoints(List<Transform> spawnPoints)
     {
@@ -59,5 +61,11 @@ public class VillagerContext : MonoBehaviour
     {
         //Debug.Log(" Villagers On Pause");
         isPaused = true;
+    }
+
+    public void Init(GameManager manager)
+    {
+        gameManager = manager;
+        gameManager.AddPauseListners(OnPause);
     }
 }

@@ -15,6 +15,8 @@ namespace UI
         private GameObject pausePanel;
         [SerializeField]
         private Button pauseButton;
+        [SerializeField]
+        private Button interactButton;
         private List<Action> pauseListners;
 
         private void Awake()
@@ -25,7 +27,13 @@ namespace UI
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         { 
-          Invoke("OnPauseClicked", 3);
+        
+            interactButton.onClick.AddListener(pickup);
+        }
+
+        private void pickup()
+        { 
+            
         }
 
         private void OnPauseClicked()
@@ -50,7 +58,7 @@ namespace UI
 
         public void AddPauseListners(Action callback)
         {
-            Debug.Log(" Adding Pause Listener");
+            Debug.Log("Adding Pause Listener");
             pauseListners.Add(callback);    
         }
 

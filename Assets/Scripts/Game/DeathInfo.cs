@@ -1,43 +1,48 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
-public class DeathInfo : MonoBehaviour
+
+namespace UI
 {
-    private GameObject deathPanel; // Reference to the UI panel
-    private Text deathMessageText; // Reference to the Text component
-
-    public void Init(GameObject deathPanelReference)
+    public class DeathInfo : MonoBehaviour
     {
-        // Assign the panel reference passed from the GameManager
-        deathPanel = deathPanelReference;
-        deathMessageText = deathPanel.GetComponentInChildren<Text>();
+        [SerializeField]    
+        private GameObject deathPanel; // Reference to the UI panel
+        [SerializeField]
+        private TMP_Text deathMessageText; // Reference to the Text component
 
-        if (deathPanel != null)
+        public void Init(GameObject deathPanelReference)
         {
-            Debug.Log("Death panel reference initialized.");
+            // Assign the panel reference passed from the GameManager
+            
+
+            if (deathPanel != null)
+            {
+                Debug.Log("Death panel reference initialized.");
+            }
+            else
+            {
+                Debug.LogError("Death panel reference is missing.");
+            }
         }
-        else
+
+        public void DeathDisplay(string cause)
         {
-            Debug.LogError("Death panel reference is missing.");
+
+            // Switch UI panel to death panel
+            deathPanel.SetActive(true);
+
+            string message = GetDeathMessage(cause);
+            deathMessageText.text = message;
+
+            //Debug.Log("Displayed death message: " + message);
         }
-    }
 
-    public void DeathDisplay(string cause)
-    {
-
-        // Switch UI panel to death panel
-        deathPanel.SetActive(true);
-
-        string message = GetDeathMessage(cause);
-        deathMessageText.text = message;
-
-        //Debug.Log("Displayed death message: " + message);
-    }
-
-    private string GetDeathMessage(string cause)
-    {
-        Dictionary<string, string> deathCause = new Dictionary<string, string>
+        private string GetDeathMessage(string cause)
+        {
+            Dictionary<string, string> deathCause = new Dictionary<string, string>
         {
             { "Ghost", "You were caught by a ghost." },
             { "Trap", "You fell into a trap." },
@@ -46,13 +51,14 @@ public class DeathInfo : MonoBehaviour
             { "Food", "You succumbed to starvation." }
         };
 
-        if (deathCause.ContainsKey(cause))
-        {
-            return deathCause[cause];
+            if (deathCause.ContainsKey(cause))
+            {
+                return deathCause[cause];
+            }
+
+            return "Unknown cause of death.";
         }
-
-        return "Unknown cause of death.";
     }
+
+
 }
-
-

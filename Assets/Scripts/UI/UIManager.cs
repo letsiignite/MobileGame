@@ -1,10 +1,7 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 using DG.Tweening;
 using System.Threading.Tasks;
 using System;
-using System.Collections.Generic;
-
 
 namespace UI
 {
@@ -29,11 +26,11 @@ namespace UI
 
         private void Start()
         {
-            StartMenu.SetActive(true);
-            PauseMenu.SetActive(false);
-            OptionMenu.SetActive(false);
-            PauseBtn.SetActive(false);
-            WarningPanel.SetActive(false);
+            //StartMenu.SetActive(true);
+            //PauseMenu.SetActive(false);
+            //OptionMenu.SetActive(false);
+            //PauseBtn.SetActive(false);
+            //WarningPanel.SetActive(false);
 
         }
 

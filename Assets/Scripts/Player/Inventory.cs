@@ -58,47 +58,52 @@ public class Inventory : MonoBehaviour
         //}
     }
 
-    private Vector3 ClosestPointToRay(Ray ray, Collider collider)
-    {
-        Vector3 pointToRay = collider.transform.position - ray.origin;
-        float projectionLength = Vector3.Distance(pointToRay, ray.direction);
+    //private Vector3 ClosestPointToRay(Ray ray, Collider collider)
+    //{
+    //    Vector3 pointToRay = collider.transform.position - ray.origin;
+    //    float projectionLength = Vector3.Distance(pointToRay, ray.direction);
 
-        return ray.origin + ray.direction.normalized * projectionLength;
-    }
+    //    return ray.origin + ray.direction.normalized * projectionLength;
+    //}
 
+    /// <summary>
+    /// Used in UI Buttons when buttons are Clicked
+    /// </summary>
     public void ButtonClicked()
     {
         nearestCollider.gameObject.GetComponent<IBaseInteractableObject>().HandlePlayerInteraction();
     }
-
-    public void PickUpItem()
+    
+    /// <summary>
+    /// Used to Add items to list
+    /// </summary>
+    /// <param name="item"></param>
+    public void PickUpItem(GameObject item)
     {
-        if(currentCapacity + nearestCollider.GetComponent<BaseInteractableObject>().GetWeight() > totalCapacity || itemList.Count >= fullSlotCount)
+        if (currentCapacity + item.GetComponent<BaseInteractableObject>().GetWeight() < totalCapacity)
         {
-            Debug.Log("Overloaded!! Can't add more to bag!");
-            return;
-        }
-
-        if (itemList.ContainsKey(nearestCollider.name)) 
-        {
-            itemList[nearestCollider.name].Add(nearestCollider.gameObject);
+            if (itemList.ContainsKey(item.name))
+            {
+                itemList[item.name].Add(item);
+            }
+            else
+            {
+                List<GameObject> newItem = new List<GameObject>(){ item };
+                itemList.Add(item.name, newItem);
+            }
+            currentCapacity += item.GetComponent<BaseInteractableObject>().GetWeight();
+            Destroy(item);
         }
         else
         {
-            List<GameObject> newItem = new List<GameObject>();
-            newItem.Add(nearestCollider.gameObject);
-            itemList.Add(nearestCollider.name, newItem);
+            Debug.Log("OverLoaded!! Try losing some weight fatty");
         }
-        currentCapacity += nearestCollider.GetComponent<BaseInteractableObject>().GetWeight();
-        Destroy(nearestCollider.gameObject);
-
-        string builder = "";
-        foreach (var item in itemList) 
-        {
-            builder += "Key : " + item.Key + " Value : " + item.Value + "\n";
-        };
     }
 
+    /// <summary>
+    /// Used to remove Item from lists
+    /// </summary>
+    /// <param name="itemName"></param>
     public void ConsumeItem(GameObject itemName)
     {
         if (itemList.ContainsKey(itemName.name))

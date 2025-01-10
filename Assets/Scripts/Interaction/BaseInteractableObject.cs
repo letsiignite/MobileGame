@@ -35,7 +35,7 @@ namespace Interactable
             }
             else
             {
-                playerRef.GetComponent<Inventory>().PickUpItem();
+                playerRef.GetComponent<Inventory>().PickUpItem(gameObject);
             }
         }
 

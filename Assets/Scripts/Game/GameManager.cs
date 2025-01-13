@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using TMPro;
 using UI;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -16,6 +17,8 @@ namespace Game
         private List<VillagerContext> villagerContext;
         [SerializeField]
         private UIManager uiManager;
+        [SerializeField]
+        private Subtitles subtitleScript;
 
         /// <summary>
         /// This is stupid, but I want to see how it works out.
@@ -51,6 +54,7 @@ namespace Game
             {
                 context.Init(this);
             }
+            subtitleScript = FindAnyObjectByType<Subtitles>();
         }
 
         public void AddPauseListners(Action callback)
@@ -68,6 +72,10 @@ namespace Game
             
         }
 
+        public void SubtitleDisplay(string line , AudioClip voiceLine)
+        {
+            subtitleScript.DisplayTextWithAudio(line,voiceLine);
+        }
         // Update is called once per frame
         void Update()
         {

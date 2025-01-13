@@ -3192,6 +3192,7 @@ MonoBehaviour:
   uiObjectsToHideOnPause: []
   pausePanel: {fileID: 1887540127}
   pauseButton: {fileID: 171495463}
+  interactButton: {fileID: 0}
 --- !u!1 &21520447
 GameObject:
   m_ObjectHideFlags: 0
@@ -32729,6 +32730,10 @@ PrefabInstance:
     - target: {fileID: 4865771887918280734, guid: bebb9e7e33ed1094fb506becf061bde0, type: 3}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5447306901789619948, guid: bebb9e7e33ed1094fb506becf061bde0, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5535967398445940072, guid: bebb9e7e33ed1094fb506becf061bde0, type: 3}
       propertyPath: m_Name

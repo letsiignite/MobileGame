@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using UnityEngine;
+
 public enum HintType
 {
     Enable_object,
@@ -10,13 +11,13 @@ public enum HintType
 public class HintObject : MonoBehaviour
 {
     // Start is called once before the first execution of Update after the MonoBehaviour is created
-    [SerializeField]
-    private string HintText;
-    [SerializeField]
-    private HintType htype;
+    [SerializeField] private string HintText;
+    [SerializeField] private HintType htype;
+
     public List<GameObject> h_enableObjects;
     private Animator animator;
     private AudioClip clip;
+
     public void TriggerHint()
     {
         switch (htype)

@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 
 public class Interacter : MonoBehaviour
 {
-    private bool cloaseToInteractableObject = false;
+    private bool closeToInteractableObject = false;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
@@ -26,7 +26,6 @@ public class Interacter : MonoBehaviour
                 else
                 {
                     Vector3 touchPosWorld = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-                    Vector2 touchPosWorld2D = new Vector2(touchPosWorld.x, touchPosWorld.y);
 
                     RaycastHit hitInformation;
                     if (Physics.Raycast(touchPosWorld, Camera.main.transform.forward, out hitInformation)) 
@@ -45,7 +44,7 @@ public class Interacter : MonoBehaviour
     {
         if (other.gameObject.GetComponent<IBaseInteractableObject>() != null)
         {
-            cloaseToInteractableObject = true;
+            closeToInteractableObject = true;
         }
     }
 }

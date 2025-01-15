@@ -11,10 +11,11 @@ public class RunningState : IVillagerState
             context.agent.isStopped = false;
         }
         MoveToRandomPoint(context);
+        context.Animator.SetTrigger("Run");
     }
     void MoveToRandomPoint(VillagerContext context)
     {
-        Debug.Log("in here");
+        //Debug.Log("in here");
         if (context.points.Count == 0) return;
 
         // Randomize the path by selecting a target and adding slight deviation
@@ -35,10 +36,6 @@ public class RunningState : IVillagerState
         {
             // Set the destination to the calculated path
             context.agent.SetPath(path);
-
-            // Trigger the run animation
-            context.Animator.SetTrigger("Run");
-
         }
         else
         {
@@ -47,15 +44,19 @@ public class RunningState : IVillagerState
     }
     public void UpdateState(VillagerContext context)
     {
-        Debug.Log("Character is running...");
-        if (context.isMoving && context.agent.remainingDistance <= context.agent.stoppingDistance && !context.agent.pathPending)
+        //Debug.Log("Character is running...");
+        if (context.isNotInfected && context.agent.remainingDistance <= context.agent.stoppingDistance && !context.agent.pathPending)
         {
             // Move to the next random point
             MoveToRandomPoint(context);
         }
-        if (!context.isMoving)
+        if(context.isPaused)
         {
-            context.SetState(context.idleState);
+            context.SetState(context.pausedState);
+        }
+        if (!context.isNotInfected)
+        {
+            context.SetState(context.infectedState);
         }
     }
 }

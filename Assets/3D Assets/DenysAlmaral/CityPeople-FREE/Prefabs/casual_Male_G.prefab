@@ -146,7 +146,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2100208028559941110
 Transform:
   m_ObjectHideFlags: 0
@@ -259,9 +259,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   points: []
   agent: {fileID: 0}
-  isMoving: 1
+  isNotInfected: 1
+  isPaused: 1
   currentTargetIndex: 0
   pathDeviation: 10
+  pause: {fileID: 0}
 --- !u!1 &1719302345640664642
 GameObject:
   m_ObjectHideFlags: 0

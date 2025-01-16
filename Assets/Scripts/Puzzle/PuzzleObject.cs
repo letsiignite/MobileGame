@@ -21,15 +21,16 @@ namespace Puzzle
         [SerializeField]
         private List<PuzzleObject> puzzleObjectsToActivate;
         private bool isActive = false;
+        [SerializeField]
         private ObjectType type;
         [SerializeField]
         private GameObject puzzleInfoProvider; // This is the object that provides the info, like text explaining what to do or any audio that explains what must be done.
                                                // this object must be setup in the scene and assigned.
         [SerializeField]
         private GameObject activationObject; // This object must be in players inventory to activate this object. this object must be placed in the scene and added through inspector.
-        /*[SerializeField]
-        private GameObject completionObject; // This object will be activated or deactivated to finish the puzzle. This will be assigned to last object in puzzle.
-        */
+        //[SerializeField]
+        //private GameObject completionObject; // This object will be activated or deactivated to finish the puzzle. This will be assigned to last object in puzzle.
+
         [SerializeField]
         private bool isCompletionObject;
 
@@ -57,17 +58,20 @@ namespace Puzzle
 
         public void OnInteraction()
         {
+            Debug.Log("Pass 3");
             inventory = (Inventory)FindObjectOfType(typeof(Inventory));
             if (isInitializationObject)
             {
                 foreach (var obj in puzzleObjectsToActivate)
                 {
                     obj.Activate();
+                    obj.gameObject.SetActive(isActive);
                 }
                 Activate();
             }
             else 
             {
+                Debug.Log("Pass 3-1");
                 // check if inventory has the activation object, if yes then trigger unlock process. Else play a error sound.
                 if (type == ObjectType.COLLECT)
                 {
@@ -80,9 +84,11 @@ namespace Puzzle
                         //PlayerData error sound and must display a message
                         GameManager._instance.ShowHintsAndWarnings(ACTIVATION_OBJECT_NOT_FOUND);
                     }
+
                     if (isCompletionObject)
                     {
                         Deactivate();
+                        Debug.Log("Problem Solved");
                     }
                 }
             }

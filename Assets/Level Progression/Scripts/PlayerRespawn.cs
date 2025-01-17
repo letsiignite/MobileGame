@@ -20,15 +20,12 @@ public class PlayerRespawn : MonoBehaviour
     private IEnumerator RespawnPlayer()
     {
         isRespawning = true;
-
         // Wait for the respawn delay
         yield return new WaitForSeconds(respawnDelay);
 
-        // Respawn the player at the saved position
-        //Vector3 savedPosition = PlayerProgress.Instance.playerPosition;
-        //player.transform.position = savedPosition;
+        //Respawn on last saved point
+        CheckPoints.Instance.RespawnPlayer();
         player.SetActive(true);
-
         //Debug.Log($"Player respawned at {savedPosition}");
         isRespawning = false;
     }

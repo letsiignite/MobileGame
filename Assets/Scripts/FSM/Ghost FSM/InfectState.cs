@@ -1,33 +1,48 @@
 using UnityEngine;
 
-public class InfectState : GEState
+namespace GhostFSM
 {
-    private GameObject targetVillager;
-
-    public override void EnterState(GEntityAI geAI)
+    public class InfectState : GEState
     {
-        name = "Infect";
-    }
+        private GameObject targetVillager;
 
-    public override void UpdateState(GEntityAI geAI)
-    {
-        if(geAI.los.visibleEnemy.Contains(geAI.playerRef))
+        public override void EnterState(GEntityAI geAI)
         {
-            //get the infected people component and call "that" function.
-            geAI.SwitchState(geAI.alertState);
+            name = "Infect";
         }
-        else if(geAI.los.visibleEnemy.Count != 0)
+
+        public override void UpdateState(GEntityAI geAI)
         {
-            targetVillager = geAI.los.visibleEnemy[0];
-            geAI.agent.SetDestination(targetVillager.transform.position);
-            if(Vector3.Distance(geAI.agent.transform.position, geAI.agent.destination) <= geAI.agent.stoppingDistance)
+            if (geAI.los.visibleEnemy.Contains(geAI.playerRef))
             {
-                //Get Component and call function to freeze player
+                //get the infected people component and call "that" function.
+                geAI.SwitchState(geAI.alertState);
             }
-        }
-        else
-        {
-            geAI.SwitchState(geAI.wanderState);
+            else if (geAI.los.visibleEnemy.Count != 0)
+            {
+                targetVillager = geAI.los.visibleEnemy[0];
+                VillagerContext villagerContext = targetVillager.GetComponent<VillagerContext>();
+                geAI.agent.SetDestination(targetVillager.transform.position);
+                if (Vector3.Distance(geAI.agent.transform.position, geAI.agent.destination) <= geAI.agent.stoppingDistance)
+                {
+                    //Debug.Log("calling Stopmovement in infect");
+                    //Get Component and call function to make player infected
+                    if (villagerContext != null)
+                    {
+                        // Call StopMovement/infected function in VillagerMovement 
+                        villagerContext.InfectVillager();
+                        geAI.SwitchState(geAI.alertState);
+                    }
+                    else
+                    {
+                        Debug.LogError("VillagerMovement script is not attached to the target villager.");
+                    }
+                }
+            }
+            else
+            {
+                geAI.SwitchState(geAI.wanderState);
+            }
         }
     }
 }

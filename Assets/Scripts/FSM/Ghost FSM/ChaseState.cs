@@ -1,32 +1,39 @@
 using UnityEngine;
 
-public class ChaseState : GEState
+namespace GhostFSM
 {
-    private float timer = 0f;
-
-    public override void EnterState(GEntityAI geAI)
+    public class ChaseState : GEState
     {
-        // change speed and all that
-        name = "Chase";
-    }
+        private float timer = 0f;
 
-    public override void UpdateState(GEntityAI geAI)
-    {
-        timer += Time.deltaTime;
-        if (geAI.los.visibleEnemy.Contains(geAI.playerRef))
+        public override void EnterState(GEntityAI geAI)
         {
-            geAI.agent.SetDestination(geAI.playerRef.transform.position);
-            timer = 0f;
+            // change speed and all that
+            name = "Chase";
         }
-        else if(!geAI.los.visibleEnemy.Contains(geAI.playerRef) || timer > geAI.chaseTime)
-        {
-            timer = 0f;
-            geAI.alertState.reAlert = true;
-            geAI.SwitchState(geAI.alertState);
-        }
-        else
-        {
 
+        public override void UpdateState(GEntityAI geAI)
+        {
+            timer += Time.deltaTime;
+            if (geAI.los.visibleEnemy.Contains(geAI.playerRef))
+            {
+                geAI.agent.SetDestination(geAI.playerRef.transform.position);
+                timer = 0f;
+                if(Vector3.Distance(geAI.playerRef.transform.position, geAI.transform.position) <= geAI.agent.stoppingDistance)
+                {
+                    geAI.gameManager.DeathDisplay("Ghost");
+                }
+            }
+            else if (!geAI.los.visibleEnemy.Contains(geAI.playerRef) || timer > geAI.chaseTime)
+            {
+                timer = 0f;
+                geAI.alertState.reAlert = true;
+                geAI.SwitchState(geAI.alertState);
+            }
+            else
+            {
+
+            }
         }
     }
 }

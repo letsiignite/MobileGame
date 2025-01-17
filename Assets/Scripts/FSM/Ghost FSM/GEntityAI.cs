@@ -1,5 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
+using Game;
+using GhostFSM;
 
 public class GEntityAI : MonoBehaviour
 {
@@ -7,11 +9,13 @@ public class GEntityAI : MonoBehaviour
     public float chaseTime = 2f;
     public float alertTime = 4f;
 
+    [HideInInspector] public GameManager gameManager;
     [HideInInspector] public Vector3 startPosition;
     [HideInInspector] public NavMeshAgent agent;
     [HideInInspector] public LineOfSight los;
     [HideInInspector] public bool playerIsNearby;
     private GEState currentState;
+    private bool isPaused = false;
 
     public WanderState wanderState = new();
     public AlertState alertState = new();
@@ -55,5 +59,17 @@ public class GEntityAI : MonoBehaviour
         {
             playerIsNearby = false;
         }
+    }
+
+    public void Init(GameManager manager)
+    { 
+        gameManager = manager;
+        gameManager.AddPauseListners(OnPause);
+    }
+
+    public void OnPause()
+    {
+        //Debug.Log(" Villagers On Pause");
+        isPaused = true;
     }
 }

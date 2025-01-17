@@ -1,3 +1,4 @@
+using Interactable;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,94 +14,108 @@ public class Inventory : MonoBehaviour
     [SerializeField] private int currentCapacity = 0;
 
     [Header("Colliders")]
-    [SerializeField] private float overlapSphereRadius = 5;
+    [SerializeField] private float overlapSphereRadius = 1;
     
-    private Dictionary<string, int> itemList = new Dictionary<string, int>();
+    private Dictionary<string, List<GameObject>> itemList = new Dictionary<string, List<GameObject>>();
     private GameObject itemInArea;
     private Collider nearestCollider;
 
     private void Update()
     {
-        Ray ray = new Ray(transform.position, transform.forward);
-        Collider[] colliders = Physics.OverlapSphere(ray.origin, overlapSphereRadius, itemLayer);
+        //Ray ray = new Ray(transform.position, transform.forward);
+        //Collider[] colliders = Physics.OverlapSphere(ray.origin, overlapSphereRadius, itemLayer);
 
-        if(colliders.Length == 0)
+        //if(colliders.Length == 0)
+        //{
+        //    itemPickUpImage.gameObject.SetActive(false);
+        //    return;
+        //}
+
+        //nearestCollider = null;
+        //float shortestDistance = float.MaxValue;
+
+        //foreach (Collider collider in colliders) 
+        //{
+        //    Vector3 closestPointToRay = ClosestPointToRay(ray, collider);
+        //    float distanceToCollider = Vector3.Distance(closestPointToRay, ray.direction);
+
+        //    if (distanceToCollider < shortestDistance) 
+        //    {
+        //        shortestDistance = distanceToCollider;
+        //        nearestCollider = collider;
+        //    }
+        //}
+
+        //Vector3 screenPoint = Camera.main.WorldToScreenPoint(nearestCollider.transform.position);
+        //if (screenPoint.z > 0) 
+        //{
+        //    itemPickUpImage.gameObject.SetActive(true);
+        //    itemPickUpImage.position = screenPoint;
+        //}
+        //else
+        //{
+        //    itemPickUpImage.gameObject.SetActive(false);
+        //}
+    }
+
+    //private Vector3 ClosestPointToRay(Ray ray, Collider collider)
+    //{
+    //    Vector3 pointToRay = collider.transform.position - ray.origin;
+    //    float projectionLength = Vector3.Distance(pointToRay, ray.direction);
+
+    //    return ray.origin + ray.direction.normalized * projectionLength;
+    //}
+
+    /// <summary>
+    /// Used in UI Buttons when buttons are Clicked
+    /// </summary>
+    public void ButtonClicked()
+    {
+        nearestCollider.gameObject.GetComponent<IBaseInteractableObject>().HandlePlayerInteraction();
+    }
+    
+    /// <summary>
+    /// Used to Add items to list
+    /// </summary>
+    /// <param name="item"></param>
+    public void PickUpItem(GameObject item)
+    {
+        if (currentCapacity + item.GetComponent<BaseInteractableObject>().GetWeight() < totalCapacity)
         {
-            itemPickUpImage.gameObject.SetActive(false);
-            return;
-        }
-
-        nearestCollider = null;
-        float shortestDistance = float.MaxValue;
-
-        foreach (Collider collider in colliders) 
-        {
-            Vector3 closestPointToRay = ClosestPointToRay(ray, collider);
-            float distanceToCollider = Vector3.Distance(closestPointToRay, ray.direction);
-
-            if (distanceToCollider < shortestDistance) 
+            if (itemList.ContainsKey(item.name))
             {
-                shortestDistance = distanceToCollider;
-                nearestCollider = collider;
+                itemList[item.name].Add(item);
             }
-        }
-
-        Vector3 screenPoint = Camera.main.WorldToScreenPoint(nearestCollider.transform.position);
-        if (screenPoint.z > 0) 
-        {
-            itemPickUpImage.gameObject.SetActive(true);
-            itemPickUpImage.position = screenPoint;
+            else
+            {
+                List<GameObject> newItem = new List<GameObject>(){ item };
+                itemList.Add(item.name, newItem);
+            }
+            currentCapacity += item.GetComponent<BaseInteractableObject>().GetWeight();
+            Destroy(item);
         }
         else
         {
-            itemPickUpImage.gameObject.SetActive(false);
+            Debug.Log("OverLoaded!! Try losing some weight fatty");
         }
     }
 
-    private Vector3 ClosestPointToRay(Ray ray, Collider collider)
+    /// <summary>
+    /// Used to remove Item from lists
+    /// </summary>
+    /// <param name="itemName"></param>
+    public bool ConsumeItem(GameObject itemName)
     {
-        Vector3 pointToRay = collider.transform.position - ray.origin;
-        float projectionLength = Vector3.Distance(pointToRay, ray.direction);
-
-        return ray.origin + ray.direction.normalized * projectionLength;
-    }
-
-    public void PickUpItem()
-    {
-        if(currentCapacity + nearestCollider.GetComponent<Item>().GetWeight() > totalCapacity || itemList.Count >= fullSlotCount)
+        if (itemList.ContainsKey(itemName.name))
         {
-            Debug.Log("Overloaded!! Can't add more to bag!");
-            return;
-        }
-
-        if (itemList.ContainsKey(nearestCollider.name)) 
-        {
-            itemList[nearestCollider.name] += 1;
-        }
-        else
-        {
-            itemList.Add(nearestCollider.name, 1);
-        }
-        currentCapacity += nearestCollider.GetComponent<Item>().GetWeight();
-        Destroy(nearestCollider.gameObject);
-
-        string builder = "";
-        foreach (var item in itemList) 
-        {
-            builder += "Key : " + item.Key + " Value : " + item.Value + "\n";
-        };
-    }
-
-    public void ConsumeItem(string itemName)
-    {
-        if (itemList.ContainsKey(itemName))
-        {
-            itemList[itemName] -= 1;
-            if (itemList[itemName] <= 0)
+            itemList[itemName.name].Remove(itemList[itemName.name][itemList[itemName.name].Count - 1]);
+            if (itemList[itemName.name].Count <= 0)
             {
-                itemList.Remove(itemName);
+                itemList.Remove(itemName.name);
+                return true;
             }
         }
+        return false;
     }
 
     public void UseItemTool(string toolName)

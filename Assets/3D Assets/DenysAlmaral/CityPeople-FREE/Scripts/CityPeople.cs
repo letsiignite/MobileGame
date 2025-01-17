@@ -10,7 +10,7 @@ namespace CityPeople
     {
         [SerializeField]
         [Tooltip("Autoplay random animation clips")] 
-        private bool AutoPlayAnimations = true;
+        private bool AutoPlayAnimations = false;
         [SerializeField]
         [Tooltip("Overrides palette materials, skips other objects")]
         private Material PaletteOverride;

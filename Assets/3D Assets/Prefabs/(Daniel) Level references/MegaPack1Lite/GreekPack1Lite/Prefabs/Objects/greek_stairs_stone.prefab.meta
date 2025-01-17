@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: e4707a0856ce84eee87e7e38fb543c08
+timeCreated: 1546829039
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136629
+  packageName: Low Poly Megapack - Lite
+  packageVersion: 1.3
+  assetPath: Assets/MegaPack1Lite/GreekPack1Lite/Prefabs/Objects/greek_stairs_stone.prefab
+  uploadId: 306539

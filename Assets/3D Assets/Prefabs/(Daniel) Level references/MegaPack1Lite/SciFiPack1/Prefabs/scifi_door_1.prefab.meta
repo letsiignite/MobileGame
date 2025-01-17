@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: a4287460fe00b44dbb6b2ef7124af01c
+timeCreated: 1546830895
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136629
+  packageName: Low Poly Megapack - Lite
+  packageVersion: 1.3
+  assetPath: Assets/MegaPack1Lite/SciFiPack1/Prefabs/scifi_door_1.prefab
+  uploadId: 306539

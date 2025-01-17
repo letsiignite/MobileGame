@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: 43273b81298614d8883dbf51bd023c32
+timeCreated: 1546830896
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136629
+  packageName: Low Poly Megapack - Lite
+  packageVersion: 1.3
+  assetPath: Assets/MegaPack1Lite/SciFiPack1/Prefabs/scifi_pad.prefab
+  uploadId: 306539

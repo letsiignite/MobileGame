@@ -1,0 +1,16 @@
+fileFormatVersion: 2
+guid: b67c34942f06641839dbb616d6b0423f
+timeCreated: 1546829044
+licenseType: Store
+NativeFormatImporter:
+  mainObjectFileID: 100100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 136629
+  packageName: Low Poly Megapack - Lite
+  packageVersion: 1.3
+  assetPath: Assets/MegaPack1Lite/GreekPack1Lite/Prefabs/Objects/greek_column_1.prefab
+  uploadId: 306539

@@ -27,7 +27,7 @@ public class Interacter : MonoBehaviour
                 }
                 else
                 {
-                    Debug.Log("Pass 1-1");
+                    //Debug.Log("Pass 1-1");
                     Vector3 touchPosWorld = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
 
                     //Debugging Tech
@@ -40,7 +40,7 @@ public class Interacter : MonoBehaviour
                         
                         if (hitInformation.collider.gameObject.GetComponent<IBaseInteractableObject>() != null)
                         {
-                            Debug.Log("Pass 1");
+                            //Debug.Log("Pass 1");
                             hitInformation.collider.gameObject.GetComponent<IBaseInteractableObject>().HandlePlayerInteraction();
                         }
                     }

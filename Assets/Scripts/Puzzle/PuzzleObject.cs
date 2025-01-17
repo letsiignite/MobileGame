@@ -34,6 +34,9 @@ namespace Puzzle
         [SerializeField]
         private bool isCompletionObject;
 
+        [SerializeField] private Transform[] houseTransforms; // Array of house positions
+        [SerializeField] private Vector3 spawnAreaSize = new Vector3(1, 0, 1);
+
         private Inventory inventory;
         private const string ACTIVATION_OBJECT_NOT_FOUND = "Find the key object";
         public void Activate()
@@ -58,7 +61,7 @@ namespace Puzzle
 
         public void OnInteraction()
         {
-            Debug.Log("Pass 3");
+            //Debug.Log("Pass 3");
             inventory = (Inventory)FindObjectOfType(typeof(Inventory));
             if (isInitializationObject)
             {
@@ -71,14 +74,16 @@ namespace Puzzle
             }
             else 
             {
-                Debug.Log("Pass 3-1");
+                //Debug.Log("Pass 3-1");
                 // check if inventory has the activation object, if yes then trigger unlock process. Else play a error sound.
                 if (type == ObjectType.COLLECT)
                 {
                     inventory.PickUpItem(this.gameObject);
+                    //Debug.Log("Invetory Consumption : " + this.gameObject.name + " " + this.name);
                 }
                 else if (type == ObjectType.CONSUME)
                 {
+                    //Debug.Log("Invetory Consumption : " + activationObject);
                     if (!inventory.ConsumeItem(activationObject))
                     {
                         //PlayerData error sound and must display a message
@@ -93,11 +98,31 @@ namespace Puzzle
                 }
             }
         }
+        private Vector3 GetRandomOffset()
+        {
+            float randomX = Random.Range(-spawnAreaSize.x / 2, spawnAreaSize.x / 2);
+            float randomY = 0;
+            float randomZ = Random.Range(-spawnAreaSize.z / 2, spawnAreaSize.z / 2);
+
+            return new Vector3(randomX, randomY, randomZ);
+        }
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-
+            if(houseTransforms.Length > 0)
+            {
+                Transform houseTransform = houseTransforms[Random.Range(0, houseTransforms.Length)];
+                Vector3 randomOffset = GetRandomOffset();
+                Vector3 spawnPosition = houseTransform.position + randomOffset;
+                if (spawnPosition.y <= 0)
+                {
+                    spawnPosition.y = 2;
+                }
+                this.transform.position = spawnPosition;
+                Debug.Log("spawned lvl 4 object");
+            }
+            
         }
 
         // Update is called once per frame

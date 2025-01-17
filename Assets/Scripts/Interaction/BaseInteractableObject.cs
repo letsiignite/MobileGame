@@ -43,7 +43,7 @@ namespace Interactable
             }
             else if(interactType == InteractType.PUZZLE_ITEM)
             {
-                Debug.Log("Pass 2");
+                //Debug.Log("Pass 2");
                 TryGetComponent<PuzzleObject>(out puzzleObject);
                 puzzleObject.OnInteraction();
             }

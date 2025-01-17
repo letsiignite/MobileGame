@@ -12,6 +12,7 @@ public class RunningState : IVillagerState
         }
         MoveToRandomPoint(context);
         context.Animator.SetTrigger("Run");
+        Debug.Log("setting run trigger");
     }
     void MoveToRandomPoint(VillagerContext context)
     {

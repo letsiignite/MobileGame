@@ -71,6 +71,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 631694521cb3b402284805c6affddef8, type: 3}
       insertIndex: -1
       addedObject: {fileID: 395211892132391871}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 631694521cb3b402284805c6affddef8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 866263594934370704}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 631694521cb3b402284805c6affddef8, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5377252291046848553}
   m_SourcePrefab: {fileID: 100100000, guid: 631694521cb3b402284805c6affddef8, type: 3}
 --- !u!1 &3212457585077647411 stripped
 GameObject:
@@ -98,3 +104,36 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 2.1
   m_Center: {x: 0.12789518, y: -0.14973581, z: 0}
+--- !u!114 &866263594934370704
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3212457585077647411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ded159e80b1386348b8bd90cd108ffbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactType: 2
+  playerRef: {fileID: 0}
+  weight: 3
+--- !u!114 &5377252291046848553
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3212457585077647411}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cef8da769bd930245b85c39678ae85a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInitializationObject: 0
+  puzzleObjectsToActivate: []
+  type: 0
+  puzzleInfoProvider: {fileID: 0}
+  activationObject: {fileID: 0}
+  isCompletionObject: 0

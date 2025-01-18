@@ -62,7 +62,10 @@ public class VillagerContext : MonoBehaviour
         //Debug.Log(" Villagers On Pause");
         isPaused = true;
     }
-
+    public void Onresume()
+    {
+        isPaused = false;
+    }
     public void Init(GameManager manager)
     {
         gameManager = manager;

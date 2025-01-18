@@ -5,7 +5,7 @@ namespace GhostFSM
 {
     public class WanderState : GEState
     {
-        private float rangeOfSearch = 10;
+        private float rangeOfSearch = 10f;
         private bool walkPointSet;
         private Vector3 destPoint;
 
@@ -34,7 +34,7 @@ namespace GhostFSM
                 if (walkPointSet)
                 {
                     geAI.agent.SetDestination(destPoint);
-                    if (Vector3.Distance(geAI.agent.transform.position, geAI.agent.destination) <= geAI.agent.stoppingDistance)
+                    if (Vector3.Distance(geAI.agent.transform.position, geAI.agent.destination) <= geAI.agent.stoppingDistance || geAI.agent.pathStatus != NavMeshPathStatus.PathComplete)
                     {
                         walkPointSet = false;
                     }

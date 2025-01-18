@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PausedState : IVillagerState
 {
+
     public void HandleState(VillagerContext context)
     {
         if (context.agent != null)

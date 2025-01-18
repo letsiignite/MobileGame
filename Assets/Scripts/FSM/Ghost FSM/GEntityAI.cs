@@ -1,6 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using Game;
+using Puzzle;
 using GhostFSM;
 
 public class GEntityAI : MonoBehaviour
@@ -8,6 +9,8 @@ public class GEntityAI : MonoBehaviour
     public GameObject playerRef;
     public float chaseTime = 2f;
     public float alertTime = 4f;
+    public float stayDistractTime = 5f;
+    public GameObject distractObject;
 
     [HideInInspector] public GameManager gameManager;
     [HideInInspector] public Vector3 startPosition;
@@ -16,6 +19,7 @@ public class GEntityAI : MonoBehaviour
     [HideInInspector] public bool playerIsNearby;
     private GEState currentState;
     private bool isPaused = false;
+    private bool isDistracted = false;
 
     public WanderState wanderState = new();
     public AlertState alertState = new();
@@ -30,13 +34,16 @@ public class GEntityAI : MonoBehaviour
         los = GetComponent<LineOfSight>();
         currentState = wanderState;
         currentState.EnterState(this);
+        distractObject.GetComponent<PuzzleObject>().AddPuzzleListener(OnDistracted);
     }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(currentState.name);
-        currentState.UpdateState(this);
+        if (!isPaused && !isDistracted)
+        {
+            currentState.UpdateState(this);
+        }
     }
 
     public void SwitchState(GEState nextState)
@@ -70,6 +77,16 @@ public class GEntityAI : MonoBehaviour
     public void OnPause()
     {
         //Debug.Log(" Villagers On Pause");
+
         isPaused = true;
+        agent.isStopped = true;
+        /* stop the speed of animations
+        anim.speed = 0f;*/
+    }
+
+    public void OnDistracted()
+    {
+        isDistracted = true;
+        agent.SetDestination(distractObject.transform.position);
     }
 }

@@ -29,6 +29,11 @@ namespace Game
             return this;
         }
 
+        public GEntityAI GetGhostController()
+        {
+            return ghostAi;
+        }
+
         private void Awake()
         {
             if (_instance == null)

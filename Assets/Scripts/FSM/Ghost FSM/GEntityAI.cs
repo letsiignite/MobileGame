@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections.Generic;
 using UnityEngine.AI;
 using Game;
 using Puzzle;
@@ -10,7 +11,7 @@ public class GEntityAI : MonoBehaviour
     public float chaseTime = 2f;
     public float alertTime = 4f;
     public float stayDistractTime = 5f;
-    public GameObject distractObject;
+    public List<GameObject> distractObjectList;
 
     [HideInInspector] public GameManager gameManager;
     [HideInInspector] public Vector3 startPosition;
@@ -20,7 +21,12 @@ public class GEntityAI : MonoBehaviour
     private GEState currentState;
     private bool isPaused = false;
     private bool isDistracted = false;
+    private GameObject distractObject;
 
+    public void SetDistractedObject(GameObject distract)
+    {
+        distractObject = distract;
+    }
     public WanderState wanderState = new();
     public AlertState alertState = new();
     public ChaseState chaseState = new();
@@ -34,7 +40,11 @@ public class GEntityAI : MonoBehaviour
         los = GetComponent<LineOfSight>();
         currentState = wanderState;
         currentState.EnterState(this);
-        distractObject.GetComponent<PuzzleObject>().AddPuzzleListener(OnDistracted);
+        
+        foreach(var distract in distractObjectList)
+        {
+            distract.GetComponent<PuzzleObject>().AddPuzzleListener(OnDistracted);
+        }
     }
 
     // Update is called once per frame
@@ -43,6 +53,10 @@ public class GEntityAI : MonoBehaviour
         if (!isPaused && !isDistracted)
         {
             currentState.UpdateState(this);
+        }
+        if(isDistracted && los.visibleEnemy.Contains(playerRef))
+        {
+            isDistracted = false;
         }
     }
 

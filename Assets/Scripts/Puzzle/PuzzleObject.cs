@@ -9,7 +9,6 @@ namespace Puzzle
     {
         COLLECT,    // this object mut be collected for another object that will consume it, like key which will be consumed by door.
         CONSUME,    // this object will be assigned to activationObject of the puzzle object that will consume it.
-       
     }
 
     /// <summary>
@@ -89,7 +88,7 @@ namespace Puzzle
                 // check if inventory has the activation object, if yes then trigger unlock process. Else play a error sound.
                 if (type == ObjectType.COLLECT)
                 {
-                    inventory.PickUpItem(this.gameObject);
+                    inventory.PickUpItem(gameObject);
                     //Debug.Log("Invetory Consumption : " + this.gameObject.name + " " + this.name);
                 }
                 else if (type == ObjectType.CONSUME)
@@ -103,6 +102,7 @@ namespace Puzzle
 
                     if (isCompletionObject)
                     {
+                        GameManager._instance.GetGhostController().SetDistractedObject(gameObject);
                         Deactivate();
                         Debug.Log("Problem Solved");
                     }
@@ -111,9 +111,9 @@ namespace Puzzle
         }
         private Vector3 GetRandomOffset()
         {
-            float randomX = Random.Range(-spawnAreaSize.x / 2, spawnAreaSize.x / 2);
+            float randomX = UnityEngine.Random.Range(-spawnAreaSize.x / 2, spawnAreaSize.x / 2);
             float randomY = 0;
-            float randomZ = Random.Range(-spawnAreaSize.z / 2, spawnAreaSize.z / 2);
+            float randomZ = UnityEngine.Random.Range(-spawnAreaSize.z / 2, spawnAreaSize.z / 2);
 
             return new Vector3(randomX, randomY, randomZ);
         }
@@ -123,7 +123,7 @@ namespace Puzzle
         {
             if(houseTransforms.Length > 0)
             {
-                Transform houseTransform = houseTransforms[Random.Range(0, houseTransforms.Length)];
+                Transform houseTransform = houseTransforms[UnityEngine.Random.Range(0, houseTransforms.Length)];
                 Vector3 randomOffset = GetRandomOffset();
                 Vector3 spawnPosition = houseTransform.position + randomOffset;
                 if (spawnPosition.y <= 0)

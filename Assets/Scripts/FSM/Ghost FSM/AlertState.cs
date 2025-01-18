@@ -7,7 +7,7 @@ namespace GhostFSM
     {
         private Vector3 destPoint;
         private Vector3 lastSeenPlayerPos;
-        private float rangeOfSearch = 5f;
+        private float rangeOfSearch = 3f;
         private bool walkPointSet;
         private float timer = 0f;
 

@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI;
 using Game;
-
+using GhostFSM;
 
 public class GEntityAI : MonoBehaviour
 {
@@ -9,12 +9,12 @@ public class GEntityAI : MonoBehaviour
     public float chaseTime = 2f;
     public float alertTime = 4f;
 
+    [HideInInspector] public GameManager gameManager;
     [HideInInspector] public Vector3 startPosition;
     [HideInInspector] public NavMeshAgent agent;
     [HideInInspector] public LineOfSight los;
     [HideInInspector] public bool playerIsNearby;
     private GEState currentState;
-    private GameManager gameManager;
     private bool isPaused = false;
 
     public WanderState wanderState = new();

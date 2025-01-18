@@ -43,6 +43,7 @@ namespace Game
             Invoke("InitAllObjects", 0.4f);
         }
 
+
         private void InitAllObjects()
         {
             ghostAi.Init(this);
@@ -63,6 +64,10 @@ namespace Game
             uiManager.DeathDisplay(cause);
         }
 
+        public void ShowHintsAndWarnings(String msg)
+        {
+            uiManager.ShowHintsAndWarnings(msg);
+        }
         public void Interact()
         { 
             

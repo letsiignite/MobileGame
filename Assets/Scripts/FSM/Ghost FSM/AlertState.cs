@@ -1,102 +1,105 @@
 using UnityEngine;
 using UnityEngine.AI;
 
-public class AlertState : GEState
+namespace GhostFSM
 {
-    private Vector3 destPoint;
-    private Vector3 lastSeenPlayerPos;
-    private float rangeOfSearch = 5f;
-    private bool walkPointSet;
-    private float timer = 0f;
-
-    public bool reAlert;
-
-    public override void EnterState(GEntityAI geAI)
+    public class AlertState : GEState
     {
-        name = "Alert";
-        lastSeenPlayerPos = geAI.playerRef.transform.position;
-    }
+        private Vector3 destPoint;
+        private Vector3 lastSeenPlayerPos;
+        private float rangeOfSearch = 5f;
+        private bool walkPointSet;
+        private float timer = 0f;
 
-    public override void UpdateState(GEntityAI geAI)
-    {
-        timer += Time.deltaTime;
+        public bool reAlert;
 
-        //player in range and timer within search time.
-
-        if (geAI.playerIsNearby && timer <= geAI.alertTime)
+        public override void EnterState(GEntityAI geAI)
         {
-            if (walkPointSet) 
+            name = "Alert";
+            lastSeenPlayerPos = geAI.playerRef.transform.position;
+        }
+
+        public override void UpdateState(GEntityAI geAI)
+        {
+            timer += Time.deltaTime;
+
+            //player in range and timer within search time.
+
+            if (geAI.playerIsNearby && timer <= geAI.alertTime)
             {
-                geAI.agent.SetDestination(destPoint);
-                if (Vector3.Distance(geAI.agent.transform.position, geAI.agent.destination) <= geAI.agent.stoppingDistance)
+                if (walkPointSet)
                 {
-                    walkPointSet = false;
+                    geAI.agent.SetDestination(destPoint);
+                    if (Vector3.Distance(geAI.agent.transform.position, geAI.agent.destination) <= geAI.agent.stoppingDistance)
+                    {
+                        walkPointSet = false;
+                    }
+                }
+                else
+                {
+                    GetWayPoint(geAI);
                 }
             }
-            else
+
+            //player in sight and timer is within search time
+
+            else if (geAI.los.visibleEnemy.Contains(geAI.playerRef) && timer <= geAI.alertTime)
             {
-                GetWayPoint(geAI);
-            }
-        }
-
-        //player in sight and timer is within search time
-
-        else if (geAI.los.visibleEnemy.Contains(geAI.playerRef) && timer <= geAI.alertTime)
-        {
-            timer = 0f;
-            geAI.SwitchState(geAI.chaseState);
-        }
-
-        //if player escaped the entity and not in range within 
-
-        else if (!(geAI.los.visibleEnemy.Contains(geAI.playerRef) || geAI.playerIsNearby) && timer > geAI.alertTime && Vector3.Distance(geAI.agent.transform.position, geAI.agent.destination) <= geAI.agent.stoppingDistance)
-        {
-            Debug.Log(timer + " : Wander");
-            timer = 0f;
-            geAI.SwitchState(geAI.wanderState);
-        }
-        else
-        {
-            if (walkPointSet)
-            {
-                geAI.agent.SetDestination(destPoint);
-                if (Vector3.Distance(geAI.agent.transform.position, geAI.agent.destination) <= geAI.agent.stoppingDistance)
-                {
-                    walkPointSet = false;
-                }
-            }
-            else
-            {
-                GetWayPoint(geAI);
+                timer = 0f;
+                geAI.SwitchState(geAI.chaseState);
             }
 
-            if(timer > geAI.alertTime)
+            //if player escaped the entity and not in range within 
+
+            else if (!(geAI.los.visibleEnemy.Contains(geAI.playerRef) || geAI.playerIsNearby) && timer > geAI.alertTime && Vector3.Distance(geAI.agent.transform.position, geAI.agent.destination) <= geAI.agent.stoppingDistance)
             {
+                Debug.Log(timer + " : Wander");
+                timer = 0f;
                 geAI.SwitchState(geAI.wanderState);
             }
-        }
-    }
+            else
+            {
+                if (walkPointSet)
+                {
+                    geAI.agent.SetDestination(destPoint);
+                    if (Vector3.Distance(geAI.agent.transform.position, geAI.agent.destination) <= geAI.agent.stoppingDistance)
+                    {
+                        walkPointSet = false;
+                    }
+                }
+                else
+                {
+                    GetWayPoint(geAI);
+                }
 
-    private void GetWayPoint(GEntityAI geAI)
-    {
-        if (reAlert)
-        {
-            lastSeenPlayerPos = geAI.playerRef.transform.position;
-            reAlert = false;
+                if (timer > geAI.alertTime)
+                {
+                    geAI.SwitchState(geAI.wanderState);
+                }
+            }
         }
 
-        float z = Random.Range(-rangeOfSearch, rangeOfSearch);
-        float x = Random.Range(-rangeOfSearch, rangeOfSearch);
-        destPoint = new Vector3(lastSeenPlayerPos.x + x, 0, lastSeenPlayerPos.z + z);
+        private void GetWayPoint(GEntityAI geAI)
+        {
+            if (reAlert)
+            {
+                lastSeenPlayerPos = geAI.playerRef.transform.position;
+                reAlert = false;
+            }
 
-        NavMeshHit hit;
-        if (NavMesh.SamplePosition(destPoint, out hit, 0.1f, NavMesh.AllAreas))
-        {
-            walkPointSet = true;
-        }
-        else
-        {
-            walkPointSet = false;
+            float z = Random.Range(-rangeOfSearch, rangeOfSearch);
+            float x = Random.Range(-rangeOfSearch, rangeOfSearch);
+            destPoint = new Vector3(lastSeenPlayerPos.x + x, 0, lastSeenPlayerPos.z + z);
+
+            NavMeshHit hit;
+            if (NavMesh.SamplePosition(destPoint, out hit, 0.1f, NavMesh.AllAreas))
+            {
+                walkPointSet = true;
+            }
+            else
+            {
+                walkPointSet = false;
+            }
         }
     }
 }

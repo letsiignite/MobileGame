@@ -1527,6 +1527,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 282937118}
     - target: {fileID: 3360495215040015941, guid: cc9bc2c0c842e5244aa9ac8189dba9d7, type: 3}
+      propertyPath: stayDistractTime
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 3360495215040015941, guid: cc9bc2c0c842e5244aa9ac8189dba9d7, type: 3}
       propertyPath: distractObjectList.Array.size
       value: 2
       objectReference: {fileID: 0}
@@ -1611,6 +1615,14 @@ PrefabInstance:
       propertyPath: GhostEntity
       value: 
       objectReference: {fileID: 509176476}
+    - target: {fileID: 2271795968773708226, guid: e2a3d8d7a7cac4e419b52c6c6bf32d05, type: 3}
+      propertyPath: houseTransforms.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2271795968773708226, guid: e2a3d8d7a7cac4e419b52c6c6bf32d05, type: 3}
+      propertyPath: 'houseTransforms.Array.data[0]'
+      value: 
+      objectReference: {fileID: 703144074}
     - target: {fileID: 3590664130450236389, guid: e2a3d8d7a7cac4e419b52c6c6bf32d05, type: 3}
       propertyPath: m_Name
       value: Level 4
@@ -1687,6 +1699,11 @@ MonoBehaviour:
   interactType: 1
   playerRef: {fileID: 1743397183}
   weight: 3
+--- !u!4 &703144074 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3781641411990664678, guid: af4e5e32512199a4885215f89c025538, type: 3}
+  m_PrefabInstance: {fileID: 228767236}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &888044226
 PrefabInstance:
   m_ObjectHideFlags: 0

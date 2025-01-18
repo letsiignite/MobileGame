@@ -4,13 +4,14 @@ using UnityEngine.AI;
 using Game;
 using Puzzle;
 using GhostFSM;
+using System.Threading;
 
 public class GEntityAI : MonoBehaviour
 {
     public GameObject playerRef;
     public float chaseTime = 2f;
     public float alertTime = 4f;
-    public float stayDistractTime = 5f;
+    public float stayDistractTime = 500f;
     public List<GameObject> distractObjectList;
 
     [HideInInspector] public GameManager gameManager;
@@ -21,6 +22,7 @@ public class GEntityAI : MonoBehaviour
     private GEState currentState;
     private bool isPaused = false;
     private bool isDistracted = false;
+    private float timer;
     private GameObject distractObject;
 
     public void SetDistractedObject(GameObject distract)
@@ -52,11 +54,17 @@ public class GEntityAI : MonoBehaviour
     {
         if (!isPaused && !isDistracted)
         {
+            Debug.Log("Pass : " + currentState.name);
             currentState.UpdateState(this);
         }
-        if(isDistracted && los.visibleEnemy.Contains(playerRef))
+        else
+        {
+            timer += Time.deltaTime;
+        }
+        if((isDistracted && los.visibleEnemy.Contains(playerRef)) || (timer >= stayDistractTime && Vector3.Distance(gameObject.transform.position, agent.destination) <= agent.stoppingDistance))
         {
             isDistracted = false;
+            timer = 0f;
         }
     }
 

@@ -5,7 +5,7 @@ namespace GhostFSM
 {
     public class WanderState : GEState
     {
-        private float rangeOfSearch = 5;
+        private float rangeOfSearch = 10f;
         private bool walkPointSet;
         private Vector3 destPoint;
 

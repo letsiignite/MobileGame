@@ -1,6 +1,7 @@
 using Game;
 using System.Collections.Generic;
 using UnityEngine;
+using System;
 
 namespace Puzzle
 {
@@ -21,7 +22,7 @@ namespace Puzzle
         [SerializeField]
         private List<PuzzleObject> puzzleObjectsToActivate;
         private bool isActive = false;
-        [SerializeField]
+        [SerializeField] 
         private ObjectType type;
         [SerializeField]
         private GameObject puzzleInfoProvider; // This is the object that provides the info, like text explaining what to do or any audio that explains what must be done.
@@ -34,6 +35,7 @@ namespace Puzzle
         [SerializeField]
         private bool isCompletionObject;
 
+        private List<Action> puzzleListeners = new();
         [SerializeField] private Transform[] houseTransforms; // Array of house positions
         [SerializeField] private Vector3 spawnAreaSize = new Vector3(1, 0, 1);
 
@@ -45,6 +47,11 @@ namespace Puzzle
             // draw an outline to highlight this object so player knows that this is part of current puzzle
         }
 
+        public void AddPuzzleListener(Action callback)
+        {
+            puzzleListeners.Add(callback);
+        }
+
         public void Deactivate() 
         { 
             isActive = false;
@@ -53,7 +60,11 @@ namespace Puzzle
                 // trigger animation
             }
             else
-            { 
+            {
+                foreach (var action in puzzleListeners) 
+                {
+                    action.Invoke();
+                }
                 gameObject.SetActive(false);    
             }
             activationObject.SetActive(false);

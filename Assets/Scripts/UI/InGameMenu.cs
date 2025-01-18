@@ -36,10 +36,11 @@ namespace UI
             
         }
 
-        private void OnPauseClicked()
+        public void OnPauseClicked()
         {
             if (uiObjectsToHideOnPause.Count > 0)
-            { 
+            {
+                Debug.Log("Passed");
                 foreach(GameObject go in uiObjectsToHideOnPause) 
                 { 
                     go.SetActive(false); 

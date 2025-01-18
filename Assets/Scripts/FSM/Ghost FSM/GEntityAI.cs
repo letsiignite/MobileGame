@@ -102,6 +102,7 @@ public class GEntityAI : MonoBehaviour
 
         isPaused = true;
         agent.isStopped = true;
+        Debug.Log("Passed-GEAI");
         /* stop the speed of animations
         anim.speed = 0f;*/
     }

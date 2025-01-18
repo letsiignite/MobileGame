@@ -1,28 +1,54 @@
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Rendering;
+
+[System.Serializable]
+public class SafeRoom
+{
+    public string roomTag;
+    public GameObject[] enableObjects;
+    public GameObject[] disableObjects;
+    public GateConfig[] gates; // Array of gates with individual configurations
+}
+
+[System.Serializable]
+public class GateConfig
+{
+    public Gates gate; // Reference to the gate script
+    public bool open;  // Determines whether to open or close this specific gate
+}
+
+[System.Serializable]
+public class Gate
+{
+    public Gates gateScript; // Reference to the GateScript
+    public bool gateOpen = false; // Determines if this specific gate is open
+}
 
 public class LevelProgression : MonoBehaviour
 {
-    [System.Serializable]
-    public class SafeRoom
-    {
-        public string roomTag;
-        public GameObject[] enableObjects;
-        public GameObject[] disableObjects;
-        public GateConfig[] gates; // Array of gates with individual configurations
-    }
-
-    [System.Serializable]
-    public class GateConfig
-    {
-        public Gates gate; // Reference to the gate script
-        public bool open;  // Determines whether to open or close this specific gate
-    }
-
     [Header("Safe Rooms Configuration")]
-    public List<SafeRoom> safeRooms;
+    public List<SafeRoom> safeRooms; // List of SafeRooms
 
+    [Header("Gate Settings")]
+    public Gate[] level1Gates; // Gates for Level 1
+    public Gate[] level2Gates; // Gates for Level 2
+    public Gate[] level3Gates; // Gates for Level 3
+    public Gate[] level4Gates; // Gates for Level 4
+    public Gate[] level5Gates; // Gates for Level 5
+
+    [Header("Level Win Status")]
+    public bool level1Win = false; // Tracks if Level 1 is won
+    public bool level2Win = false; // Tracks if Level 2 is won
+    public bool level3Win = false; // Tracks if Level 3 is won
+    public bool level4Win = false; // Tracks if Level 4 is won
+    public bool level5Win = false; // Tracks if Level 5 is won
+
+    [Header("Ghost Settings")]
+    public GameObject ghost; // The ghost (enemy) GameObject
+    public Transform level2Destination; // Destination for Level 2
+    public Transform level3Destination; // Destination for Level 3
+    public Transform level4Destination; // Destination for Level 4
+    public Transform level5Destination; // Destination for Level 5
 
     private void Start()
     {
@@ -67,7 +93,6 @@ public class LevelProgression : MonoBehaviour
                 }
 
                 // Save player data
-                
                 SaveLoadData.saveDatainstance.SavePlayer();
                 Debug.Log("Player Data Saved");
 
@@ -76,6 +101,70 @@ public class LevelProgression : MonoBehaviour
             }
         }
     }
+
+    private void Update()
+    {
+        // Check for level win status and handle gates and ghost logic
+        if (level1Win)
+        {
+            HandleGates(level1Gates);
+            TransportGhostToDestination(level2Destination);
+        }
+        if (level2Win)
+        {
+            HandleGates(level2Gates);
+            TransportGhostToDestination(level3Destination);
+        }
+        if (level3Win)
+        {
+            HandleGates(level3Gates);
+            TransportGhostToDestination(level4Destination);
+        }
+        if (level4Win)
+        {
+            HandleGates(level4Gates);
+            TransportGhostToDestination(level5Destination);
+        }
+        if (level5Win)
+        {
+            HandleGates(level5Gates);
+        }
+    }
+
+    private void HandleGates(Gate[] gates)
+    {
+        // Loop through all gates and open/close based on their state
+        foreach (Gate gate in gates)
+        {
+            if (gate.gateScript != null)
+            {
+                if (gate.gateOpen)
+                {
+                    gate.gateScript.OpenDoors(); // Open the gate
+                }
+                else
+                {
+                    gate.gateScript.CloseDoors(); // Close the gate
+                }
+            }
+            else
+            {
+                Debug.LogWarning("GateScript is not assigned for one of the gates.");
+            }
+        }
+    }
+
+    private void TransportGhostToDestination(Transform destination)
+    {
+        if (ghost != null && destination != null)
+        {
+            ghost.transform.position = destination.position;
+            ghost.transform.rotation = destination.rotation;
+            Debug.Log("Ghost transported to the destination point.");
+        }
+        else
+        {
+            Debug.LogWarning("Ghost or destination is not assigned.");
+        }
+    }
 }
-
-

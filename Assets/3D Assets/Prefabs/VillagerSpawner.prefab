@@ -48,5 +48,5 @@ MonoBehaviour:
   - {fileID: 1616406060653692748, guid: f71041fd118fbb34aa9d2dd6a1d96fce, type: 3}
   - {fileID: 913845681951795218, guid: 2435736d6adca23458edd7c80c901e3e, type: 3}
   - {fileID: 6993270559495516286, guid: 314b13a2c4f89c74299eabc2a4c725c7, type: 3}
-  numberOfVillagers: 15
+  numberOfVillagers: 40
   spawnPointsParent: {fileID: 0}

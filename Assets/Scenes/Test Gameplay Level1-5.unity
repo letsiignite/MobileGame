@@ -1024,6 +1024,21 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: af4e5e32512199a4885215f89c025538, type: 3}
+--- !u!4 &228767237 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1397949808648606399, guid: af4e5e32512199a4885215f89c025538, type: 3}
+  m_PrefabInstance: {fileID: 228767236}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &228767238 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8272015833005321431, guid: af4e5e32512199a4885215f89c025538, type: 3}
+  m_PrefabInstance: {fileID: 228767236}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &228767239 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 1200546122370615246, guid: af4e5e32512199a4885215f89c025538, type: 3}
+  m_PrefabInstance: {fileID: 228767236}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &232831500
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1034,7 +1049,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 806879500992622546, guid: d4a39e5a78a24ae4081f6411a7d47d15, type: 3}
       propertyPath: numberOfVillagers
-      value: 20
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 806879500992622546, guid: d4a39e5a78a24ae4081f6411a7d47d15, type: 3}
       propertyPath: spawnPointsParent
@@ -1725,7 +1740,7 @@ PrefabInstance:
       objectReference: {fileID: 282937118}
     - target: {fileID: 3645253003104830542, guid: cc9bc2c0c842e5244aa9ac8189dba9d7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 21.4
+      value: 54.8
       objectReference: {fileID: 0}
     - target: {fileID: 3645253003104830542, guid: cc9bc2c0c842e5244aa9ac8189dba9d7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1792,6 +1807,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1159323078684446742, guid: e2a3d8d7a7cac4e419b52c6c6bf32d05, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7.67
+      objectReference: {fileID: 0}
+    - target: {fileID: 1159323078684446742, guid: e2a3d8d7a7cac4e419b52c6c6bf32d05, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0.26
+      objectReference: {fileID: 0}
     - target: {fileID: 2271795968773708226, guid: e2a3d8d7a7cac4e419b52c6c6bf32d05, type: 3}
       propertyPath: GhostEntity
       value: 
@@ -1804,6 +1827,10 @@ PrefabInstance:
       propertyPath: 'houseTransforms.Array.data[0]'
       value: 
       objectReference: {fileID: 703144074}
+    - target: {fileID: 2651645701089870126, guid: e2a3d8d7a7cac4e419b52c6c6bf32d05, type: 3}
+      propertyPath: playerRef
+      value: 
+      objectReference: {fileID: 1743397183}
     - target: {fileID: 3590664130450236389, guid: e2a3d8d7a7cac4e419b52c6c6bf32d05, type: 3}
       propertyPath: m_Name
       value: Level 4
@@ -1816,6 +1843,22 @@ PrefabInstance:
       propertyPath: playerRef
       value: 
       objectReference: {fileID: 1743397183}
+    - target: {fileID: 7000660037277437923, guid: e2a3d8d7a7cac4e419b52c6c6bf32d05, type: 3}
+      propertyPath: 'houseTransforms.Array.data[0]'
+      value: 
+      objectReference: {fileID: 228767239}
+    - target: {fileID: 7000660037277437923, guid: e2a3d8d7a7cac4e419b52c6c6bf32d05, type: 3}
+      propertyPath: 'houseTransforms.Array.data[1]'
+      value: 
+      objectReference: {fileID: 228767238}
+    - target: {fileID: 7000660037277437923, guid: e2a3d8d7a7cac4e419b52c6c6bf32d05, type: 3}
+      propertyPath: 'houseTransforms.Array.data[2]'
+      value: 
+      objectReference: {fileID: 228767237}
+    - target: {fileID: 7000660037277437923, guid: e2a3d8d7a7cac4e419b52c6c6bf32d05, type: 3}
+      propertyPath: 'houseTransforms.Array.data[3]'
+      value: 
+      objectReference: {fileID: 703144074}
     - target: {fileID: 8994485518785467135, guid: e2a3d8d7a7cac4e419b52c6c6bf32d05, type: 3}
       propertyPath: GhostEntity
       value: 
@@ -2730,7 +2773,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2640160979382197909, guid: d23c0918e953a9043ab95ddd3e277fd7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 105
+      value: 13.1
       objectReference: {fileID: 0}
     - target: {fileID: 2640160979382197909, guid: d23c0918e953a9043ab95ddd3e277fd7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2738,7 +2781,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2640160979382197909, guid: d23c0918e953a9043ab95ddd3e277fd7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 1.3
+      value: 40.7
       objectReference: {fileID: 0}
     - target: {fileID: 2640160979382197909, guid: d23c0918e953a9043ab95ddd3e277fd7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3180,7 +3223,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1605797462161108617, guid: 35bedacb6f751754b838a4fcfa3e2b3f, type: 3}
       propertyPath: m_Name
-      value: SpawnPointsParent
+      value: SpawnPointsParentForVillagers
       objectReference: {fileID: 0}
     - target: {fileID: 4443069977527102268, guid: 35bedacb6f751754b838a4fcfa3e2b3f, type: 3}
       propertyPath: m_LocalPosition.x

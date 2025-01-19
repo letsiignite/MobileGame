@@ -109,14 +109,6 @@ namespace Puzzle
                 }
             }
         }
-        private Vector3 GetRandomOffset()
-        {
-            float randomX = UnityEngine.Random.Range(-spawnAreaSize.x / 2, spawnAreaSize.x / 2);
-            float randomY = 0;
-            float randomZ = UnityEngine.Random.Range(-spawnAreaSize.z / 2, spawnAreaSize.z / 2);
-
-            return new Vector3(randomX, randomY, randomZ);
-        }
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
@@ -124,14 +116,13 @@ namespace Puzzle
             if(houseTransforms.Length > 0)
             {
                 Transform houseTransform = houseTransforms[UnityEngine.Random.Range(0, houseTransforms.Length)];
-                Vector3 randomOffset = GetRandomOffset();
-                Vector3 spawnPosition = houseTransform.position + randomOffset;
+                Vector3 spawnPosition = houseTransform.position;
                 if (spawnPosition.y <= 0)
                 {
                     spawnPosition.y = 2;
                 }
                 this.transform.position = spawnPosition;
-                Debug.Log("spawned lvl 4 object");
+                //Debug.Log("spawned lvl 4 object");
             }
             
         }

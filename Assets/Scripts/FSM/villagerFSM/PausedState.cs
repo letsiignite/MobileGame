@@ -12,7 +12,7 @@ public class PausedState : IVillagerState
             context.agent.isStopped = true;
         }
         context.Animator.SetTrigger("Idle");
-        Debug.Log("Setting Idle trigger in pause");
+        //Debug.Log("Setting Idle trigger in pause");
 
     }
     public void UpdateState(VillagerContext context)

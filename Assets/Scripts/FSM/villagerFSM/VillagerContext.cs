@@ -40,6 +40,7 @@ public class VillagerContext : MonoBehaviour
     {
         //Debug.Log(currentState.name);
         //Debug.Log(_currentState);
+        Debug.Log(isPaused);
         _currentState.UpdateState(this);
     }
     public void SetState(IVillagerState newState)
@@ -59,10 +60,13 @@ public class VillagerContext : MonoBehaviour
 
     public void OnPause()
     {
-        //Debug.Log(" Villagers On Pause");
+        Debug.Log(" Villagers On Pause");
         isPaused = true;
     }
-
+    public void Onresume()
+    {
+        isPaused = false;
+    }
     public void Init(GameManager manager)
     {
         gameManager = manager;

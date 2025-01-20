@@ -92,7 +92,7 @@ public class Inventory : MonoBehaviour
                 itemList.Add(item.name, newItem);
             }
             currentCapacity += item.GetComponent<BaseInteractableObject>().GetWeight();
-            Destroy(item);
+            item.SetActive(false);
         }
         else
         {
@@ -112,8 +112,8 @@ public class Inventory : MonoBehaviour
             if (itemList[itemName.name].Count <= 0)
             {
                 itemList.Remove(itemName.name);
-                return true;
             }
+            return true;
         }
         return false;
     }

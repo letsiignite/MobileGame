@@ -49,8 +49,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerRef: {fileID: 0}
+  stayDistractTime: 500
+  distractObjectList:
+  - {fileID: 0}
+  - {fileID: 0}
   chaseTime: 2
   alertTime: 4
+  waypoints: []
   gameManager: {fileID: 0}
   startPosition: {x: 0, y: 0, z: 0}
   agent: {fileID: 0}

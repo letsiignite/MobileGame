@@ -4,35 +4,40 @@ using UnityEngine.AI;
 using Game;
 using Puzzle;
 using GhostFSM;
-using System.Threading;
 
 public class GEntityAI : MonoBehaviour
 {
-    public GameObject playerRef;
-    public float chaseTime = 2f;
-    public float alertTime = 4f;
-    public float stayDistractTime = 500f;
-    public List<GameObject> distractObjectList;
-
-    [HideInInspector] public GameManager gameManager;
-    [HideInInspector] public Vector3 startPosition;
-    [HideInInspector] public NavMeshAgent agent;
-    [HideInInspector] public LineOfSight los;
-    [HideInInspector] public bool playerIsNearby;
     private GEState currentState;
     private bool isPaused = false;
     private bool isDistracted = false;
     private float timer;
     private GameObject distractObject;
 
-    public void SetDistractedObject(GameObject distract)
-    {
-        distractObject = distract;
-    }
+    [Header("Dependency")]
+    public GameObject playerRef;
+    public float stayDistractTime = 500f;
+    public List<GameObject> distractObjectList;
+
+    [Header("State Data")]
+    public float chaseTime = 2f;
+    public float alertTime = 4f;
+    public List<Transform> waypoints;
+
+    [HideInInspector] public GameManager gameManager;
+    [HideInInspector] public Vector3 startPosition;
+    [HideInInspector] public NavMeshAgent agent;
+    [HideInInspector] public LineOfSight los;
+    [HideInInspector] public bool playerIsNearby;
+
     public WanderState wanderState = new();
     public AlertState alertState = new();
     public ChaseState chaseState = new();
     public InfectState infectState = new();
+    
+    public void SetDistractedObject(GameObject distract)
+    {
+        distractObject = distract;
+    }
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -54,7 +59,7 @@ public class GEntityAI : MonoBehaviour
     {
         if (!isPaused && !isDistracted)
         {
-            Debug.Log("Pass : " + currentState.name);
+            //Debug.Log("Pass : " + currentState.name);
             currentState.UpdateState(this);
         }
         else

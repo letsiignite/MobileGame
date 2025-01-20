@@ -50,7 +50,11 @@ namespace GhostFSM
         {
             float z = Random.Range(-rangeOfSearch, rangeOfSearch);
             float x = Random.Range(-rangeOfSearch, rangeOfSearch);
-            destPoint = new Vector3(geAI.transform.position.x + x, 0, geAI.transform.position.z + z);
+            //destPoint = new Vector3(geAI.transform.position.x + x, 0, geAI.transform.position.z + z);
+            int choice = Random.Range(0, geAI.waypoints.Count);
+            Debug.Log(choice);
+
+            destPoint = geAI.waypoints[choice].position;
 
             NavMeshHit hit;
             if (NavMesh.SamplePosition(destPoint, out hit, 0.1f, NavMesh.AllAreas))

@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -40,7 +39,6 @@ namespace UI
         {
             if (uiObjectsToHideOnPause.Count > 0)
             {
-                Debug.Log("Passed");
                 foreach(GameObject go in uiObjectsToHideOnPause) 
                 { 
                     go.SetActive(false); 
@@ -59,7 +57,6 @@ namespace UI
 
         public void AddPauseListners(Action callback)
         {
-            Debug.Log("Adding Pause Listener");
             pauseListners.Add(callback);    
         }
 

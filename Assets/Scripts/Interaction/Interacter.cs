@@ -24,25 +24,19 @@ public class Interacter : MonoBehaviour
                 if (EventSystem.current.IsPointerOverGameObject(id))
                 {
                     // finger over UI
+                    break;
                 }
-                else
+                Vector3 touchPosWorld = Camera.main.ScreenToWorldPoint(touch.position);
+
+                debugRay.origin = touchPosWorld;
+                debugRay.direction = Camera.main.transform.forward;
+
+                RaycastHit hitInformation;
+                if (Physics.Raycast(touchPosWorld, Camera.main.transform.forward, out hitInformation)) 
                 {
-                    //Debug.Log("Pass 1-1");
-                    Vector3 touchPosWorld = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-
-                    //Debugging Tech
-                    debugRay.origin = touchPosWorld;
-                    debugRay.direction = Camera.main.transform.forward;
-
-                    RaycastHit hitInformation;
-                    if (Physics.Raycast(touchPosWorld, Camera.main.transform.forward, out hitInformation)) 
+                    if (hitInformation.collider.gameObject.GetComponent<IBaseInteractableObject>() != null)
                     {
-                        
-                        if (hitInformation.collider.gameObject.GetComponent<IBaseInteractableObject>() != null)
-                        {
-                            //Debug.Log("Pass 1");
-                            hitInformation.collider.gameObject.GetComponent<IBaseInteractableObject>().HandlePlayerInteraction();
-                        }
+                        hitInformation.collider.gameObject.GetComponent<IBaseInteractableObject>().HandlePlayerInteraction();
                     }
                 }
             }

@@ -72,6 +72,7 @@ public class GEntityAI : MonoBehaviour
     {
         currentState = nextState;
         currentState.EnterState(this);
+
     }
 
     private void OnTriggerEnter(Collider other)

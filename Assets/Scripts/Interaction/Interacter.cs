@@ -1,11 +1,17 @@
 using Interactable;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class Interacter : MonoBehaviour
 {
+    [SerializeField] private LayerMask item;
     private bool closeToInteractableObject = false;
-    private Ray debugRay;
+    private Ray interactRay;
+
+    public GraphicRaycaster raycaster;
+    public EventSystem eventSystem;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -21,26 +27,32 @@ public class Interacter : MonoBehaviour
             foreach (Touch touch in Input.touches)
             {
                 int id = touch.fingerId;
-                if (EventSystem.current.IsPointerOverGameObject(id))
+                if (touch.phase == TouchPhase.Began && !EventSystem.current.IsPointerOverGameObject(id))
                 {
-                    // finger over UI
-                    break;
-                }
-                Vector3 touchPosWorld = Camera.main.ScreenToWorldPoint(touch.position);
+                    interactRay = Camera.main.ScreenPointToRay(touch.position);
 
-                debugRay.origin = touchPosWorld;
-                debugRay.direction = Camera.main.transform.forward;
-
-                RaycastHit hitInformation;
-                if (Physics.Raycast(touchPosWorld, Camera.main.transform.forward, out hitInformation)) 
-                {
-                    if (hitInformation.collider.gameObject.GetComponent<IBaseInteractableObject>() != null)
+                    RaycastHit hitInformation;
+                    if (Physics.Raycast(interactRay, out hitInformation, 5f, item.value))
                     {
-                        hitInformation.collider.gameObject.GetComponent<IBaseInteractableObject>().HandlePlayerInteraction();
+                        if (hitInformation.collider.gameObject.GetComponent<IBaseInteractableObject>() != null)
+                        {
+                            hitInformation.collider.gameObject.GetComponent<IBaseInteractableObject>().HandlePlayerInteraction();
+                        }
                     }
                 }
             }
         }
+    }
+
+    private bool IsPointerOverUI(Vector2 position)
+    {
+        PointerEventData eventData = new PointerEventData(eventSystem);
+        eventData.position = position;
+
+        List<RaycastResult> results = new List<RaycastResult>();
+        raycaster.Raycast(eventData, results);
+
+        return results.Count > 0;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -53,6 +65,9 @@ public class Interacter : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-        Gizmos.DrawRay(debugRay);
+        Gizmos.DrawRay(interactRay.origin, interactRay.direction.normalized * 5f);
+
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(interactRay);
     }
 }

@@ -7,14 +7,6 @@ public class SafeRoom
     public string roomTag;
     public GameObject[] enableObjects;
     public GameObject[] disableObjects;
-    public GateConfig[] gates; // Array of gates with individual configurations
-}
-
-[System.Serializable]
-public class GateConfig
-{
-    public Gates gate; // Reference to the gate script
-    public bool open;  // Determines whether to open or close this specific gate
 }
 
 [System.Serializable]
@@ -35,6 +27,9 @@ public class LevelProgression : MonoBehaviour
     public Gate[] level3Gates; // Gates for Level 3
     public Gate[] level4Gates; // Gates for Level 4
     public Gate[] level5Gates; // Gates for Level 5
+    public Gate[] FinalGates; // Gates for Level 5
+    public Gates End1Gates;
+    public Gates End2Gates;
 
     [Header("Level Win Status")]
     public bool level1Win = false; // Tracks if Level 1 is won
@@ -42,6 +37,7 @@ public class LevelProgression : MonoBehaviour
     public bool level3Win = false; // Tracks if Level 3 is won
     public bool level4Win = false; // Tracks if Level 4 is won
     public bool level5Win = false; // Tracks if Level 5 is won
+    public bool allLevelWin = false; 
 
     [Header("Ghost Settings")]
     public GameObject ghost; // The ghost (enemy) GameObject
@@ -57,6 +53,24 @@ public class LevelProgression : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        if (other.CompareTag("SafeRoom1"))
+        {
+            Level1Completed();
+            Debug.Log("Triggered");
+        }
+
+        if (other.CompareTag("SafeRoom4"))
+        {
+            End1Gates.CloseDoors();
+            Debug.Log("Triggered");
+        }
+
+        if (other.CompareTag("SafeRoom6"))
+        {
+            End2Gates.CloseDoors();
+            Debug.Log("Triggered");
+        }
+
         // Iterate through the list of SafeRooms and check for matching tags
         foreach (SafeRoom room in safeRooms)
         {
@@ -76,22 +90,6 @@ public class LevelProgression : MonoBehaviour
                         obj.SetActive(false);
                 }
 
-                // Handle individual gate operations based on their configuration
-                foreach (GateConfig gateConfig in room.gates)
-                {
-                    if (gateConfig.gate != null)
-                    {
-                        if (gateConfig.open)
-                        {
-                            gateConfig.gate.OpenDoors(); // Call the Open method of the Gates script
-                        }
-                        else
-                        {
-                            gateConfig.gate.CloseDoors(); // Call the Close method of the Gates script
-                        }
-                    }
-                }
-
                 // Save player data
                 SaveLoadData.saveDatainstance.SavePlayer();
                 Debug.Log("Player Data Saved");
@@ -100,35 +98,80 @@ public class LevelProgression : MonoBehaviour
                 break;
             }
         }
+
+        
     }
 
     private void Update()
     {
-        // Check for level win status and handle gates and ghost logic
-        if (level1Win)
-        {
-            HandleGates(level1Gates);
-            TransportGhostToDestination(level2Destination);
-        }
-        if (level2Win)
-        {
-            HandleGates(level2Gates);
-            TransportGhostToDestination(level3Destination);
-        }
-        if (level3Win)
-        {
-            HandleGates(level3Gates);
-            TransportGhostToDestination(level4Destination);
-        }
-        if (level4Win)
-        {
-            HandleGates(level4Gates);
-            TransportGhostToDestination(level5Destination);
-        }
-        if (level5Win)
-        {
-            HandleGates(level5Gates);
-        }
+        //// Check for level win status and handle gates and ghost logic
+        //if (level1Win)
+        //{
+        //    HandleGates(level1Gates);
+        //    TransportGhostToDestination(level2Destination);
+        //}
+        //if (level2Win)
+        //{
+        //    HandleGates(level2Gates);
+        //    TransportGhostToDestination(level3Destination);
+        //}
+        //if (level3Win)
+        //{
+        //    HandleGates(level3Gates);
+        //    TransportGhostToDestination(level4Destination);
+        //}
+        //if (level4Win)
+        //{
+        //    HandleGates(level4Gates);
+        //    TransportGhostToDestination(level5Destination);
+        //}
+        //if (level5Win)
+        //{
+        //    HandleGates(level5Gates);
+        //}
+
+        //if (allLevelWin)
+        //{
+        //    HandleGates(FinalGates);
+        //}
+    }
+
+    public void Level1Completed() 
+    {
+        HandleGates(level1Gates);
+        TransportGhostToDestination(level2Destination);
+        level1Win = true;
+    }
+
+    public void Level2Completed() 
+    {
+        HandleGates(level2Gates);
+        TransportGhostToDestination(level3Destination);
+        level2Win = true;
+    }
+
+    public void Level3Completed() 
+    {
+        HandleGates(level3Gates);
+        TransportGhostToDestination(level4Destination);
+        level3Win = true;
+    }
+
+    public void Level4Completed() 
+    {
+        HandleGates(level4Gates);
+        TransportGhostToDestination(level5Destination);
+        level4Win = true;
+    }
+
+    public void Level5Completed() 
+    {
+        HandleGates(level5Gates);
+    }
+
+    public void AllLevelCompleted()
+    {
+        HandleGates(FinalGates);
     }
 
     private void HandleGates(Gate[] gates)

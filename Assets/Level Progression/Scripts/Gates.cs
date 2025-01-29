@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Gates : MonoBehaviour
 {
+    public static Gates Instance;
     [Header("Door Settings")]
     public Transform leftDoor;   // Assign the left door Transform
     public Transform rightDoor;  // Assign the right door Transform
@@ -18,6 +19,7 @@ public class Gates : MonoBehaviour
 
     private void Start()
     {
+        Instance = this;
         // Store the initial rotations as closed rotations
         leftDoorClosedRotation = leftDoor.rotation;
         rightDoorClosedRotation = rightDoor.rotation;

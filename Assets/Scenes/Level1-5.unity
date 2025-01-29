@@ -264379,7 +264379,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2640160979382197909, guid: d23c0918e953a9043ab95ddd3e277fd7, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 51.4
+      value: -63.3
       objectReference: {fileID: 0}
     - target: {fileID: 2640160979382197909, guid: d23c0918e953a9043ab95ddd3e277fd7, type: 3}
       propertyPath: m_LocalPosition.y
@@ -264387,7 +264387,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2640160979382197909, guid: d23c0918e953a9043ab95ddd3e277fd7, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 9.8
+      value: 38.6
       objectReference: {fileID: 0}
     - target: {fileID: 2640160979382197909, guid: d23c0918e953a9043ab95ddd3e277fd7, type: 3}
       propertyPath: m_LocalRotation.w
@@ -265046,51 +265046,57 @@ MonoBehaviour:
   - roomTag: SafeRoom5
     enableObjects: []
     disableObjects: []
-  level1Gates:
-  - gateScript: {fileID: 1955256230}
-    gateOpen: 1
-  - gateScript: {fileID: 1611426335}
-    gateOpen: 1
-  level2Gates:
-  - gateScript: {fileID: 1268707108}
-    gateOpen: 1
-  level3Gates:
-  - gateScript: {fileID: 1646505714655177556}
-    gateOpen: 1
-  - gateScript: {fileID: 997865008}
-    gateOpen: 1
-  - gateScript: {fileID: 1611426335}
-    gateOpen: 0
-  - gateScript: {fileID: 1315819238}
-    gateOpen: 1
-  level4Gates:
-  - gateScript: {fileID: 1315819238}
-    gateOpen: 1
-  - gateScript: {fileID: 1145651838}
-    gateOpen: 1
-  - gateScript: {fileID: 997865008}
-    gateOpen: 0
-  level5Gates:
-  - gateScript: {fileID: 284152362}
-    gateOpen: 1
-  - gateScript: {fileID: 1427399096}
-    gateOpen: 1
-  FinalGates:
-  - gateScript: {fileID: 1427399096}
-    gateOpen: 1
-  End1Gates: {fileID: 1315819238}
-  End2Gates: {fileID: 1427399096}
-  level1Win: 0
-  level2Win: 0
-  level3Win: 0
-  level4Win: 0
-  level5Win: 0
-  allLevelWin: 0
+  gates:
+  - levelWon: 0
+    ghostDestination: {fileID: 1260728836}
+    gates:
+    - gateScript: {fileID: 1955256230}
+      gateOpen: 1
+    - gateScript: {fileID: 1611426335}
+      gateOpen: 1
+  - levelWon: 0
+    ghostDestination: {fileID: 904062947}
+    gates:
+    - gateScript: {fileID: 1268707108}
+      gateOpen: 1
+  - levelWon: 0
+    ghostDestination: {fileID: 2115505817}
+    gates:
+    - gateScript: {fileID: 1646505714655177556}
+      gateOpen: 1
+    - gateScript: {fileID: 997865008}
+      gateOpen: 1
+    - gateScript: {fileID: 1315819238}
+      gateOpen: 1
+    - gateScript: {fileID: 1611426335}
+      gateOpen: 0
+  - levelWon: 0
+    ghostDestination: {fileID: 908136846}
+    gates:
+    - gateScript: {fileID: 1315819238}
+      gateOpen: 1
+    - gateScript: {fileID: 1145651838}
+      gateOpen: 1
+    - gateScript: {fileID: 997865008}
+      gateOpen: 0
+  - levelWon: 0
+    ghostDestination: {fileID: 0}
+    gates:
+    - gateScript: {fileID: 284152362}
+      gateOpen: 1
+    - gateScript: {fileID: 1427399096}
+      gateOpen: 1
+  - levelWon: 0
+    ghostDestination: {fileID: 0}
+    gates:
+    - gateScript: {fileID: 1315819238}
+      gateOpen: 1
+  - levelWon: 0
+    ghostDestination: {fileID: 0}
+    gates:
+    - gateScript: {fileID: 1427399096}
+      gateOpen: 0
   ghost: {fileID: 277393558}
-  level2Destination: {fileID: 1260728836}
-  level3Destination: {fileID: 904062947}
-  level4Destination: {fileID: 2115505817}
-  level5Destination: {fileID: 908136846}
 --- !u!1 &1743483743
 GameObject:
   m_ObjectHideFlags: 0

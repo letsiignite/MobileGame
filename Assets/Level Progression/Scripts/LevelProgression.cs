@@ -11,7 +11,7 @@ public class GateData
 [System.Serializable]
 public class LevelData
 {
-    public string roomTag;
+    public string roomName; // Name of the GameObject (e.g., "SafeRoom1")
     public GameObject[] enableObjects = new GameObject[0]; // Default empty array to avoid null
     public GameObject[] disableObjects = new GameObject[0]; // Default empty array to avoid null
     public bool gateOpened = false;
@@ -86,9 +86,12 @@ public class LevelProgression : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        // Use the GameObject's name to find the corresponding LevelData
+        string roomName = other.gameObject.name;
+
         foreach (LevelData level in levels)
         {
-            if (other.CompareTag(level.roomTag))
+            if (level.roomName == roomName)
             {
                 ToggleObjects(level);
                 // Save player data only if SaveLoadData is not null
@@ -101,15 +104,15 @@ public class LevelProgression : MonoBehaviour
                 {
                     Debug.LogWarning("SaveLoadData.saveDatainstance is null, cannot save player data.");
                 }
-
                 // Exit the loop once the correct room is processed
                 break;
             }
         }
 
-        if (other.CompareTag("SafeRoom1")) 
+        // Handle specific level completions and gate closures
+        if (other.CompareTag("SafeRoom"))
         {
-            CompleteLevel(0);
+            CompleteLevel(0); // Assuming SafeRoom1 corresponds to index 0
         }
 
         HandleGateClosure(other, "Level4", "Level 4 Gate1");

@@ -265026,11 +265026,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   levels:
-  - roomTag: SafeRoom1
-    enableObjects:
-    - {fileID: 0}
-    disableObjects:
-    - {fileID: 0}
+  - roomName: SafeRoom1
+    enableObjects: []
+    disableObjects: []
     gateOpened: 0
     gates:
     - gateScript: {fileID: 1955256230}
@@ -265038,7 +265036,7 @@ MonoBehaviour:
     - gateScript: {fileID: 1611426335}
       gateOpen: 1
     ghostDestination: {fileID: 1260728836}
-  - roomTag: SafeRoom2
+  - roomName: SafeRoom2
     enableObjects: []
     disableObjects: []
     gateOpened: 0
@@ -265046,7 +265044,7 @@ MonoBehaviour:
     - gateScript: {fileID: 1268707108}
       gateOpen: 1
     ghostDestination: {fileID: 904062947}
-  - roomTag: SafeRoom3
+  - roomName: SafeRoom3
     enableObjects: []
     disableObjects: []
     gateOpened: 0
@@ -265060,7 +265058,7 @@ MonoBehaviour:
     - gateScript: {fileID: 1611426335}
       gateOpen: 0
     ghostDestination: {fileID: 2115505817}
-  - roomTag: SafeRoom4
+  - roomName: SafeRoom4
     enableObjects: []
     disableObjects: []
     gateOpened: 0
@@ -265070,7 +265068,7 @@ MonoBehaviour:
     - gateScript: {fileID: 1145651838}
       gateOpen: 1
     ghostDestination: {fileID: 908136846}
-  - roomTag: SafeRoom5
+  - roomName: SafeRoom5
     enableObjects: []
     disableObjects: []
     gateOpened: 0

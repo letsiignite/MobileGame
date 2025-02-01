@@ -2,81 +2,78 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [System.Serializable]
-public class SafeRoom
+public class GateData
+{
+    public Gates gateScript; // Reference to the gate script
+    public bool gateOpen = false;
+}
+
+[System.Serializable]
+public class LevelData
 {
     public string roomTag;
     public GameObject[] enableObjects = new GameObject[0]; // Default empty array to avoid null
     public GameObject[] disableObjects = new GameObject[0]; // Default empty array to avoid null
-}
-
-[System.Serializable]
-public class Gate
-{
-    public Gates gateScript; // Reference to the GateScript
-    public bool gateOpen = false; // Determines if this specific gate is open
-}
-
-[System.Serializable]
-public class LevelGates
-{
-    public bool levelWon = false;
+    public bool gateOpened = false;
+    public List<GateData> gates = new List<GateData>();
     public Transform ghostDestination;
-    public Gate[] gates;
 
     public void HandleGates()
     {
-        foreach (Gate gate in gates)
+        if (gateOpened)
         {
-            if (gate.gateScript != null)
+            foreach (GateData gate in gates)
             {
-                if (gate.gateOpen)
+                if (gate.gateScript != null)
                 {
-                    gate.gateScript.OpenDoors();
+                    if (gate.gateOpen)
+                    {
+                        gate.gateScript.OpenDoors();
+                    }
+                    else
+                    {
+                        gate.gateScript.CloseDoors();
+                    }
                 }
                 else
                 {
-                    gate.gateScript.CloseDoors();
+                    Debug.LogWarning("GateScript is not assigned for a gate.");
                 }
+            }
+            TransportGhost();
+        }
+    }
+
+    private void TransportGhost()
+    {
+        if (ghostDestination != null)
+        {
+            GameObject ghost = GameObject.FindGameObjectWithTag("Ghost");
+            if (ghost != null)
+            {
+                ghost.transform.position = ghostDestination.position;
+                ghost.transform.rotation = ghostDestination.rotation;
+                Debug.Log("Ghost transported to the destination point.");
             }
             else
             {
-                Debug.LogWarning("GateScript is not assigned for one of the gates.");
+                Debug.LogWarning("Ghost not found in the scene.");
             }
-        }
-    }
-
-    public void TransportGhostToDestination(GameObject ghost)
-    {
-        if (ghost != null && ghostDestination != null)
-        {
-            ghost.transform.position = ghostDestination.position;
-            ghost.transform.rotation = ghostDestination.rotation;
-            Debug.Log("Ghost transported to the destination point.");
         }
         else
         {
-            Debug.LogWarning("Ghost or destination is not assigned.");
+            Debug.LogWarning("Ghost destination is not assigned.");
         }
-    }
-
-    public bool IsLevelCompleted()
-    {
-        return levelWon;
     }
 }
 
 public class LevelProgression : MonoBehaviour
 {
-    [Header("Safe Rooms Configuration")]
-    public List<SafeRoom> safeRooms; // List of SafeRooms
-
-    [Header("Level Gates")]
-    public List<LevelGates> gates;
-    public GameObject ghost;
+    [Header("Level Configuration")]
+    public List<LevelData> levels;
 
     private void Start()
     {
-        // Make sure SaveLoadData is not null
         if (SaveLoadData.saveDatainstance != null)
         {
             PlayerData playerData = SaveSystem.LoadPlayer();
@@ -89,53 +86,11 @@ public class LevelProgression : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("SafeRoom1"))
+        foreach (LevelData level in levels)
         {
-            Level1Completed();
-        }
-
-        if (other.CompareTag("SafeRoom4"))
-        {
-            Level4GateClose();
-        }
-
-        if (other.CompareTag("SafeRoom6"))
-        {
-            Level5GateCloses();
-        }
-        // Iterate through the list of SafeRooms and check for matching tags
-        foreach (SafeRoom room in safeRooms)
-        {
-            
-
-            if (other.CompareTag(room.roomTag))
+            if (other.CompareTag(level.roomTag))
             {
-                // Enable all objects in the enableObjects array
-                foreach (GameObject obj in room.enableObjects)
-                {
-                    if (obj != null)
-                    {
-                        obj.SetActive(true);
-                    }
-                    else
-                    {
-                        Debug.LogWarning("A GameObject in enableObjects is null.");
-                    }
-                }
-
-                // Disable all objects in the disableObjects array
-                foreach (GameObject obj in room.disableObjects)
-                {
-                    if (obj != null)
-                    {
-                        obj.SetActive(false);
-                    }
-                    else
-                    {
-                        Debug.LogWarning("A GameObject in disableObjects is null.");
-                    }
-                }
-
+                ToggleObjects(level);
                 // Save player data only if SaveLoadData is not null
                 if (SaveLoadData.saveDatainstance != null)
                 {
@@ -151,56 +106,60 @@ public class LevelProgression : MonoBehaviour
                 break;
             }
         }
+
+        if (other.CompareTag("SafeRoom1")) 
+        {
+            CompleteLevel(0);
+        }
+
+        HandleGateClosure(other, "Level4", "Level 4 Gate1");
+        HandleGateClosure(other, "Level5", "Level 5 Gate2");
+    }
+
+    private void ToggleObjects(LevelData level)
+    {
+        foreach (GameObject obj in level.enableObjects)
+        {
+            if (obj != null) obj.SetActive(true);
+            else Debug.LogWarning("A GameObject in enableObjects is null.");
+        }
+
+        foreach (GameObject obj in level.disableObjects)
+        {
+            if (obj != null) obj.SetActive(false);
+            else Debug.LogWarning("A GameObject in disableObjects is null.");
+        }
+    }
+
+    private void HandleGateClosure(Collider other, string levelTag, string gateName)
+    {
+        if (other.CompareTag(levelTag))
+        {
+            GameObject gate = GameObject.Find(gateName);
+            if (gate?.GetComponent<Gates>() is Gates gateScript)
+            {
+                gateScript.CloseDoors();
+                Debug.Log($"{gateName} closed.");
+            }
+            else
+            {
+                Debug.LogWarning($"{gateName} not found or missing Gates script.");
+            }
+        }
     }
 
     public void CompleteLevel(int levelIndex)
     {
-        if (gates.Count > levelIndex) // Ensure there is a LevelGates at the given index
+        if (levelIndex >= 0 && levelIndex < levels.Count)
         {
-            LevelGates levelGate = gates[levelIndex];
-            levelGate.levelWon = true;
-            levelGate.HandleGates();
-            levelGate.TransportGhostToDestination(ghost);
-            Debug.Log($"Level {levelIndex + 1} Completed and Ghost Transported.");
+            LevelData level = levels[levelIndex];
+            level.gateOpened = true;
+            level.HandleGates();
+            Debug.Log($"Level {levelIndex} Completed and Ghost Transported.");
         }
         else
         {
-            Debug.LogWarning($"No LevelGates available at index {levelIndex}.");
+            Debug.LogWarning($"Invalid level index: {levelIndex}.");
         }
-    }
-
-    public void Level1Completed()
-    {
-        CompleteLevel(0); // Complete level 1 (index 0)
-    }
-
-    public void Level2Completed()
-    {
-        CompleteLevel(1); // Complete level 2 (index 1)
-    }
-
-    public void Level3Completed()
-    {
-        CompleteLevel(2); // Complete level 3 (index 2)
-    }
-
-    public void Level4Completed()
-    {
-        CompleteLevel(3); // Complete level 4 (index 3)
-    }
-
-    public void Level5Completed()
-    {
-        CompleteLevel(4); // Complete level 5 (index 4)
-    }
-
-    public void Level4GateClose()
-    {
-        CompleteLevel(5); // Complete level 4 gateclose (index 5)
-    }
-
-    public void Level5GateCloses()
-    {
-        CompleteLevel(6); // Complete level 5 GateClose (index 6)
     }
 }

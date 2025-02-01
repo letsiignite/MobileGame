@@ -43606,11 +43606,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 277025542}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &277393558 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2426916978471912164, guid: cc9bc2c0c842e5244aa9ac8189dba9d7, type: 3}
-  m_PrefabInstance: {fileID: 509176474}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &278603034
 GameObject:
   m_ObjectHideFlags: 0
@@ -78665,7 +78660,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 3360495215040015941, guid: cc9bc2c0c842e5244aa9ac8189dba9d7, type: 3}
   m_PrefabInstance: {fileID: 509176474}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 277393558}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6fdb55c66391bef45b940aa613a3548a, type: 3}
@@ -265030,37 +265025,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 32bb9eb8da8f6e04c9ee104302a84a52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  safeRooms:
+  levels:
   - roomTag: SafeRoom1
-    enableObjects: []
-    disableObjects: []
-  - roomTag: SafeRoom2
-    enableObjects: []
-    disableObjects: []
-  - roomTag: SafeRoom3
-    enableObjects: []
-    disableObjects: []
-  - roomTag: SafeRoom4
-    enableObjects: []
-    disableObjects: []
-  - roomTag: SafeRoom5
-    enableObjects: []
-    disableObjects: []
-  gates:
-  - levelWon: 0
-    ghostDestination: {fileID: 1260728836}
+    enableObjects:
+    - {fileID: 0}
+    disableObjects:
+    - {fileID: 0}
+    gateOpened: 0
     gates:
     - gateScript: {fileID: 1955256230}
       gateOpen: 1
     - gateScript: {fileID: 1611426335}
       gateOpen: 1
-  - levelWon: 0
-    ghostDestination: {fileID: 904062947}
+    ghostDestination: {fileID: 1260728836}
+  - roomTag: SafeRoom2
+    enableObjects: []
+    disableObjects: []
+    gateOpened: 0
     gates:
     - gateScript: {fileID: 1268707108}
       gateOpen: 1
-  - levelWon: 0
-    ghostDestination: {fileID: 2115505817}
+    ghostDestination: {fileID: 904062947}
+  - roomTag: SafeRoom3
+    enableObjects: []
+    disableObjects: []
+    gateOpened: 0
     gates:
     - gateScript: {fileID: 1646505714655177556}
       gateOpen: 1
@@ -265070,33 +265059,27 @@ MonoBehaviour:
       gateOpen: 1
     - gateScript: {fileID: 1611426335}
       gateOpen: 0
-  - levelWon: 0
-    ghostDestination: {fileID: 908136846}
+    ghostDestination: {fileID: 2115505817}
+  - roomTag: SafeRoom4
+    enableObjects: []
+    disableObjects: []
+    gateOpened: 0
     gates:
     - gateScript: {fileID: 1315819238}
       gateOpen: 1
     - gateScript: {fileID: 1145651838}
       gateOpen: 1
-    - gateScript: {fileID: 997865008}
-      gateOpen: 0
-  - levelWon: 0
-    ghostDestination: {fileID: 0}
+    ghostDestination: {fileID: 908136846}
+  - roomTag: SafeRoom5
+    enableObjects: []
+    disableObjects: []
+    gateOpened: 0
     gates:
     - gateScript: {fileID: 284152362}
       gateOpen: 1
     - gateScript: {fileID: 1427399096}
       gateOpen: 1
-  - levelWon: 0
     ghostDestination: {fileID: 0}
-    gates:
-    - gateScript: {fileID: 1315819238}
-      gateOpen: 1
-  - levelWon: 0
-    ghostDestination: {fileID: 0}
-    gates:
-    - gateScript: {fileID: 1427399096}
-      gateOpen: 0
-  ghost: {fileID: 277393558}
 --- !u!1 &1743483743
 GameObject:
   m_ObjectHideFlags: 0

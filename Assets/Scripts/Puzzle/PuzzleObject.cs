@@ -28,6 +28,7 @@ namespace Puzzle
                                                // this object must be setup in the scene and assigned.
         [SerializeField]
         private GameObject activationObject; // This object must be in players inventory to activate this object. this object must be placed in the scene and added through inspector.
+        
         //[SerializeField]
         //private GameObject completionObject; // This object will be activated or deactivated to finish the puzzle. This will be assigned to last object in puzzle.
 
@@ -104,6 +105,13 @@ namespace Puzzle
                     {
                         GameManager._instance.GetGhostController().SetDistractedObject(gameObject);
                         Deactivate();
+                        foreach (LevelProgressionObject levelObject in LevelProgression.levelProgressionInstance.levelObjects)
+                        {
+                            if (levelObject.isActiveAndEnabled)
+                            {
+                                levelObject.LevelCompleted();
+                            }
+                        }
                         Debug.Log("Problem Solved");
                     }
                 }

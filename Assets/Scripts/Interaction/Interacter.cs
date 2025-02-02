@@ -1,20 +1,21 @@
 using Interactable;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class Interacter : MonoBehaviour
+public class interacter : MonoBehaviour
 {
-    private bool closeToInteractableObject = false;
-    private Ray debugRay;
+    private bool closetointeractableobject = false;
+    private Ray debugray;
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    // start is called once before the first execution of update after the monobehaviour is created
+    void start()
     {
-        
+
     }
 
-    // Update is called once per frame
-    void Update()
+    // update is called once per frame
+    void update()
     {
         if (Input.touchCount > 0)
         {
@@ -23,25 +24,25 @@ public class Interacter : MonoBehaviour
                 int id = touch.fingerId;
                 if (EventSystem.current.IsPointerOverGameObject(id))
                 {
-                    // finger over UI
+                    // finger over ui
                 }
                 else
                 {
-                    //Debug.Log("Pass 1-1");
-                    Vector3 touchPosWorld = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
+                    //debug.log("pass 1-1");
+                    Vector3 touchposworld = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
 
-                    //Debugging Tech
-                    debugRay.origin = touchPosWorld;
-                    debugRay.direction = Camera.main.transform.forward;
+                    //debugging tech
+                    debugray.origin = touchposworld;
+                    debugray.direction = Camera.main.transform.forward;
 
-                    RaycastHit hitInformation;
-                    if (Physics.Raycast(touchPosWorld, Camera.main.transform.forward, out hitInformation)) 
+                    RaycastHit hitinformation;
+                    if (Physics.Raycast(touchposworld, Camera.main.transform.forward, out hitinformation))
                     {
-                        
-                        if (hitInformation.collider.gameObject.GetComponent<IBaseInteractableObject>() != null)
+
+                        if (hitinformation.collider.gameObject.GetComponent<IBaseInteractableObject>() != null)
                         {
-                            //Debug.Log("Pass 1");
-                            hitInformation.collider.gameObject.GetComponent<IBaseInteractableObject>().HandlePlayerInteraction();
+                            //debug.log("pass 1");
+                            hitinformation.collider.gameObject.GetComponent<IBaseInteractableObject>().handleplayerinteraction();
                         }
                     }
                 }
@@ -49,16 +50,154 @@ public class Interacter : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void ontriggerenter(Collider other)
     {
         if (other.gameObject.GetComponent<IBaseInteractableObject>() != null)
         {
-            closeToInteractableObject = true;
+            closetointeractableobject = true;
         }
     }
 
-    private void OnDrawGizmos()
+    private void ondrawgizmos()
     {
-        Gizmos.DrawRay(debugRay);
+       Gizmos.DrawRay(debugray);
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//using Interactable;
+//using UnityEngine;
+//using UnityEngine.EventSystems;
+//using UnityEngine.InputSystem;
+
+//public class Interacter : MonoBehaviour
+//{
+//    private bool closeToInteractableObject = false;
+//    private Ray debugRay;
+//    private Camera mainCamera;
+//    private PlayerInput playerInput;
+
+//    private void Awake()
+//    {
+//        mainCamera = Camera.main;
+//        playerInput = new PlayerInput();
+//        //playerInput.Touch.TouchPress.performed += ctx => HandleTouch(ctx);
+//    }
+
+//    private void OnEnable()
+//    {
+//        //playerInput.Enable();
+//    }
+
+//    private void OnDisable()
+//    {
+//        //playerInput.Disable();
+//    }
+
+//    private void HandleTouch(InputAction.CallbackContext context)
+//    {
+//        if (Touchscreen.current == null || Touchscreen.current.primaryTouch.press.isPressed == false)
+//            return;
+
+//        Vector2 touchPosition = Touchscreen.current.primaryTouch.position.ReadValue();
+//        if (EventSystem.current.IsPointerOverGameObject())
+//            return; // Ignore UI touches
+
+//        Vector3 touchPosWorld = mainCamera.ScreenToWorldPoint(new Vector3(touchPosition.x, touchPosition.y, mainCamera.nearClipPlane));
+//        debugRay.origin = touchPosWorld;
+//        debugRay.direction = mainCamera.transform.forward;
+
+//        if (Physics.Raycast(touchPosWorld, mainCamera.transform.forward, out RaycastHit hitInfo))
+//        {
+//            var interactable = hitInfo.collider.GetComponent<IBaseInteractableObject>();
+//            if (interactable != null)
+//            {
+//                interactable.HandlePlayerInteraction();
+//            }
+//        }
+//    }
+
+//    private void OnTriggerEnter(Collider other)
+//    {
+//        if (other.gameObject.GetComponent<IBaseInteractableObject>() != null)
+//        {
+//            closeToInteractableObject = true;
+//        }
+//    }
+
+//    private void OnDrawGizmos()
+//    {
+//        Gizmos.DrawRay(debugRay);
+//    }
+//}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

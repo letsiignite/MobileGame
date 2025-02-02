@@ -1,38 +1,90 @@
 using UnityEngine;
-using UnityEngine.UI; // For UI components
-using DG.Tweening;    // For DOTween
+using System.Collections;
 
-public class MainMenuButtons: MonoBehaviour
+namespace UI
 {
-    private Button button;
-
-    void Start()
+    public class MainMenuButtons : MonoBehaviour
     {
-        button = GetComponent<Button>();
+        public Canvas GameplayUI;
+        public Canvas MainMenu;
+        public float clickAnimationDepth = 0.1f;
+        public float animationDuration = 0.1f;
+        public float actionDelay = 0.5f;
 
-        if (button != null)
+        private Coroutine currentAnimationCoroutine = null;
+
+        void Update()
         {
-            // Add the animation to the button click event
-            button.onClick.AddListener(OnButtonClicked);
+            if (!MainMenu.gameObject.activeSelf)
+                return;
+
+            if (Input.touchCount > 0)
+            {
+                Touch touch = Input.GetTouch(0);
+
+                if (touch.phase == TouchPhase.Began)
+                {
+                    Ray ray = Camera.main.ScreenPointToRay(touch.position);
+                    RaycastHit hit;
+
+                    if (Physics.Raycast(ray, out hit))
+                    {
+                        GameObject clickedObject = hit.collider.gameObject;
+
+                        if (currentAnimationCoroutine != null)
+                        {
+                            StopCoroutine(currentAnimationCoroutine);
+                            clickedObject.transform.position = clickedObject.transform.position;
+                        }
+
+                        currentAnimationCoroutine = StartCoroutine(AnimateButtonPress(clickedObject));
+                    }
+                }
+            }
         }
-    }
 
-    void OnButtonClicked()
-    {
-        // Animate the scale to 0.9x (shrink) and back to 1x (original size)
-        transform.DOScale(0.9f, 0.1f)    // Shrink to 90% size in 0.1 seconds
-                 .SetEase(Ease.OutQuad)  // Easing for smooth shrinking
-                 .OnComplete(() =>
-                 {
-                     transform.DOScale(1f, 0.1f) // Return to original size
-                              .SetEase(Ease.OutBounce); // Easing for bounce effect
-                 });
-    }
+        IEnumerator AnimateButtonPress(GameObject button)
+        {
+            Vector3 originalPosition = button.transform.position;
+            Vector3 pressedPosition = originalPosition - new Vector3(0, clickAnimationDepth, 0);
 
-    void OnDestroy()
-    {
-        // Remove the listener when the object is destroyed to avoid memory leaks
-        if (button != null)
-            button.onClick.RemoveListener(OnButtonClicked);
+            button.transform.position = pressedPosition;
+            yield return new WaitForSeconds(animationDuration);
+
+            if (!MainMenu.gameObject.activeSelf)
+            {
+                button.transform.position = originalPosition;
+                yield break;
+            }
+
+            button.transform.position = originalPosition;
+            yield return new WaitForSeconds(animationDuration);
+
+            yield return new WaitForSeconds(actionDelay);
+            OnObjectClick(button.name);
+        }
+
+        void OnObjectClick(string objectName)
+        {
+            Debug.Log(objectName + " clicked!");
+
+            switch (objectName)
+            {
+                case "NewGameButton":
+                    Debug.Log("Starting New Game...");
+                    MainMenu.gameObject.SetActive(false);
+                    GameplayUI.gameObject.SetActive(true);
+                    break;
+                case "LoadGameButton":
+                    Debug.Log("Loading Game...");
+                    break;
+                case "SettingsButton":
+                    Debug.Log("Opening Settings...");
+                    break;
+                default:
+                    Debug.Log("Unknown object clicked!");
+                    break;
+            }
+        }
     }
 }

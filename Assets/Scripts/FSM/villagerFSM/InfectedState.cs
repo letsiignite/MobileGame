@@ -12,7 +12,8 @@ public class InfectedState : IVillagerState
             //Debug.Log("Agent isStopped set to: " + context.agent.isStopped);
         }
         context.Animator.SetTrigger("Idle");
-        Debug.Log("Character is now Infected.");
+        //context.PlaySound(context.infectedStateClip);
+        //Debug.Log("Character is now Infected.");
         context.StartCoroutine(ResumeAfterDelay(5f,context));
     }
     private IEnumerator ResumeAfterDelay(float delay, VillagerContext context)

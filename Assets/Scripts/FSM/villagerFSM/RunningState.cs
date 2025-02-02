@@ -11,6 +11,7 @@ public class RunningState : IVillagerState
             context.agent.isStopped = false;
         }
         MoveToRandomPoint(context);
+        context.PlaySound(context.runningStateClip);
         context.Animator.SetTrigger("Run");
         Debug.Log("setting run trigger");
     }

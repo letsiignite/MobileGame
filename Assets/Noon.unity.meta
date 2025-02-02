@@ -1,5 +1,10 @@
 fileFormatVersion: 2
+<<<<<<<< HEAD:Assets/Noon.unity.meta
 guid: f037b3f4499d568459bd3dd8f4fc4ca9
+========
+guid: 6ca1b3b479dd4264380ecff615660628
+folderAsset: yes
+>>>>>>>> origin/all-system-integration:Assets/3D Assets/Models.meta
 DefaultImporter:
   externalObjects: {}
   userData: 

@@ -261,7 +261,7 @@ MonoBehaviour:
   points: []
   agent: {fileID: 0}
   isNotInfected: 1
-  isPaused: 1
+  isPaused: 0
   currentTargetIndex: 0
   pathDeviation: 10
   audioSource: {fileID: -5706771137954160606}

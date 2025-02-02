@@ -28,6 +28,7 @@ namespace Puzzle
                                                // this object must be setup in the scene and assigned.
         [SerializeField]
         private GameObject activationObject; // This object must be in players inventory to activate this object. this object must be placed in the scene and added through inspector.
+        
         //[SerializeField]
         //private GameObject completionObject; // This object will be activated or deactivated to finish the puzzle. This will be assigned to last object in puzzle.
 
@@ -104,18 +105,17 @@ namespace Puzzle
                     {
                         GameManager._instance.GetGhostController().SetDistractedObject(gameObject);
                         Deactivate();
+                        foreach (LevelProgressionObject levelObject in LevelProgression.levelProgressionInstance.levelObjects)
+                        {
+                            if (levelObject.isActiveAndEnabled)
+                            {
+                                levelObject.LevelCompleted();
+                            }
+                        }
                         Debug.Log("Problem Solved");
                     }
                 }
             }
-        }
-        private Vector3 GetRandomOffset()
-        {
-            float randomX = UnityEngine.Random.Range(-spawnAreaSize.x / 2, spawnAreaSize.x / 2);
-            float randomY = 0;
-            float randomZ = UnityEngine.Random.Range(-spawnAreaSize.z / 2, spawnAreaSize.z / 2);
-
-            return new Vector3(randomX, randomY, randomZ);
         }
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -124,14 +124,13 @@ namespace Puzzle
             if(houseTransforms.Length > 0)
             {
                 Transform houseTransform = houseTransforms[UnityEngine.Random.Range(0, houseTransforms.Length)];
-                Vector3 randomOffset = GetRandomOffset();
-                Vector3 spawnPosition = houseTransform.position + randomOffset;
+                Vector3 spawnPosition = houseTransform.position;
                 if (spawnPosition.y <= 0)
                 {
                     spawnPosition.y = 2;
                 }
                 this.transform.position = spawnPosition;
-                Debug.Log("spawned lvl 4 object");
+                //Debug.Log("spawned lvl 4 object");
             }
             
         }

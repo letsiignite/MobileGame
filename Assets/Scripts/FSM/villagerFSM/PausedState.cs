@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class PausedState : IVillagerState
 {
-
     public void HandleState(VillagerContext context)
     {
         if (context.agent != null)
@@ -12,7 +11,8 @@ public class PausedState : IVillagerState
             context.agent.isStopped = true;
         }
         context.Animator.SetTrigger("Idle");
-        Debug.Log("Setting Idle trigger in pause");
+        context.PlaySound(context.IdleStateClip);
+        Debug.Log("Character is now Idle.");
 
     }
     public void UpdateState(VillagerContext context)

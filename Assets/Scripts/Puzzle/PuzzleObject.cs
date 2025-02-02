@@ -39,6 +39,7 @@ namespace Puzzle
         [SerializeField] private Transform[] houseTransforms; // Array of house positions
         [SerializeField] private Vector3 spawnAreaSize = new Vector3(1, 0, 1);
 
+        private LevelProgressionObject levelObject;
         private Inventory inventory;
         private const string ACTIVATION_OBJECT_NOT_FOUND = "Find the key object";
         public void Activate()
@@ -105,13 +106,7 @@ namespace Puzzle
                     {
                         GameManager._instance.GetGhostController().SetDistractedObject(gameObject);
                         Deactivate();
-                        foreach (LevelProgressionObject levelObject in LevelProgression.levelProgressionInstance.levelObjects)
-                        {
-                            if (levelObject.isActiveAndEnabled)
-                            {
-                                levelObject.LevelCompleted();
-                            }
-                        }
+                        levelObject.LevelCompleted();
                         Debug.Log("Problem Solved");
                     }
                 }
@@ -132,7 +127,8 @@ namespace Puzzle
                 this.transform.position = spawnPosition;
                 //Debug.Log("spawned lvl 4 object");
             }
-            
+
+            levelObject = GetComponentInParent<LevelProgressionObject>();
         }
 
         // Update is called once per frame

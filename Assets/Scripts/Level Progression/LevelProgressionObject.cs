@@ -5,7 +5,7 @@ using UnityEngine.AI;
 public class LevelProgressionObject : MonoBehaviour
 {
     [System.Serializable]
-    public partial class GateData
+    internal class GateData
     {
         public Gates gateScript; // Reference to the gate script
         public bool gateOpen = false;
@@ -60,22 +60,32 @@ public class LevelProgressionObject : MonoBehaviour
 
     private void ToggleObjects()
     {
+        Debug.Log("Pass - 2");
         foreach (GameObject obj in enableObjects)
         {
-            if (obj != null) obj.SetActive(true);
+            if (obj != null)
+            {
+                Debug.Log(obj.name + " Enabled");
+                obj.SetActive(true);
+            }
         }
 
         foreach (GameObject obj in disableObjects)
         {
-            if (obj != null) obj.SetActive(false);
+            if (obj != null)
+            {
+                Debug.Log(obj.name + " Disabled");
+                obj.SetActive(false);
+            }
         }
     }
 
     public void LevelCompleted()
     {
         gateOpened = true;
-        HandleGates();
         ToggleObjects();
+        HandleGates();
+        Debug.Log("Pass - 1");
     }
 
     private void OnTriggerEnter(Collider other)

@@ -1039,7 +1039,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -112, y: 517}
+  m_AnchoredPosition: {x: -112, y: 660}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7392568899485312866
@@ -2342,7 +2342,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -564, y: 496}
+  m_AnchoredPosition: {x: -564, y: 666}
   m_SizeDelta: {x: 200, y: 200}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &1915953988574987981
@@ -2491,10 +2491,10 @@ RectTransform:
   - {fileID: 6939468130081397917}
   m_Father: {fileID: 3987697122458175999}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 1, y: 0}
-  m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -613, y: 554}
-  m_SizeDelta: {x: 639.43506, y: 389.6286}
+  m_AnchorMin: {x: 0, y: 0}
+  m_AnchorMax: {x: 0, y: 0}
+  m_AnchoredPosition: {x: 1590, y: 288}
+  m_SizeDelta: {x: 348.32007, y: 209.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &7732030611819612843
 CanvasRenderer:
@@ -2549,7 +2549,7 @@ MonoBehaviour:
   containerRect: {fileID: 1327948959210740938}
   handleRect: {fileID: 6939468130081397917}
   clampToMagnitude: 1
-  magnitudeMultiplier: 0.01
+  magnitudeMultiplier: 0.1
   invertXOutputValue: 0
   invertYOutputValue: 1
   touchZoneOutputEvent:

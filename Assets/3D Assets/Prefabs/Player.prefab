@@ -600,13 +600,13 @@ GameObject:
   - component: {fileID: 2640160979382197909}
   - component: {fileID: 1299559851591222201}
   - component: {fileID: 7785465130767451182}
-  - component: {fileID: 7976374559944179665}
-  - component: {fileID: 3830292286943860421}
-  - component: {fileID: 2662983634670818124}
-  - component: {fileID: 4134981892862952136}
   - component: {fileID: 5463129630623118495}
   - component: {fileID: 2795289290523740623}
   - component: {fileID: 8825079686228946859}
+  - component: {fileID: 2662983634670818124}
+  - component: {fileID: 7976374559944179665}
+  - component: {fileID: 3830292286943860421}
+  - component: {fileID: 5857199821456353748}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -757,88 +757,6 @@ MonoBehaviour:
   m_DefaultActionMap: Player
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 0}
---- !u!114 &7976374559944179665
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4679212055576885083}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ad6cbef620261bd4382b17c5c0569b93, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemPickUpButton: {fileID: 0}
-  itemPickUpImage: {fileID: 0}
-  itemLayer:
-    serializedVersion: 2
-    m_Bits: 8
-  fullSlotCount: 3
-  totalCapacity: 10
-  currentCapacity: 0
-  overlapSphereRadius: 1
-  leftHand: {fileID: 883643403878277031}
-  rightHand: {fileID: 2778182706750034858}
---- !u!114 &3830292286943860421
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4679212055576885083}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: eb1fabf8844c1e44f89edb4d8c508cf3, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DistanceOpen: 3
---- !u!114 &2662983634670818124
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4679212055576885083}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9970558437d1d1f4a83848935816a7b2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &4134981892862952136
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4679212055576885083}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 32bb9eb8da8f6e04c9ee104302a84a52, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  safeRooms:
-  - roomTag: Safe Rooms 1
-    enableObjects: []
-    disableObjects: []
-    gates: []
-  level1Gates:
-  - gateScript: {fileID: 0}
-    gateOpen: 1
-  level2Gates: []
-  level3Gates: []
-  level4Gates: []
-  level5Gates: []
-  level1Win: 0
-  level2Win: 0
-  level3Win: 0
-  level4Win: 0
-  level5Win: 0
-  ghost: {fileID: 0}
-  level2Destination: {fileID: 0}
-  level3Destination: {fileID: 0}
-  level4Destination: {fileID: 0}
-  level5Destination: {fileID: 0}
 --- !u!114 &5463129630623118495
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -865,7 +783,7 @@ MonoBehaviour:
   GroundedRadius: 0.5
   GroundLayers:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 1
   CinemachineCameraTarget: {fileID: 1751323352160593769}
   TopClamp: 50
   BottomClamp: -80
@@ -907,6 +825,77 @@ MonoBehaviour:
   analogMovement: 0
   cursorLocked: 1
   cursorInputForLook: 1
+--- !u!114 &2662983634670818124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4679212055576885083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9970558437d1d1f4a83848935816a7b2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item:
+    serializedVersion: 2
+    m_Bits: 8
+  raycaster: {fileID: 0}
+  eventSystem: {fileID: 0}
+--- !u!114 &7976374559944179665
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4679212055576885083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ad6cbef620261bd4382b17c5c0569b93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemPickUpButton: {fileID: 0}
+  itemPickUpImage: {fileID: 0}
+  itemLayer:
+    serializedVersion: 2
+    m_Bits: 8
+  fullSlotCount: 3
+  totalCapacity: 10
+  currentCapacity: 0
+  overlapSphereRadius: 1
+  leftHand: {fileID: 883643403878277031}
+  rightHand: {fileID: 2778182706750034858}
+--- !u!114 &3830292286943860421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4679212055576885083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb1fabf8844c1e44f89edb4d8c508cf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DistanceOpen: 3
+--- !u!114 &5857199821456353748
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4679212055576885083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f50dff6e1992e454fb703a48029455b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &4818014697464227900
 GameObject:
   m_ObjectHideFlags: 0

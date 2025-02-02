@@ -290818,7 +290818,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5400365259022194101}
-  - component: {fileID: 495729695885480323}
+  - component: {fileID: 8263590204180103513}
   m_Layer: 0
   m_Name: Environment1-5
   m_TagString: Untagged
@@ -291539,7 +291539,7 @@ Transform:
   - {fileID: 2222770986320667724}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &495729695885480323
+--- !u!114 &8263590204180103513
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -291569,7 +291569,7 @@ MonoBehaviour:
   m_OverrideVoxelSize: 0
   m_VoxelSize: 0.16666667
   m_MinRegionArea: 2
-  m_NavMeshData: {fileID: 23800000, guid: 84ec695e5178e924ea15b54a62f36c71, type: 2}
+  m_NavMeshData: {fileID: 0}
   m_BuildHeightMesh: 0
 --- !u!1 &7259031917753904684
 GameObject:

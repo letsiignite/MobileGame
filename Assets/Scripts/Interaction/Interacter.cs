@@ -3,19 +3,19 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class interacter : MonoBehaviour
+public class Interacter : MonoBehaviour
 {
     private bool closetointeractableobject = false;
     private Ray debugray;
 
     // start is called once before the first execution of update after the monobehaviour is created
-    void start()
+    void Start()
     {
 
     }
 
     // update is called once per frame
-    void update()
+    void Update()
     {
         if (Input.touchCount > 0)
         {
@@ -42,7 +42,7 @@ public class interacter : MonoBehaviour
                         if (hitinformation.collider.gameObject.GetComponent<IBaseInteractableObject>() != null)
                         {
                             //debug.log("pass 1");
-                            hitinformation.collider.gameObject.GetComponent<IBaseInteractableObject>().handleplayerinteraction();
+                            hitinformation.collider.gameObject.GetComponent<IBaseInteractableObject>().HandlePlayerInteraction();
                         }
                     }
                 }
@@ -50,7 +50,7 @@ public class interacter : MonoBehaviour
         }
     }
 
-    private void ontriggerenter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<IBaseInteractableObject>() != null)
         {
@@ -58,7 +58,7 @@ public class interacter : MonoBehaviour
         }
     }
 
-    private void ondrawgizmos()
+    private void OnDrawGizmos()
     {
        Gizmos.DrawRay(debugray);
     }

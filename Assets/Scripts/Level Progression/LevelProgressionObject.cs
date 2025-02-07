@@ -2,97 +2,100 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public class LevelProgressionObject : MonoBehaviour
+namespace LevelProgression
 {
-    [System.Serializable]
-    internal class GateData
+    public class LevelProgressionObject : MonoBehaviour
     {
-        public Gates gateScript; // Reference to the gate script
-        public bool gateOpen = false;
-    }
-
-    [Header("Safe Area")]
-    [SerializeField] private GameObject[] enableObjects;
-    [SerializeField] private GameObject[] disableObjects;
-
-    [Header("Gates")]
-    [SerializeField] private List<GateData> gates = new List<GateData>();
-    [SerializeField] private bool gateOpened;
-
-    [Header("Ghost")]
-    [SerializeField] private Transform ghostWarpPosition;
-    [SerializeField] private GameObject ghostRef;
-
-    public void HandleGates()
-    {
-        if (gateOpened)
+        [System.Serializable]
+        internal class GateData
         {
-            foreach (GateData gate in gates)
+            public Gates gateScript; // Reference to the gate script
+            public bool gateOpen = false;
+        }
+
+        [Header("Safe Area")]
+        [SerializeField] private GameObject[] enableObjects;
+        [SerializeField] private GameObject[] disableObjects;
+
+        [Header("Gates")]
+        [SerializeField] private List<GateData> gates = new List<GateData>();
+        [SerializeField] private bool gateOpened;
+
+        [Header("Ghost")]
+        [SerializeField] private Transform ghostWarpPosition;
+        [SerializeField] private GameObject ghostRef;
+
+        public void HandleGates()
+        {
+            if (gateOpened)
             {
-                if (gate.gateScript != null)
+                foreach (GateData gate in gates)
                 {
-                    if (gate.gateOpen)
+                    if (gate.gateScript != null)
                     {
-                        gate.gateScript.CloseDoors();
-                    }
-                    else
-                    {
-                        gate.gateScript.OpenDoors();
+                        if (gate.gateOpen)
+                        {
+                            gate.gateScript.CloseDoors();
+                        }
+                        else
+                        {
+                            gate.gateScript.OpenDoors();
+                        }
                     }
                 }
+                TransportGhost();
             }
-            TransportGhost();
         }
-    }
 
-    private void TransportGhost()
-    {
-        if (ghostWarpPosition != null)
+        private void TransportGhost()
         {
-            if (ghostRef != null)
+            if (ghostWarpPosition != null)
             {
-                ghostRef.GetComponent<NavMeshAgent>().ResetPath();
-                ghostRef.GetComponent<NavMeshAgent>().Warp(ghostWarpPosition.position);
-                ghostRef.transform.rotation = ghostWarpPosition.rotation;
+                if (ghostRef != null)
+                {
+                    ghostRef.GetComponent<NavMeshAgent>().ResetPath();
+                    ghostRef.GetComponent<NavMeshAgent>().Warp(ghostWarpPosition.position);
+                    ghostRef.transform.rotation = ghostWarpPosition.rotation;
+                }
             }
         }
-    }
 
-    private void ToggleObjects()
-    {
-        Debug.Log("Pass - 2");
-        foreach (GameObject obj in enableObjects)
+        private void ToggleObjects()
         {
-            if (obj != null)
+            Debug.Log("Pass - 2");
+            foreach (GameObject obj in enableObjects)
             {
-                Debug.Log(obj.name + " Enabled");
-                obj.SetActive(true);
+                if (obj != null)
+                {
+                    Debug.Log(obj.name + " Enabled");
+                    obj.SetActive(true);
+                }
             }
-        }
 
-        foreach (GameObject obj in disableObjects)
-        {
-            if (obj != null)
+            foreach (GameObject obj in disableObjects)
             {
-                Debug.Log(obj.name + " Disabled");
-                obj.SetActive(false);
+                if (obj != null)
+                {
+                    Debug.Log(obj.name + " Disabled");
+                    obj.SetActive(false);
+                }
             }
         }
-    }
 
-    public void LevelCompleted()
-    {
-        gateOpened = true;
-        ToggleObjects();
-        HandleGates();
-        Debug.Log("Pass - 1");
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.CompareTag("Player"))
+        public void LevelCompleted()
         {
-            LevelCompleted();
+            gateOpened = true;
+            ToggleObjects();
+            HandleGates();
+            Debug.Log("Pass - 1");
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            if (other.gameObject.CompareTag("Player"))
+            {
+                LevelCompleted();
+            }
         }
     }
 }

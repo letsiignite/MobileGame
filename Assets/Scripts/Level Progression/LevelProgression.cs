@@ -1,25 +1,28 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LevelProgression : MonoBehaviour
+namespace LevelProgression
 {
-    public List<LevelProgressionObject> levelObjects;
-    public static LevelProgression levelProgressionInstance;
-
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
+    public class LevelProgression : MonoBehaviour
     {
-        levelProgressionInstance = this;
+        public List<LevelProgressionObject> levelObjects;
+        public static LevelProgression levelProgressionInstance;
 
-        if (SaveLoadData.saveDatainstance != null)
+        // Start is called once before the first execution of Update after the MonoBehaviour is created
+        void Start()
         {
-            PlayerData playerData = SaveSystem.LoadPlayer();
-        }
-    }
+            levelProgressionInstance = this;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+            if (SaveLoadData.saveDatainstance != null)
+            {
+                PlayerData playerData = SaveSystem.LoadPlayer();
+            }
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
     }
 }

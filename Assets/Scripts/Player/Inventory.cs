@@ -10,12 +10,12 @@ public class Inventory : MonoBehaviour
     [SerializeField] private Button itemPickUpButton;
     [SerializeField] private RectTransform itemPickUpImage;
     [SerializeField] private LayerMask itemLayer;
-    [SerializeField] private int fullSlotCount = 2;
+    //[SerializeField] private int fullSlotCount = 2;
     [SerializeField] private int totalCapacity = 10;
     [SerializeField] private int currentCapacity = 0;
 
     [Header("Colliders")]
-    [SerializeField] private float overlapSphereRadius = 1;
+    //[SerializeField] private float overlapSphereRadius = 1;
 
     [Header("Hands")]
     [SerializeField] private GameObject leftHand;

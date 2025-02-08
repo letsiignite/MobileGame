@@ -8,11 +8,11 @@ public class Subtitles : MonoBehaviour
     private AudioSource Narrator;
     [SerializeField]
     private float displayDuration = 3f; 
-    private void Awake()
-    {
-        subtitleBox = GetComponent<TextMeshPro>();
-        subtitleBox.gameObject.SetActive(false); 
-    }
+    //private void Awake()
+    //{
+    //    subtitleBox = GetComponent<TextMeshPro>();
+    //    subtitleBox.gameObject.SetActive(false); 
+    //}
     public void DisplayTextWithAudio(string text, AudioClip voiceClip)
     {
 

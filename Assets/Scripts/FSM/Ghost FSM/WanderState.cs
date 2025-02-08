@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -50,11 +51,19 @@ namespace GhostFSM
         {
             float z = Random.Range(-rangeOfSearch, rangeOfSearch);
             float x = Random.Range(-rangeOfSearch, rangeOfSearch);
+            List<Transform> activeWP = new List<Transform>();
             //destPoint = new Vector3(geAI.transform.position.x + x, 0, geAI.transform.position.z + z);
-            int choice = Random.Range(0, geAI.waypoints.Count);
-            Debug.Log(choice);
+            for(int i = 0; i < geAI.waypoints.Count; i++)
+            {
+                if (geAI.waypoints[i].gameObject.activeSelf)
+                {
+                    activeWP.Add(geAI.waypoints[i]);
+                }
+            }
+            int choice = Random.Range(0, activeWP.Count);
+            //Debug.Log(choice);
 
-            destPoint = geAI.waypoints[choice].position;
+            destPoint = activeWP[choice].position;
 
             NavMeshHit hit;
             if (NavMesh.SamplePosition(destPoint, out hit, 0.1f, NavMesh.AllAreas))

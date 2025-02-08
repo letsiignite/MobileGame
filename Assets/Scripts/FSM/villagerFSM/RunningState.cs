@@ -39,10 +39,6 @@ public class RunningState : IVillagerState
             // Set the destination to the calculated path
             context.agent.SetPath(path);
         }
-        else
-        {
-            Debug.LogWarning($"Path to {targetPoint.name} could not be found or is incomplete.");
-        }
     }
     public void UpdateState(VillagerContext context)
     {

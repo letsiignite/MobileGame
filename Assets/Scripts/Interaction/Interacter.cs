@@ -5,7 +5,7 @@ using UnityEngine.EventSystems;
 
 public class Interacter : MonoBehaviour
 {
-    private bool closetointeractableobject = false;
+    //private bool closetointeractableobject = false;
     private Ray debugray;
 
     // start is called once before the first execution of update after the monobehaviour is created

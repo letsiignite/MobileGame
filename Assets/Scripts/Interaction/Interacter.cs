@@ -1,51 +1,48 @@
 using Interactable;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
+using UnityEngine.InputSystem.EnhancedTouch;
 
 public class Interacter : MonoBehaviour
 {
-    //private bool closetointeractableobject = false;
+    private bool closetointeractableobject = false;
     private Ray debugray;
+    private Camera mainCamera;
+    private InputAction touchInput;
 
-    // start is called once before the first execution of update after the monobehaviour is created
-    void Start()
+    private void Awake()
     {
+        mainCamera = Camera.main;
 
+        // Initialize the input action
+        touchInput = new InputAction("Touch", binding: "<Touchscreen>/primaryTouch/position");
+        touchInput.performed += ctx => HandleTouch(ctx);
+        touchInput.Enable();
     }
 
-    // update is called once per frame
-    void Update()
+    private void HandleTouch(InputAction.CallbackContext ctx)
     {
-        if (Input.touchCount > 0)
+        Vector2 touchPos = ctx.ReadValue<Vector2>();
+
+        // Check if the touch is over a UI element
+        if (EventSystem.current.IsPointerOverGameObject(Touchscreen.current.primaryTouch.touchId.ReadValue()))
         {
-            foreach (Touch touch in Input.touches)
+            return; // Ignore touch if over UI
+        }
+
+        Vector3 touchposworld = mainCamera.ScreenToWorldPoint(new Vector3(touchPos.x, touchPos.y, mainCamera.nearClipPlane));
+
+        // Debugging visualization
+        debugray.origin = touchposworld;
+        debugray.direction = mainCamera.transform.forward;
+
+        if (Physics.Raycast(touchposworld, mainCamera.transform.forward, out RaycastHit hitInformation))
+        {
+            IBaseInteractableObject interactable = hitInformation.collider.gameObject.GetComponent<IBaseInteractableObject>();
+            if (interactable != null)
             {
-                int id = touch.fingerId;
-                if (EventSystem.current.IsPointerOverGameObject(id))
-                {
-                    // finger over ui
-                }
-                else
-                {
-                    //debug.log("pass 1-1");
-                    Vector3 touchposworld = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-
-                    //debugging tech
-                    debugray.origin = touchposworld;
-                    debugray.direction = Camera.main.transform.forward;
-
-                    RaycastHit hitinformation;
-                    if (Physics.Raycast(touchposworld, Camera.main.transform.forward, out hitinformation))
-                    {
-
-                        if (hitinformation.collider.gameObject.GetComponent<IBaseInteractableObject>() != null)
-                        {
-                            //debug.log("pass 1");
-                            hitinformation.collider.gameObject.GetComponent<IBaseInteractableObject>().HandlePlayerInteraction();
-                        }
-                    }
-                }
+                interactable.HandlePlayerInteraction();
             }
         }
     }
@@ -60,9 +57,16 @@ public class Interacter : MonoBehaviour
 
     private void OnDrawGizmos()
     {
-       Gizmos.DrawRay(debugray);
+        Gizmos.DrawRay(debugray);
+    }
+
+    private void OnDestroy()
+    {
+        touchInput.Disable();
+        touchInput.performed -= HandleTouch;
     }
 }
+
 
 
 

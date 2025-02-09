@@ -51,7 +51,7 @@
                     "initialStateCheck": false
                 },
                 {
-                    "name": "TouchPress",
+                    "name": "Touch",
                     "type": "Button",
                     "id": "bc6e3f86-c3ec-46cb-8b96-d81cc7757b98",
                     "expectedControlType": "",
@@ -255,7 +255,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "TouchPress",
+                    "action": "Touch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -266,7 +266,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "TouchPress",
+                    "action": "Touch",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

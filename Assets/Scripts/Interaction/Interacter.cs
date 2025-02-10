@@ -1,75 +1,63 @@
 
-////Gaurav's Code (new Input system try not functional)
-//using Interactable;
-//using System.Collections.Generic;
-//using UnityEngine;
-//using UnityEngine.EventSystems;
-//using UnityEngine.InputSystem;
-//using UnityEngine.InputSystem.EnhancedTouch;
-//using UnityEngine.UI;
+//Gaurav's Code (new Input system try not functional)
+//Modified by Shrey (now functional fully using new input system)
+using Interactable;
+using UnityEngine;
+using UnityEngine.InputSystem;
 
-//public class Interacter : MonoBehaviour
-//{
-//    private bool closetointeractableobject = false;
-//    private Ray debugray;
-//    private Camera mainCamera;
-//    private InputAction touchInput;
+public class Interacter : MonoBehaviour
+{
+    [SerializeField] private LayerMask interactLayer;
+    [SerializeField] private UIRaycast checkUI;
 
-//    private void Awake()
-//    {
-//        mainCamera = Camera.main;
+    private bool closetointeractableobject = false;
+    private Ray interactRay;
+    private Camera mainCamera;
 
-//        // Initialize the input action
-//        touchInput = new InputAction("Touch", binding: "<Touchscreen>/primaryTouch/position");
-//        touchInput.performed += ctx => HandleTouch(ctx);
-//        touchInput.Enable();
-//    }
+    private void Awake()
+    {
+        mainCamera = Camera.main;
+    }
 
-//    private void HandleTouch(InputAction.CallbackContext ctx)
-//    {
-//        Vector2 touchPos = ctx.ReadValue<Vector2>();
+    private void HandleTouch()
+    { 
+        Vector2 touchPos = Touchscreen.current.primaryTouch.position.ReadValue();
+        if (!checkUI.IsPointerOverUI(touchPos))
+        {
+            interactRay = mainCamera.ScreenPointToRay(touchPos);
 
-//        // Check if the touch is over a UI element
-//        if (EventSystem.current.IsPointerOverGameObject(Touchscreen.current.primaryTouch.touchId.ReadValue()))
-//        {
-//            return; // Ignore touch if over UI
-//        }
+            RaycastHit hitInformation;
+            if (Physics.Raycast(interactRay, out hitInformation, 5f, interactLayer.value))
+            {
+                if (hitInformation.collider.gameObject.GetComponent<IBaseInteractableObject>() != null)
+                {
+                    hitInformation.collider.gameObject.GetComponent<IBaseInteractableObject>().HandlePlayerInteraction();
+                }
+            }
+        }
+    }
 
-//        Vector3 touchposworld = mainCamera.ScreenToWorldPoint(new Vector3(touchPos.x, touchPos.y, mainCamera.nearClipPlane));
+    private void Update()
+    {
+        if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.isPressed)
+        {
+            HandleTouch();
+        }
+    }
 
-//        // Debugging visualization
-//        debugray.origin = touchposworld;
-//        debugray.direction = mainCamera.transform.forward;
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.gameObject.GetComponent<IBaseInteractableObject>() != null)
+        {
+            closetointeractableobject = true;
+        }
+    }
 
-//        if (Physics.Raycast(touchposworld, mainCamera.transform.forward, out RaycastHit hitInformation))
-//        {
-//            IBaseInteractableObject interactable = hitInformation.collider.gameObject.GetComponent<IBaseInteractableObject>();
-//            if (interactable != null)
-//            {
-//                interactable.HandlePlayerInteraction();
-//            }
-//        }
-//    }
-
-//    private void OnTriggerEnter(Collider other)
-//    {
-//        if (other.gameObject.GetComponent<IBaseInteractableObject>() != null)
-//        {
-//            closetointeractableobject = true;
-//        }
-//    }
-
-//    private void OnDrawGizmos()
-//    {
-//        Gizmos.DrawRay(debugray);
-//    }
-
-//    private void OnDestroy()
-//    {
-//        touchInput.Disable();
-//        touchInput.performed -= HandleTouch;
-//    }
-//}
+    private void OnDrawGizmos()
+    {
+        Gizmos.DrawRay(interactRay.origin, interactRay.direction.normalized * 5f);
+    }
+}
 
 
 

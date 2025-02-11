@@ -7,7 +7,7 @@ namespace UI
 {
     public class MainMenuButtons : MonoBehaviour
     {
-        public GameObject GameplayUIObject; // Reference to GameObject containing GameplayUI
+        public Canvas GameplayUI;
         public Canvas MainMenu;
         public float clickAnimationDepth = 0.1f;
         public float animationDuration = 0.1f;
@@ -24,38 +24,37 @@ namespace UI
         void Start()
         {
             CreateFadeCanvas();
-
-            // Ensure GameplayUI is initially inactive
-            if (GameplayUIObject != null)
-            {
-                GameplayUIObject.SetActive(false);
-            }
         }
 
         void CreateFadeCanvas()
         {
+            // Create canvas GameObject
             GameObject fadeCanvasObj = new GameObject("FadeCanvas");
             fadeCanvas = fadeCanvasObj.AddComponent<Canvas>();
             fadeCanvas.renderMode = RenderMode.ScreenSpaceOverlay;
-            fadeCanvas.sortingOrder = 999;
+            fadeCanvas.sortingOrder = 999; // Ensure it renders on top
 
+            // Add CanvasScaler
             CanvasScaler scaler = fadeCanvasObj.AddComponent<CanvasScaler>();
             scaler.uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
             scaler.referenceResolution = new Vector2(1920, 1080);
             scaler.matchWidthOrHeight = 0.5f;
 
+            // Create panel GameObject
             GameObject panelObj = new GameObject("FadePanel");
             panelObj.transform.SetParent(fadeCanvasObj.transform, false);
             fadePanel = panelObj.AddComponent<Image>();
             fadePanel.color = new Color(0, 0, 0, 0);
             fadePanel.raycastTarget = false;
 
+            // Set panel to fill entire screen
             RectTransform panelRect = panelObj.GetComponent<RectTransform>();
             panelRect.anchorMin = Vector2.zero;
             panelRect.anchorMax = Vector2.one;
             panelRect.sizeDelta = Vector2.zero;
             panelRect.anchoredPosition = Vector2.zero;
 
+            // Initially disable the canvas
             fadeCanvas.enabled = false;
         }
 
@@ -136,24 +135,17 @@ namespace UI
             }
 
             MainMenu.gameObject.SetActive(false);
-            if (GameplayUIObject != null)
-            {
-                GameplayUIObject.SetActive(true);
-            }
-            else
-            {
-                Debug.LogError("GameplayUIObject reference is missing!");
-            }
+            GameplayUI.gameObject.SetActive(true);
 
             yield return StartCoroutine(FadeOut());
 
             // Cinemachines can be enabled here.
+
         }
 
         IEnumerator LoadGame()
         {
             Debug.Log("Loading Game...");
-
             // Future implementation:
             // 1. Disable MainMenu canvas
             // MainMenu.gameObject.SetActive(false);
@@ -173,14 +165,12 @@ namespace UI
             //    - Load game state from PlayerPrefs or save file
             //    - Initialize game with loaded state
             //    - Switch to gameplay UI
-
             yield break;
         }
 
         IEnumerator Settings()
         {
             Debug.Log("Opening Settings...");
-
             // Future implementation:
             // 1. Disable MainMenu canvas
             // MainMenu.gameObject.SetActive(false);
@@ -197,7 +187,6 @@ namespace UI
 
             // 4. Settings should be saved to PlayerPrefs
             //    when Apply button is clicked
-
             yield break;
         }
 

@@ -1,9 +1,11 @@
 using System.Collections;
 using System.ComponentModel.Design.Serialization;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class InfectedState : IVillagerState
 {
+    
     public void HandleState(VillagerContext context)
     {
         if (context.agent != null)
@@ -12,7 +14,13 @@ public class InfectedState : IVillagerState
             //Debug.Log("Agent isStopped set to: " + context.agent.isStopped);
         }
         context.Animator.SetTrigger("Idle");
-        //context.PlaySound(context.infectedStateClip);
+
+        if (context.audioSource.isPlaying)
+        {
+            context.audioSource.Stop();
+        }
+
+        context.PlaySound(context.infectedClip,true);
         //Debug.Log("Character is now Infected.");
         context.StartCoroutine(ResumeAfterDelay(5f,context));
     }

@@ -265,8 +265,19 @@ MonoBehaviour:
   currentTargetIndex: 0
   pathDeviation: 10
   audioSource: {fileID: -5706771137954160606}
-  IdleStateClip: {fileID: 8300000, guid: 897bc0304d7061146ab28743ef2845ef, type: 3}
-  runningStateClip: {fileID: 8300000, guid: f7fac7694d0251548b06242adb9352bd, type: 3}
+  runningAudioClips:
+  - {fileID: 8300000, guid: 5a9568c47a57d184a8971b095f13f3b8, type: 3}
+  - {fileID: 8300000, guid: afaee77c7ab26a54297ebdcf16e06a1a, type: 3}
+  - {fileID: 8300000, guid: aac4922c4dacf4e498b1d8ac0be0e400, type: 3}
+  - {fileID: 8300000, guid: 3e2ac00d8dcab7a4b84bdd87f88bb2bf, type: 3}
+  - {fileID: 8300000, guid: 4f6f4a2b8a557134bb96744bc6c3591e, type: 3}
+  - {fileID: 8300000, guid: 971841772ba06b448829936f3a13c364, type: 3}
+  - {fileID: 8300000, guid: 53f013be24b80a84e84d507210d5c772, type: 3}
+  - {fileID: 8300000, guid: 50cb6031dea213840ad81b10cf6a00d9, type: 3}
+  - {fileID: 8300000, guid: 5fc1cb84ab41cf644bb8d3832767575e, type: 3}
+  - {fileID: 8300000, guid: e29df112b4d80ba449f191b09a58ced8, type: 3}
+  - {fileID: 8300000, guid: bee40eb0cd979cf4ea2894ab5f211e75, type: 3}
+  infectedClip: {fileID: 8300000, guid: 3a5dd49ae27bd7a4c8ccdd18b8a9cb60, type: 3}
 --- !u!82 &-5706771137954160606
 AudioSource:
   m_ObjectHideFlags: 0
@@ -280,9 +291,9 @@ AudioSource:
   m_audioClip: {fileID: 0}
   m_Resource: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 0.218
+  m_Volume: 0.01
   m_Pitch: 1
-  Loop: 1
+  Loop: 0
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

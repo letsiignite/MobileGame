@@ -43,7 +43,7 @@ namespace UI
 
         public void AddPauseListners(Action callback)
         {
-            //inGameMenu.AddPauseListners(callback);
+            inGameMenu.AddPauseListeners(callback);
         }
 
         public void DeathDisplay(string cause)

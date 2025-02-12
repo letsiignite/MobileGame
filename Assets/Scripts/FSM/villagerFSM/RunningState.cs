@@ -1,8 +1,6 @@
-using System.Collections.Generic;
-using UnityEditor.Rendering.LookDev;
 using UnityEngine;
 using UnityEngine.AI;
-using UnityEngine.Audio;
+
 
 public class RunningState : IVillagerState
 {

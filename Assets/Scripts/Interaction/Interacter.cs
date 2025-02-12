@@ -9,7 +9,6 @@ public class Interacter : MonoBehaviour
     [SerializeField] private LayerMask interactLayer;
     [SerializeField] private UIRaycast checkUI;
 
-    private bool closetointeractableobject = false;
     private Ray interactRay;
     private Camera mainCamera;
 
@@ -44,13 +43,7 @@ public class Interacter : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.gameObject.GetComponent<IBaseInteractableObject>() != null)
-        {
-            closetointeractableobject = true;
-        }
-    }
+   
 
     private void OnDrawGizmos()
     {

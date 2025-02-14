@@ -1,4 +1,4 @@
-//Gaurav's Code (new Input system try not functional)
+//Gaurav's Code (new Input system try, not functional)
 //Modified by Shrey (now functional fully using new input system)
 using Interactable;
 using UnityEngine;

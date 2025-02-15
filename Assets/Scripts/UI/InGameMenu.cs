@@ -1,9 +1,7 @@
-
-using System;
 using System.Collections.Generic;
+using System;
 using UnityEngine;
 using UnityEngine.UI;
-
 
 namespace UI
 {
@@ -12,57 +10,75 @@ namespace UI
         [SerializeField]
         private List<GameObject> uiObjectsToHideOnPause;
         [SerializeField]
-        private GameObject pausePanel;
+        private Canvas pausePanel;
         [SerializeField]
         private Button pauseButton;
         [SerializeField]
         private Button interactButton;
-        private List<Action> pauseListners;
+        private List<Action> pauseListeners;
 
         private void Awake()
         {
-            pauseListners = new List<Action>();
+            pauseListeners = new List<Action>();
         }
 
-        // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
-        { 
-        
-            interactButton.onClick.AddListener(pickup);
+        {
+            
+            if (pauseButton != null)
+            {
+                interactButton.onClick.AddListener(pickup);
+            }
+
+            if (pauseButton != null)
+            {
+                pauseButton.onClick.AddListener(OnPauseClicked);
+            }
         }
 
         private void pickup()
-        { 
-            
+        {
         }
 
         public void OnPauseClicked()
         {
             if (uiObjectsToHideOnPause.Count > 0)
             {
-                Debug.Log("Passed");
-                foreach(GameObject go in uiObjectsToHideOnPause) 
-                { 
-                    go.SetActive(false); 
+                Debug.Log("Passed hide");
+                foreach (GameObject go in uiObjectsToHideOnPause)
+                {
+                    go.SetActive(false);
                 }
             }
 
-            if (pauseListners.Count > 0)
+            if (pauseListeners.Count > 0)
             {
-                foreach (Action callback in pauseListners)
+                foreach (Action callback in pauseListeners)
                 {
                     callback.Invoke();
                 }
             }
-
+            pausePanel.gameObject.SetActive(true);
         }
 
-        public void AddPauseListners(Action callback)
+        public void AddPauseListeners(Action callback)
         {
             Debug.Log("Adding Pause Listener");
-            pauseListners.Add(callback);    
+            pauseListeners.Add(callback);
         }
 
-        
+        public void ResumeGame()
+        {
+            if (uiObjectsToHideOnPause.Count > 0)
+            {
+                Debug.Log("Passed show");
+                foreach (GameObject go in uiObjectsToHideOnPause)
+                {
+                    go.SetActive(true);
+                }
+            }
+
+            pausePanel.gameObject.SetActive(false);
+        }
     }
 }

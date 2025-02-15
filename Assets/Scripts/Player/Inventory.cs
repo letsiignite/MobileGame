@@ -1,5 +1,6 @@
 using Interactable;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,14 +10,18 @@ public class Inventory : MonoBehaviour
     [SerializeField] private Button itemPickUpButton;
     [SerializeField] private RectTransform itemPickUpImage;
     [SerializeField] private LayerMask itemLayer;
-    [SerializeField] private int fullSlotCount = 2;
+    //[SerializeField] private int fullSlotCount = 2;
     [SerializeField] private int totalCapacity = 10;
     [SerializeField] private int currentCapacity = 0;
 
     [Header("Colliders")]
-    [SerializeField] private float overlapSphereRadius = 1;
+    //[SerializeField] private float overlapSphereRadius = 1;
+
+    [Header("Hands")]
+    [SerializeField] private GameObject leftHand;
+    [SerializeField] private GameObject rightHand;
     
-    private Dictionary<string, List<GameObject>> itemList = new Dictionary<string, List<GameObject>>();
+    private Dictionary<string, List<GameObject>> itemDict = new Dictionary<string, List<GameObject>>();
     private GameObject itemInArea;
     private Collider nearestCollider;
 
@@ -25,7 +30,7 @@ public class Inventory : MonoBehaviour
         //Ray ray = new Ray(transform.position, transform.forward);
         //Collider[] colliders = Physics.OverlapSphere(ray.origin, overlapSphereRadius, itemLayer);
 
-        //if(colliders.Length == 0)
+        //if (colliders.Length == 0)
         //{
         //    itemPickUpImage.gameObject.SetActive(false);
         //    return;
@@ -34,12 +39,12 @@ public class Inventory : MonoBehaviour
         //nearestCollider = null;
         //float shortestDistance = float.MaxValue;
 
-        //foreach (Collider collider in colliders) 
+        //foreach (Collider collider in colliders)
         //{
         //    Vector3 closestPointToRay = ClosestPointToRay(ray, collider);
         //    float distanceToCollider = Vector3.Distance(closestPointToRay, ray.direction);
 
-        //    if (distanceToCollider < shortestDistance) 
+        //    if (distanceToCollider < shortestDistance)
         //    {
         //        shortestDistance = distanceToCollider;
         //        nearestCollider = collider;
@@ -47,7 +52,7 @@ public class Inventory : MonoBehaviour
         //}
 
         //Vector3 screenPoint = Camera.main.WorldToScreenPoint(nearestCollider.transform.position);
-        //if (screenPoint.z > 0) 
+        //if (screenPoint.z > 0)
         //{
         //    itemPickUpImage.gameObject.SetActive(true);
         //    itemPickUpImage.position = screenPoint;
@@ -56,6 +61,12 @@ public class Inventory : MonoBehaviour
         //{
         //    itemPickUpImage.gameObject.SetActive(false);
         //}
+    }
+
+    private Vector3 FindSpawnCenter()
+    {
+        Vector3 center = (leftHand.transform.position + rightHand.transform.position)/2 + (Vector3.up * 0.5f) + new Vector3(Random.Range(-.1f, .1f), Random.Range(-.1f, .1f), Random.Range(-.1f, .1f));
+        return center;
     }
 
     //private Vector3 ClosestPointToRay(Ray ray, Collider collider)
@@ -67,11 +78,19 @@ public class Inventory : MonoBehaviour
     //}
 
     /// <summary>
-    /// Used in UI Buttons when buttons are Clicked
+    /// UI Button to active Inventory Panel
     /// </summary>
-    public void ButtonClicked()
+    public void InventoryButtonClicked()
     {
-        nearestCollider.gameObject.GetComponent<IBaseInteractableObject>().HandlePlayerInteraction();
+        leftHand.SetActive(true);
+        rightHand.SetActive(true);
+        foreach (var item in itemDict.Keys)
+        {
+            GameObject itemGO = itemDict[item][0];
+            itemDict[item][0].transform.position = FindSpawnCenter();
+            itemGO.transform.localScale *= 0.25f;
+            itemGO.SetActive(true);
+        }
     }
     
     /// <summary>
@@ -82,14 +101,14 @@ public class Inventory : MonoBehaviour
     {
         if (currentCapacity + item.GetComponent<BaseInteractableObject>().GetWeight() < totalCapacity)
         {
-            if (itemList.ContainsKey(item.name))
+            if (itemDict.ContainsKey(item.name))
             {
-                itemList[item.name].Add(item);
+                itemDict[item.name].Add(item);
             }
             else
             {
                 List<GameObject> newItem = new List<GameObject>(){ item };
-                itemList.Add(item.name, newItem);
+                itemDict.Add(item.name, newItem);
             }
             currentCapacity += item.GetComponent<BaseInteractableObject>().GetWeight();
             item.SetActive(false);
@@ -106,12 +125,12 @@ public class Inventory : MonoBehaviour
     /// <param name="itemName"></param>
     public bool ConsumeItem(GameObject itemName)
     {
-        if (itemList.ContainsKey(itemName.name))
+        if (itemDict.ContainsKey(itemName.name))
         {
-            itemList[itemName.name].Remove(itemList[itemName.name][itemList[itemName.name].Count - 1]);
-            if (itemList[itemName.name].Count <= 0)
+            itemDict[itemName.name].Remove(itemDict[itemName.name][itemDict[itemName.name].Count - 1]);
+            if (itemDict[itemName.name].Count <= 0)
             {
-                itemList.Remove(itemName.name);
+                itemDict.Remove(itemName.name);
             }
             return true;
         }
@@ -120,7 +139,7 @@ public class Inventory : MonoBehaviour
 
     public void UseItemTool(string toolName)
     {
-        if (itemList.ContainsKey(toolName))
+        if (itemDict.ContainsKey(toolName))
             //Right Hand this item
             //Need Discussion for now
             Debug.Log(toolName);

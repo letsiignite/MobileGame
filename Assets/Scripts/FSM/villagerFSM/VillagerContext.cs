@@ -21,9 +21,12 @@ public class VillagerContext : MonoBehaviour
     public PausedState pausedState = new();
 
     public AudioSource audioSource; // Reference to the audio source
-    //public AudioClip infectedStateClip;
-    public AudioClip IdleStateClip;
-    public AudioClip runningStateClip;
+
+    [SerializeField]
+    public List<AudioClip> runningAudioClips;//running audio clips
+    [SerializeField]
+    public AudioClip infectedClip;
+
 
 
     void Start()
@@ -47,7 +50,7 @@ public class VillagerContext : MonoBehaviour
     {
         //Debug.Log(currentState.name);
         //Debug.Log(_currentState);
-        Debug.Log(isPaused);
+        //Debug.Log(isPaused);
         _currentState.UpdateState(this);
     }
     public void SetState(IVillagerState newState)
@@ -80,16 +83,19 @@ public class VillagerContext : MonoBehaviour
         gameManager.AddPauseListners(OnPause);
     }
 
-    public void PlaySound(AudioClip clip)
+    public void PlaySound(AudioClip clip,bool loop = false)
     {
         if (clip == null)
         {
             Debug.LogWarning("Audio clip is missing!");
             return;
         }
-
+        if(audioSource == null)
+        {
+            Debug.LogWarning("Audio source not found");
+        }
         audioSource.clip = clip;
-        audioSource.loop = true; // Set to true if you want continuous sound
+        audioSource.loop = loop;
         audioSource.Play();
     }
 }

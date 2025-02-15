@@ -1,4 +1,5 @@
 using UnityEngine;
+using LevelProgression;
 
 namespace Puzzle
 {
@@ -25,6 +26,7 @@ namespace Puzzle
                 Vector3 newPosition = wall.transform.position;
                 newPosition.y = Mathf.Max(newPosition.y - lowerSpeed * Time.deltaTime, targetYPosition);
                 wall.transform.position = newPosition;
+                GetComponentInParent<LevelProgressionObject>().LevelCompleted();
             }
         }
     }

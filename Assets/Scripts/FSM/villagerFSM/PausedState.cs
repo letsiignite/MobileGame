@@ -1,6 +1,7 @@
 using System.Collections;
 using System.ComponentModel.Design.Serialization;
 using UnityEngine;
+using UnityEngine.Audio;
 
 public class PausedState : IVillagerState
 {
@@ -11,7 +12,10 @@ public class PausedState : IVillagerState
             context.agent.isStopped = true;
         }
         context.Animator.SetTrigger("Idle");
-        context.PlaySound(context.IdleStateClip);
+        if (context.audioSource.isPlaying)
+        {
+            context.audioSource.Stop();
+        }
         Debug.Log("Character is now Idle.");
 
     }

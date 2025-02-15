@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UnityEngine.Playables;
 
 namespace UI
 {
@@ -13,6 +14,7 @@ namespace UI
         public float animationDuration = 0.1f;
         public float actionDelay = 0.5f;
         public float fadeSpeed = 1f;
+        public PlayableDirector timeline;
 
         [SerializeField]
         private List<GameObject> resetableGameObjects = new List<GameObject>();
@@ -125,7 +127,13 @@ namespace UI
             Debug.Log("Starting New Game...");
 
             yield return StartCoroutine(FadeIn());
-
+            //------Cutscene------
+            if (timeline != null)
+            {
+                timeline.Play();
+                yield return new WaitForSeconds((float)timeline.duration); 
+            }
+            //------Cutscene------
             foreach (GameObject obj in resetableGameObjects)
             {
                 if (obj != null)

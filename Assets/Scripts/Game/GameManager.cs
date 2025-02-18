@@ -1,10 +1,12 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using TMPro;
 using UI;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Game
 {
@@ -81,7 +83,20 @@ namespace Game
         { 
             
         }
-
+        public void ReloadCheckpoint(float delay,Transform checkpoint = null)
+        {
+            if(checkpoint == null)
+            {
+                StartCoroutine(ReloadSceneAfterDelay(delay));
+            }
+            // else condition for checkpoint is not yet coded here ---- pending
+        }
+        IEnumerator ReloadSceneAfterDelay(float delay)
+        {
+            Debug.Log("in reloadScene");
+            yield return new WaitForSeconds(delay);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Reload current scene
+        }
         public void SubtitleDisplay(string line , AudioClip voiceLine)
         {
             subtitleScript.DisplayTextWithAudio(line,voiceLine);

@@ -1,12 +1,14 @@
 //Gaurav's Code (new Input system try, not functional)
 //Modified by Shrey (now functional fully using new input system)
 using Interactable;
+using UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class Interacter : MonoBehaviour
 {
     [SerializeField] private LayerMask interactLayer;
+    [SerializeField] private LayerMask uiLayer;
     [SerializeField] private UIRaycast checkUI;
 
     private Ray interactRay;
@@ -18,20 +20,34 @@ public class Interacter : MonoBehaviour
     }
 
     private void HandleTouch()
-    { 
+    {
+        
         Vector2 touchPos = Touchscreen.current.primaryTouch.position.ReadValue();
         if (!checkUI.IsPointerOverUI(touchPos))
         {
+           
             interactRay = mainCamera.ScreenPointToRay(touchPos);
 
+            int layersForInteraction = interactLayer.value | uiLayer.value;
+
             RaycastHit hitInformation;
-            if (Physics.Raycast(interactRay, out hitInformation, 5f, interactLayer.value))
+            if (Physics.Raycast(interactRay, out hitInformation, 5f, layersForInteraction))
             {
-                if (hitInformation.collider.gameObject.GetComponent<IBaseInteractableObject>() != null)
+                var interactable = hitInformation.collider.gameObject.GetComponent<IBaseInteractableObject>();
+                if (interactable != null)
                 {
-                    hitInformation.collider.gameObject.GetComponent<IBaseInteractableObject>().HandlePlayerInteraction();
+                    interactable.HandlePlayerInteraction();
+                    return;
+                }
+
+                var menuButton = hitInformation.collider.gameObject.GetComponent<MainMenuButtons>();
+                if (menuButton != null)
+                {
+                    Debug.Log("In handletouch mainmenubuttons' flow");
+                    menuButton.StartAnimateButtonPress(menuButton.gameObject);
                 }
             }
+
         }
     }
 

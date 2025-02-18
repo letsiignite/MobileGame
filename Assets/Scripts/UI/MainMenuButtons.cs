@@ -2,7 +2,6 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
-using UnityEngine.InputSystem;
 
 namespace UI
 {
@@ -15,11 +14,11 @@ namespace UI
         public float actionDelay = 0.5f;
         public float fadeSpeed = 1f;
 
+        public string buttonName;
+
         [SerializeField]
         private List<GameObject> resetableGameObjects = new List<GameObject>();
 
-        private PlayerInput playerInput;
-        private InputAction buttonAction;
         private Coroutine currentAnimationCoroutine = null;
         private Canvas fadeCanvas;
         private Image fadePanel;
@@ -27,29 +26,7 @@ namespace UI
 
         void Awake()
         {
-            // Get PlayerInput component
-            playerInput = GetComponent<PlayerInput>();
-            if (playerInput == null)
-            {
-                playerInput = gameObject.AddComponent<PlayerInput>();
-            }
-
-            buttonAction = playerInput.actions.FindAction("Click");
             mainCamera = Camera.main;
-        }
-
-        void OnEnable()
-        {
-            // Subscribe to the button action
-            buttonAction.performed += OnButtonPerformed;
-            buttonAction.Enable();
-        }
-
-        void OnDisable()
-        {
-            // Unsubscribe from the button action
-            buttonAction.performed -= OnButtonPerformed;
-            buttonAction.Disable();
         }
 
         void Start()
@@ -57,31 +34,8 @@ namespace UI
             CreateFadeCanvas();
         }
 
-        private void OnButtonPerformed(InputAction.CallbackContext context)
-        {
-            if (!MainMenu.gameObject.activeSelf)
-                return;
-
-            // Get touch position from the Input System
-            if (Touchscreen.current != null)
-            {
-                Vector2 touchPosition = Touchscreen.current.primaryTouch.position.ReadValue();
-                Ray ray = mainCamera.ScreenPointToRay(touchPosition);
-                RaycastHit hit;
-
-                if (Physics.Raycast(ray, out hit))
-                {
-                    GameObject clickedObject = hit.collider.gameObject;
-                    if (currentAnimationCoroutine != null)
-                    {
-                        StopCoroutine(currentAnimationCoroutine);
-                        clickedObject.transform.position = clickedObject.transform.position;
-                    }
-                    currentAnimationCoroutine = StartCoroutine(AnimateButtonPress(clickedObject));
-                }
-            }
-        }
-
+        
+        
         void CreateFadeCanvas()
         {
             // Create canvas GameObject
@@ -113,9 +67,18 @@ namespace UI
             // Initially disable the canvas
             fadeCanvas.enabled = false;
         }
+        public void StartAnimateButtonPress(GameObject button)
+        {
+            if(currentAnimationCoroutine != null)
+            {
+                StopCoroutine(currentAnimationCoroutine);
+            }
+            currentAnimationCoroutine = StartCoroutine(AnimateButtonPress(button));
 
+        }
         IEnumerator AnimateButtonPress(GameObject button)
         {
+
             Vector3 originalPosition = button.transform.position;
             Vector3 pressedPosition = originalPosition - new Vector3(0, clickAnimationDepth, 0);
             button.transform.position = pressedPosition;
@@ -131,7 +94,7 @@ namespace UI
             OnObjectClick(button.name);
         }
 
-        void OnObjectClick(string objectName)
+        public void OnObjectClick(string objectName)
         {
             Debug.Log(objectName + " clicked!");
             switch (objectName)
@@ -164,10 +127,6 @@ namespace UI
                     obj.SetActive(true);
                 }
             }
-
-            MainMenu.gameObject.SetActive(false);
-            GameplayUI.gameObject.SetActive(true);
-
             yield return StartCoroutine(FadeOut());
         }
 
@@ -222,6 +181,7 @@ namespace UI
 
         IEnumerator FadeIn()
         {
+            Debug.Log("fading in");
             fadeCanvas.enabled = true;
             Color panelColor = fadePanel.color;
             panelColor.a = 0f;
@@ -238,15 +198,16 @@ namespace UI
         IEnumerator FadeOut()
         {
             Color panelColor = fadePanel.color;
-
+            Debug.Log("fading out");
             while (panelColor.a > 0)
             {
                 panelColor.a -= Time.deltaTime * fadeSpeed;
                 fadePanel.color = panelColor;
                 yield return null;
             }
-
             fadeCanvas.enabled = false;
+            MainMenu.gameObject.SetActive(false);
+            GameplayUI.gameObject.SetActive(true);
         }
     }
 

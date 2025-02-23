@@ -233,6 +233,7 @@ GameObject:
   - component: {fileID: 7384189465930726432}
   - component: {fileID: 4987877791737038942}
   - component: {fileID: 2166961380318900858}
+  - component: {fileID: 4857436012858360464}
   m_Layer: 5
   m_Name: MainMenu3D
   m_TagString: Untagged
@@ -323,6 +324,20 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
+--- !u!114 &4857436012858360464
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2538727101709613974}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06616bcc79c9d07458c4a8e5f68e8c5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  raycaster: {fileID: 2166961380318900858}
+  eventSystem: {fileID: 0}
 --- !u!1 &2681048346257953100
 GameObject:
   m_ObjectHideFlags: 0

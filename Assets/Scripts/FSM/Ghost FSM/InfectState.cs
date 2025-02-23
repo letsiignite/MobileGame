@@ -35,7 +35,7 @@ namespace GhostFSM
                     }
                     else
                     {
-                        Debug.LogError("VillagerMovement script is not attached to the target villager.");
+                        Debug.LogError("VillagerContext script is not attached to the target villager.");
                     }
                 }
             }

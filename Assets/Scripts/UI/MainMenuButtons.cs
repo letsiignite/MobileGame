@@ -2,6 +2,7 @@ using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
+using UI;
 
 namespace UI
 {
@@ -223,3 +224,11 @@ namespace UI
         }
     }
 }
+
+
+//var menuButton = hitInformation.collider.gameObject.GetComponent<MainMenuButtons>();
+//if (menuButton != null)
+//{
+//    Debug.Log("In handletouch mainmenubuttons' flow");
+//    menuButton.StartAnimateButtonPress(menuButton.gameObject);
+//}

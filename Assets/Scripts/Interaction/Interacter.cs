@@ -1,5 +1,5 @@
 //Gaurav's Code (new Input system try, not functional)
-//Modified by Shrey (now functional fully using new input system)
+//Modified by Shrey (now functional fully using new input system)using Interactable;
 using Interactable;
 using UI;
 using UnityEngine;
@@ -11,7 +11,6 @@ public class Interacter : MonoBehaviour
     [SerializeField] private LayerMask uiLayer;
     [SerializeField] private UIRaycast checkUI;
 
-    private Ray interactRay;
     private Camera mainCamera;
 
     private void Awake()
@@ -21,33 +20,32 @@ public class Interacter : MonoBehaviour
 
     private void HandleTouch()
     {
-        
         Vector2 touchPos = Touchscreen.current.primaryTouch.position.ReadValue();
+
+        // Check if the touch is over a UI element
         if (!checkUI.IsPointerOverUI(touchPos))
         {
-           
-            interactRay = mainCamera.ScreenPointToRay(touchPos);
+            Ray interactRay = mainCamera.ScreenPointToRay(touchPos);
+            int layersForInteraction = uiLayer.value | interactLayer.value;
 
-            int layersForInteraction = interactLayer.value | uiLayer.value;
-
-            RaycastHit hitInformation;
-            if (Physics.Raycast(interactRay, out hitInformation, 5f, layersForInteraction))
+            if (Physics.Raycast(interactRay, out RaycastHit hitInformation, 5f, layersForInteraction))
             {
-                var interactable = hitInformation.collider.gameObject.GetComponent<IBaseInteractableObject>();
+                // Check if the hit object has an interactable component
+                var interactable = hitInformation.collider.GetComponent<IBaseInteractableObject>();
                 if (interactable != null)
                 {
                     interactable.HandlePlayerInteraction();
                     return;
                 }
 
-                var menuButton = hitInformation.collider.gameObject.GetComponent<MainMenuButtons>();
-                if (menuButton != null)
+                // Check if the hit object has a DoorController component
+                var door = hitInformation.collider.gameObject.GetComponent<DoorCtrl>();
+                if (door != null)
                 {
-                    Debug.Log("In handletouch mainmenubuttons' flow");
-                    menuButton.StartAnimateButtonPress(menuButton.gameObject);
+                    Debug.Log("Toggling Door Animation");
+                    door.ToggleDoor(); // Toggle the door using its own state
                 }
             }
-
         }
     }
 
@@ -59,21 +57,16 @@ public class Interacter : MonoBehaviour
         }
     }
 
-   
-
     private void OnDrawGizmos()
     {
-        Gizmos.DrawRay(interactRay.origin, interactRay.direction.normalized * 5f);
+        if (mainCamera != null)
+        {
+            Ray interactRay = mainCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+            Gizmos.color = Color.red;
+            Gizmos.DrawRay(interactRay.origin, interactRay.direction.normalized * 5f);
+        }
     }
 }
-
-
-
-
-
-
-
-
 
 
 

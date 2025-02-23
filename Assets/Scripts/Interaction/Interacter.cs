@@ -22,7 +22,7 @@ public class Interacter : MonoBehaviour
     {
         Vector2 touchPos = Touchscreen.current.primaryTouch.position.ReadValue();
 
-        // Check if the touch is over a UI element
+       
         if (!checkUI.IsPointerOverUI(touchPos))
         {
             Ray interactRay = mainCamera.ScreenPointToRay(touchPos);
@@ -30,7 +30,7 @@ public class Interacter : MonoBehaviour
 
             if (Physics.Raycast(interactRay, out RaycastHit hitInformation, 5f, layersForInteraction))
             {
-                // Check if the hit object has an interactable component
+              
                 var interactable = hitInformation.collider.GetComponent<IBaseInteractableObject>();
                 if (interactable != null)
                 {
@@ -38,12 +38,19 @@ public class Interacter : MonoBehaviour
                     return;
                 }
 
-                // Check if the hit object has a DoorController component
+             
                 var door = hitInformation.collider.gameObject.GetComponent<DoorCtrl>();
                 if (door != null)
                 {
-                    Debug.Log("Toggling Door Animation");
+                    //Debug.Log("Toggling Door Animation");
                     door.ToggleDoor(); // Toggle the door using its own state
+                }
+
+                var mainMenuInfo = hitInformation.collider.gameObject.GetComponent<MainMenuButtons>();
+                if(mainMenuInfo != null)
+                {
+                    Debug.Log("In mainMenu buttons flow");
+                    mainMenuInfo.StartAnimateButtonPress(mainMenuInfo.gameObject);
                 }
             }
         }

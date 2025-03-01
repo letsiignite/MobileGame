@@ -21,16 +21,12 @@ namespace Game
         private UIManager uiManager;
         [SerializeField]
         private Subtitles subtitleScript;
+        public event Action OnCameraShake;
 
         /// <summary>
         /// This is stupid, but I want to see how it works out.
         /// </summary>
         /// <returns></returns>
-        public GameManager GetGameManager()
-        {
-            return this;
-        }
-
         public GEntityAI GetGhostController()
         {
             return ghostAi;
@@ -79,10 +75,9 @@ namespace Game
         {
             uiManager.ShowHintsAndWarnings(msg);
         }
-        public void Interact()
-        { 
-            
-        }
+       
+
+        //Respawning Player after death
         public void ReloadCheckpoint(float delay,Transform checkpoint = null)
         {
             if(checkpoint == null)
@@ -95,16 +90,25 @@ namespace Game
         {
             Debug.Log("in reloadScene");
             yield return new WaitForSeconds(delay);
-            SceneManager.LoadScene(SceneManager.GetActiveScene().name); // Reload current scene
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
         }
+
+
+
+
         public void SubtitleDisplay(string line , AudioClip voiceLine)
         {
             subtitleScript.DisplayTextWithAudio(line,voiceLine);
         }
-        // Update is called once per frame
-        void Update()
-        {
 
+
+        //fire CameraShake
+        public void TriggerCameraShake()
+        {
+            if (OnCameraShake != null)
+            {
+                OnCameraShake.Invoke(); 
+            }
         }
     }
 }

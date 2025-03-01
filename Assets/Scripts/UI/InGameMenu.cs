@@ -25,7 +25,7 @@ namespace UI
         void Start()
         {
             
-            if (pauseButton != null)
+            if (interactButton != null)
             {
                 interactButton.onClick.AddListener(pickup);
             }
@@ -63,7 +63,7 @@ namespace UI
 
         public void AddPauseListeners(Action callback)
         {
-            Debug.Log("Adding Pause Listener");
+            //Debug.Log("Adding Pause Listener");
             pauseListeners.Add(callback);
         }
 

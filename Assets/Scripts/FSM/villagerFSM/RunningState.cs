@@ -24,7 +24,7 @@ public class RunningState : IVillagerState
         PlayRandomClip(context);
 
         context.Animator.SetTrigger("Run");
-        Debug.Log("setting run trigger");
+        //Debug.Log("setting run trigger");
     }
     void PlayRandomClip(VillagerContext context)
     {

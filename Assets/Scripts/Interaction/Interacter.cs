@@ -1,5 +1,6 @@
 //Gaurav's Code (new Input system try, not functional)
 //Modified by Shrey (now functional fully using new input system)using Interactable;
+using Game;
 using Interactable;
 using UI;
 using UnityEngine;
@@ -42,7 +43,8 @@ public class Interacter : MonoBehaviour
                 var door = hitInformation.collider.gameObject.GetComponent<DoorCtrl>();
                 if (door != null)
                 {
-                    //Debug.Log("Toggling Door Animation");
+                    //Debug.Log("Toggling Door Animation
+                    GameManager._instance.TriggerCameraShake();
                     door.ToggleDoor(); // Toggle the door using its own state
                 }
 

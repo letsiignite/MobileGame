@@ -1,66 +1,53 @@
+//Gaurav's Code (new Input system try not functional)
+//Modified by Shrey (now functional fully using new input system)
 using Interactable;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.EventSystems;
+using UnityEngine.InputSystem;
 
-public class interacter : MonoBehaviour
+public class Interacter : MonoBehaviour
 {
-    private bool closetointeractableobject = false;
-    private Ray debugray;
+    [SerializeField] private LayerMask interactLayer;
+    [SerializeField] private UIRaycast checkUI;
 
-    // start is called once before the first execution of update after the monobehaviour is created
-    void start()
+    private Ray interactRay;
+    private Camera mainCamera;
+
+    private void Awake()
     {
-
+        mainCamera = Camera.main;
     }
 
-    // update is called once per frame
-    void update()
-    {
-        if (Input.touchCount > 0)
+    private void HandleTouch()
+    { 
+        Vector2 touchPos = Touchscreen.current.primaryTouch.position.ReadValue();
+        if (!checkUI.IsPointerOverUI(touchPos))
         {
-            foreach (Touch touch in Input.touches)
+            interactRay = mainCamera.ScreenPointToRay(touchPos);
+
+            RaycastHit hitInformation;
+            if (Physics.Raycast(interactRay, out hitInformation, 5f, interactLayer.value))
             {
-                int id = touch.fingerId;
-                if (EventSystem.current.IsPointerOverGameObject(id))
+                if (hitInformation.collider.gameObject.GetComponent<IBaseInteractableObject>() != null)
                 {
-                    // finger over ui
-                }
-                else
-                {
-                    //debug.log("pass 1-1");
-                    Vector3 touchposworld = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
-
-                    //debugging tech
-                    debugray.origin = touchposworld;
-                    debugray.direction = Camera.main.transform.forward;
-
-                    RaycastHit hitinformation;
-                    if (Physics.Raycast(touchposworld, Camera.main.transform.forward, out hitinformation))
-                    {
-
-                        if (hitinformation.collider.gameObject.GetComponent<IBaseInteractableObject>() != null)
-                        {
-                            //debug.log("pass 1");
-                            hitinformation.collider.gameObject.GetComponent<IBaseInteractableObject>().handleplayerinteraction();
-                        }
-                    }
+                    hitInformation.collider.gameObject.GetComponent<IBaseInteractableObject>().HandlePlayerInteraction();
                 }
             }
         }
     }
 
-    private void ontriggerenter(Collider other)
+    private void Update()
     {
-        if (other.gameObject.GetComponent<IBaseInteractableObject>() != null)
+        if (Touchscreen.current != null && Touchscreen.current.primaryTouch.press.isPressed)
         {
-            closetointeractableobject = true;
+            HandleTouch();
         }
     }
 
-    private void ondrawgizmos()
+   
+
+    private void OnDrawGizmos()
     {
-       Gizmos.DrawRay(debugray);
+        Gizmos.DrawRay(interactRay.origin, interactRay.direction.normalized * 5f);
     }
 }
 
@@ -97,56 +84,64 @@ public class interacter : MonoBehaviour
 
 
 
+
+//Shrey's Code (Old Input system) 
+
 //using Interactable;
+//using System.Collections.Generic;
 //using UnityEngine;
 //using UnityEngine.EventSystems;
-//using UnityEngine.InputSystem;
+//using UnityEngine.UI;
 
 //public class Interacter : MonoBehaviour
 //{
+//    [SerializeField] private LayerMask item;
 //    private bool closeToInteractableObject = false;
-//    private Ray debugRay;
-//    private Camera mainCamera;
-//    private PlayerInput playerInput;
+//    private Ray interactRay;
 
-//    private void Awake()
+//    public GraphicRaycaster raycaster;
+//    public EventSystem eventSystem;
+
+//    // Start is called once before the first execution of Update after the MonoBehaviour is created
+//    void Start()
 //    {
-//        mainCamera = Camera.main;
-//        playerInput = new PlayerInput();
-//        //playerInput.Touch.TouchPress.performed += ctx => HandleTouch(ctx);
+
 //    }
 
-//    private void OnEnable()
+//    // Update is called once per frame
+//    void Update()
 //    {
-//        //playerInput.Enable();
-//    }
-
-//    private void OnDisable()
-//    {
-//        //playerInput.Disable();
-//    }
-
-//    private void HandleTouch(InputAction.CallbackContext context)
-//    {
-//        if (Touchscreen.current == null || Touchscreen.current.primaryTouch.press.isPressed == false)
-//            return;
-
-//        Vector2 touchPosition = Touchscreen.current.primaryTouch.position.ReadValue();
-//        if (EventSystem.current.IsPointerOverGameObject())
-//            return; // Ignore UI touches
-
-//        Vector3 touchPosWorld = mainCamera.ScreenToWorldPoint(new Vector3(touchPosition.x, touchPosition.y, mainCamera.nearClipPlane));
-//        debugRay.origin = touchPosWorld;
-//        debugRay.direction = mainCamera.transform.forward;
-
-//        if (Physics.Raycast(touchPosWorld, mainCamera.transform.forward, out RaycastHit hitInfo))
+//        if (Input.touchCount > 0)
 //        {
-//            var interactable = hitInfo.collider.GetComponent<IBaseInteractableObject>();
-//            if (interactable != null)
+//            foreach (Touch touch in Input.touches)
 //            {
-//                interactable.HandlePlayerInteraction();
+//                int id = touch.fingerId;
+//                if (touch.phase == TouchPhase.Began && !EventSystem.current.IsPointerOverGameObject(id))
+//                {
+//                    interactRay = Camera.main.ScreenPointToRay(touch.position);
+
+//                    RaycastHit hitInformation;
+//                    if (Physics.Raycast(interactRay, out hitInformation, 5f, item.value))
+//                    {
+//                        if (hitInformation.collider.gameObject.GetComponent<IBaseInteractableObject>() != null)
+//                        {
+//                            hitInformation.collider.gameObject.GetComponent<IBaseInteractableObject>().HandlePlayerInteraction();
+//                        }
+//                    }
+//                }
 //            }
 //        }
+//    }
+
+//    private bool IsPointerOverUI(Vector2 position)
+//    {
+//        PointerEventData eventData = new PointerEventData(eventSystem);
+//        eventData.position = position;
+
+//        List<RaycastResult> results = new List<RaycastResult>();
+//        raycaster.Raycast(eventData, results);
+
+//        return results.Count > 0;
 //    }
 
 //    private void OnTriggerEnter(Collider other)
@@ -159,7 +154,10 @@ public class interacter : MonoBehaviour
 
 //    private void OnDrawGizmos()
 //    {
-//        Gizmos.DrawRay(debugRay);
+//        Gizmos.DrawRay(interactRay.origin, interactRay.direction.normalized * 5f);
+
+//        Gizmos.color = Color.red;
+//        Gizmos.DrawRay(interactRay);
 //    }
 //}
 

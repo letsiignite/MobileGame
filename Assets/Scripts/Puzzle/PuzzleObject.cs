@@ -1,4 +1,5 @@
 using Game;
+using LevelProgression;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
@@ -28,6 +29,7 @@ namespace Puzzle
                                                // this object must be setup in the scene and assigned.
         [SerializeField]
         private GameObject activationObject; // This object must be in players inventory to activate this object. this object must be placed in the scene and added through inspector.
+        
         //[SerializeField]
         //private GameObject completionObject; // This object will be activated or deactivated to finish the puzzle. This will be assigned to last object in puzzle.
 
@@ -38,6 +40,7 @@ namespace Puzzle
         [SerializeField] private Transform[] houseTransforms; // Array of house positions
         [SerializeField] private Vector3 spawnAreaSize = new Vector3(1, 0, 1);
 
+        private LevelProgressionObject levelObject;
         private Inventory inventory;
         private const string ACTIVATION_OBJECT_NOT_FOUND = "Find the key object";
         public void Activate()
@@ -104,6 +107,7 @@ namespace Puzzle
                     {
                         GameManager._instance.GetGhostController().SetDistractedObject(gameObject);
                         Deactivate();
+                        levelObject.LevelCompleted();
                         Debug.Log("Problem Solved");
                     }
                 }
@@ -124,7 +128,8 @@ namespace Puzzle
                 this.transform.position = spawnPosition;
                 //Debug.Log("spawned lvl 4 object");
             }
-            
+
+            levelObject = GetComponentInParent<LevelProgressionObject>();
         }
 
         // Update is called once per frame

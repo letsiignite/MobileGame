@@ -16,6 +16,8 @@ namespace Game
         [SerializeField]
         private GEntityAI ghostAi;
         [SerializeField]
+        private GameObject playerRef;
+        [SerializeField]
         private List<VillagerContext> villagerContext;
         [SerializeField]
         private UIManager uiManager;
@@ -30,6 +32,11 @@ namespace Game
         public GEntityAI GetGhostController()
         {
             return ghostAi;
+        }
+
+        public GameObject GetPlayerReference()
+        {
+            return playerRef;
         }
 
         private void Awake()

@@ -9,10 +9,11 @@ using UnityEngine.InputSystem;
 public class Interacter : MonoBehaviour
 {
     [SerializeField] private LayerMask interactLayer;
-    [SerializeField] private LayerMask uiLayer;
     [SerializeField] private UIRaycast checkUI;
 
     private Camera mainCamera;
+
+    public LayerMask InteractLayer { get => interactLayer; }
 
     private void Awake()
     {
@@ -27,9 +28,8 @@ public class Interacter : MonoBehaviour
         if (!checkUI.IsPointerOverUI(touchPos))
         {
             Ray interactRay = mainCamera.ScreenPointToRay(touchPos);
-            int layersForInteraction = uiLayer.value | interactLayer.value;
 
-            if (Physics.Raycast(interactRay, out RaycastHit hitInformation, 5f, layersForInteraction))
+            if (Physics.Raycast(interactRay, out RaycastHit hitInformation, 5f, interactLayer))
             {
               
                 var interactable = hitInformation.collider.GetComponent<IBaseInteractableObject>();

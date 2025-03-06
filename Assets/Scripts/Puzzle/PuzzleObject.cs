@@ -3,6 +3,7 @@ using LevelProgression;
 using System.Collections.Generic;
 using UnityEngine;
 using System;
+using Interactable;
 
 namespace Puzzle
 {
@@ -12,6 +13,7 @@ namespace Puzzle
         CONSUME,    // this object will be assigned to activationObject of the puzzle object that will consume it.
     }
 
+    [RequireComponent(typeof(BaseInteractableObject))]
     /// <summary>
     /// this system must be redone.
     /// </summary>

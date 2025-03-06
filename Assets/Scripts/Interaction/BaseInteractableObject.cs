@@ -1,3 +1,4 @@
+using Game;
 using Puzzle;
 using UnityEngine;
 
@@ -14,7 +15,6 @@ namespace Interactable
     public class BaseInteractableObject : MonoBehaviour, IBaseInteractableObject
     {
         [SerializeField] private InteractType interactType;
-        [SerializeField] private GameObject playerRef;
         [SerializeField] private int weight = 3;
 
         public int GetWeight()
@@ -29,17 +29,18 @@ namespace Interactable
         {
             // Here we must trigger the action - add to inventory (water, food and collectables will go to inventory),
             // trigger the hint (if it is a hint object) or trigger the related event or animation, etc.
-            if (TryGetComponent<HintObject>(out hintObject))
+            if (interactType == InteractType.HINT_ITEM)
             {
+                TryGetComponent<HintObject>(out hintObject);
                 hintObject.TriggerHint();
             }
-            if (interactType == InteractType.CONSUME_ITEM)
+            else if (interactType == InteractType.CONSUME_ITEM)
             {
-                playerRef.GetComponent<Inventory>().ConsumeItem(gameObject);
+                GameManager._instance.GetPlayerReference().GetComponent<Inventory>().ConsumeItem(gameObject);
             }
             else if (interactType == InteractType.PICKUP_ITEM)
             {
-                playerRef.GetComponent<Inventory>().PickUpItem(gameObject);
+                GameManager._instance.GetPlayerReference().GetComponent<Inventory>().PickUpItem(gameObject);
             }
             else if(interactType == InteractType.PUZZLE_ITEM)
             {
@@ -65,7 +66,7 @@ namespace Interactable
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-
+            gameObject.layer = GameManager._instance.GetPlayerReference().GetComponent<Interacter>().InteractLayer;
         }
 
         // Update is called once per frame

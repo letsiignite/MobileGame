@@ -1,3 +1,4 @@
+using Game;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -24,6 +25,9 @@ namespace LevelProgression
         [Header("Ghost")]
         [SerializeField] private Transform ghostWarpPosition;
         [SerializeField] private GameObject ghostRef;
+
+        [Header("Player Data")]
+        [SerializeField] private string checkPointName;
 
         public void HandleGates()
         {
@@ -88,6 +92,9 @@ namespace LevelProgression
             ToggleObjects();
             HandleGates();
             Debug.Log("Pass - 1");
+            SaveLoadData currData = GameManager._instance.GetPlayerReference().GetComponent<SaveLoadData>();
+            currData.checkPointName = checkPointName;
+            SaveSystem.SavePlayer(currData);
         }
 
         private void OnTriggerEnter(Collider other)

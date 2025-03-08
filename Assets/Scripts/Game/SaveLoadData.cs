@@ -10,6 +10,11 @@ public class SaveLoadData : MonoBehaviour
     private void Start()
     {
         saveDatainstance = this;
+        PlayerData loadedData = SaveSystem.LoadPlayer();
+        if(loadedData == null)
+        {
+            SavePlayer();
+        }
     }
 
     #region UI Methods

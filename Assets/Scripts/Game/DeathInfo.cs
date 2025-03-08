@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using Game;
 
 
 namespace UI
@@ -12,9 +13,19 @@ namespace UI
         private GameObject deathPanel; // Reference to the UI panel
         [SerializeField]
         private TMP_Text deathMessageText; // Reference to the Text component
+        [SerializeField]
+        private GameManager gameManager;
 
         public void Init(GameObject deathPanelReference)
         {
+            if (gameManager != null)
+            {
+                Debug.Log("GameManager found!");
+            }
+            else
+            {
+                Debug.LogError("GameManager not found in the scene!");
+            }
             // Assign the panel reference passed from the GameManager
             if (deathPanel != null)
             {
@@ -33,7 +44,9 @@ namespace UI
             deathPanel.SetActive(true);
 
             string message = GetDeathMessage(cause);
-            deathMessageText.text = message;
+            deathMessageText.text = message+"\n"+"You will relive to fulfill your Destiny";
+
+            gameManager.ReloadCheckpoint(3);
 
             //Debug.Log("Displayed death message: " + message);
         }

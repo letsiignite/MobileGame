@@ -1,6 +1,8 @@
-//Gaurav's Code (new Input system try not functional)
-//Modified by Shrey (now functional fully using new input system)
+//Gaurav's Code (new Input system try, not functional)
+//Modified by Shrey (now functional fully using new input system)using Interactable;
+using Game;
 using Interactable;
+using UI;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -9,8 +11,9 @@ public class Interacter : MonoBehaviour
     [SerializeField] private LayerMask interactLayer;
     [SerializeField] private UIRaycast checkUI;
 
-    private Ray interactRay;
     private Camera mainCamera;
+
+    public LayerMask InteractLayer { get => interactLayer; }
 
     private void Awake()
     {
@@ -18,18 +21,38 @@ public class Interacter : MonoBehaviour
     }
 
     private void HandleTouch()
-    { 
+    {
         Vector2 touchPos = Touchscreen.current.primaryTouch.position.ReadValue();
+
+       
         if (!checkUI.IsPointerOverUI(touchPos))
         {
-            interactRay = mainCamera.ScreenPointToRay(touchPos);
+            Ray interactRay = mainCamera.ScreenPointToRay(touchPos);
 
-            RaycastHit hitInformation;
-            if (Physics.Raycast(interactRay, out hitInformation, 5f, interactLayer.value))
+            if (Physics.Raycast(interactRay, out RaycastHit hitInformation, 5f, interactLayer))
             {
-                if (hitInformation.collider.gameObject.GetComponent<IBaseInteractableObject>() != null)
+              
+                var interactable = hitInformation.collider.GetComponent<IBaseInteractableObject>();
+                if (interactable != null)
                 {
-                    hitInformation.collider.gameObject.GetComponent<IBaseInteractableObject>().HandlePlayerInteraction();
+                    interactable.HandlePlayerInteraction();
+                    return;
+                }
+
+             
+                var door = hitInformation.collider.gameObject.GetComponent<DoorCtrl>();
+                if (door != null)
+                {
+                    //Debug.Log("Toggling Door Animation
+                    GameManager._instance.TriggerCameraShake();
+                    door.ToggleDoor(); // Toggle the door using its own state
+                }
+
+                var mainMenuInfo = hitInformation.collider.gameObject.GetComponent<MainMenuButtons>();
+                if(mainMenuInfo != null)
+                {
+                    Debug.Log("In mainMenu buttons flow");
+                    mainMenuInfo.StartAnimateButtonPress(mainMenuInfo.gameObject);
                 }
             }
         }
@@ -43,21 +66,16 @@ public class Interacter : MonoBehaviour
         }
     }
 
-   
-
     private void OnDrawGizmos()
     {
-        Gizmos.DrawRay(interactRay.origin, interactRay.direction.normalized * 5f);
+        if (mainCamera != null)
+        {
+            Ray interactRay = mainCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+            Gizmos.color = Color.red;
+            Gizmos.DrawRay(interactRay.origin, interactRay.direction.normalized * 5f);
+        }
     }
 }
-
-
-
-
-
-
-
-
 
 
 

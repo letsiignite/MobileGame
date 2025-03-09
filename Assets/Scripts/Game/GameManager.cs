@@ -1,3 +1,4 @@
+using LevelProgression;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,7 +15,7 @@ namespace Game
     {
         public static GameManager _instance;
         [SerializeField]
-        private GEntityAI ghostAi;
+        private GameObject ghostRef;
         [SerializeField]
         private GameObject playerRef;
         [SerializeField]
@@ -31,12 +32,22 @@ namespace Game
         /// <returns></returns>
         public GEntityAI GetGhostController()
         {
-            return ghostAi;
+            return ghostRef.GetComponent<GEntityAI>();
+        }
+
+        public GameObject GetGhostRef()
+        {
+            return ghostRef;
         }
 
         public GameObject GetPlayerReference()
         {
             return playerRef;
+        }
+
+        public LevelProgression.LevelProgression GetLevelProgObj()
+        {
+            return playerRef.GetComponent<LevelProgression.LevelProgression>();
         }
 
         private void Awake()
@@ -59,7 +70,7 @@ namespace Game
 
         private void InitAllObjects()
         {
-            ghostAi.Init(this);
+            ghostRef.GetComponent<GEntityAI>().Init(this);
             villagerContext = FindObjectsByType<VillagerContext>(FindObjectsSortMode.None).ToList();
             foreach (VillagerContext context in villagerContext)
             {
@@ -100,14 +111,10 @@ namespace Game
             SceneManager.LoadScene(SceneManager.GetActiveScene().name); 
         }
 
-
-
-
         public void SubtitleDisplay(string line , AudioClip voiceLine)
         {
             subtitleScript.DisplayTextWithAudio(line,voiceLine);
         }
-
 
         //fire CameraShake
         public void TriggerCameraShake()

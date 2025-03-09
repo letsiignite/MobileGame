@@ -17,6 +17,7 @@ namespace LevelProgression
         [Header("Safe Area")]
         [SerializeField] private GameObject[] enableObjects;
         [SerializeField] private GameObject[] disableObjects;
+        [SerializeField] private GameObject respawnPoint;
 
         [Header("Gates")]
         [SerializeField] private List<GateData> gates = new List<GateData>();
@@ -28,6 +29,9 @@ namespace LevelProgression
 
         [Header("Player Data")]
         [SerializeField] private string checkPointName;
+
+        public GameObject RespawnPoint { get => respawnPoint; }
+        public Transform GhostWarpPosition { get => ghostWarpPosition; }
 
         public void HandleGates()
         {
@@ -53,13 +57,13 @@ namespace LevelProgression
 
         private void TransportGhost()
         {
-            if (ghostWarpPosition != null)
+            if (GhostWarpPosition != null)
             {
                 if (ghostRef != null)
                 {
                     ghostRef.GetComponent<NavMeshAgent>().ResetPath();
-                    ghostRef.GetComponent<NavMeshAgent>().Warp(ghostWarpPosition.position);
-                    ghostRef.transform.rotation = ghostWarpPosition.rotation;
+                    ghostRef.GetComponent<NavMeshAgent>().Warp(GhostWarpPosition.position);
+                    ghostRef.transform.rotation = GhostWarpPosition.rotation;
                 }
             }
         }
@@ -92,9 +96,7 @@ namespace LevelProgression
             ToggleObjects();
             HandleGates();
             Debug.Log("Pass - 1");
-            SaveLoadData currData = GameManager._instance.GetPlayerReference().GetComponent<SaveLoadData>();
-            currData.checkPointName = checkPointName;
-            SaveSystem.SavePlayer(currData);
+            GameManager._instance.GetLevelProgObj().SavePlayerData();
         }
 
         private void OnTriggerEnter(Collider other)

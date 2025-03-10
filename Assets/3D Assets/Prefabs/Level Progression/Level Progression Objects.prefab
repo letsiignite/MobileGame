@@ -379,7 +379,9 @@ GameObject:
   - component: {fileID: 2940018735478145510}
   - component: {fileID: 4466170534276693818}
   - component: {fileID: 1358320764337369402}
-  m_Layer: 0
+  - component: {fileID: 4649219795117969800}
+  - component: {fileID: 7258787156449380623}
+  m_Layer: 3
   m_Name: Pendant
   m_TagString: Pendant
   m_Icon: {fileID: 0}
@@ -395,7 +397,7 @@ Transform:
   m_GameObject: {fileID: 96283074668485602}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -0.00015, y: 0.00845, z: -0.00206}
+  m_LocalPosition: {x: 93.56, y: -16.29, z: 4.172}
   m_LocalScale: {x: 0.002, y: 0.002, z: 0.002}
   m_ConstrainProportionsScale: 1
   m_Children:
@@ -511,7 +513,7 @@ Rigidbody:
   m_ImplicitCom: 1
   m_ImplicitTensor: 1
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -536,6 +538,40 @@ MonoBehaviour:
   houseTransforms: []
   spawnAreaSize: {x: 1, y: 0, z: 1}
 --- !u!114 &1358320764337369402
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 96283074668485602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ded159e80b1386348b8bd90cd108ffbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactType: 2
+  weight: 3
+--- !u!114 &4649219795117969800
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 96283074668485602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cef8da769bd930245b85c39678ae85a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInitializationObject: 0
+  puzzleObjectsToActivate: []
+  type: 0
+  puzzleInfoProvider: {fileID: 0}
+  activationObject: {fileID: 0}
+  isCompletionObject: 0
+  houseTransforms: []
+  spawnAreaSize: {x: 1, y: 0, z: 1}
+--- !u!114 &7258787156449380623
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -732,7 +768,7 @@ GameObject:
   - component: {fileID: 131182498266770737}
   - component: {fileID: 1162600400151408923}
   - component: {fileID: 7777021458583578214}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_037
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1071,7 +1107,7 @@ GameObject:
   - component: {fileID: 502592585156193294}
   - component: {fileID: 6935444716474061252}
   - component: {fileID: 1653490527743992979}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_055
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1537,7 +1573,7 @@ GameObject:
   - component: {fileID: 343655136760577643}
   - component: {fileID: 1966489222596024140}
   - component: {fileID: 5501994658400326779}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_065
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -1977,7 +2013,7 @@ GameObject:
   - component: {fileID: 8952321736926131035}
   - component: {fileID: 42920897166740461}
   - component: {fileID: 716202041630271544}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_025
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2289,7 +2325,7 @@ GameObject:
   - component: {fileID: 7249452119646883046}
   - component: {fileID: 7095592871229301885}
   - component: {fileID: 7862868617817576032}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_061
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2796,7 +2832,7 @@ GameObject:
   - component: {fileID: 6032400980605404816}
   - component: {fileID: 6525926484291407669}
   - component: {fileID: 3385292821560687147}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_019
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2917,7 +2953,7 @@ GameObject:
   - component: {fileID: 3711833873304323459}
   - component: {fileID: 778003521444098270}
   - component: {fileID: 192654416590062304}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_040
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3175,7 +3211,7 @@ GameObject:
   - component: {fileID: 5968250454999535548}
   - component: {fileID: 3024841828631275124}
   - component: {fileID: 2320591150325869710}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_030
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3830,7 +3866,7 @@ GameObject:
   - component: {fileID: 3074920727209757493}
   - component: {fileID: 7675372587504424934}
   - component: {fileID: 2025583910147635712}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_016
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -3916,7 +3952,7 @@ GameObject:
   - component: {fileID: 3517454119446972316}
   - component: {fileID: 6949818536274446152}
   - component: {fileID: 2340477324828842957}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_060
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4287,7 +4323,7 @@ GameObject:
   - component: {fileID: 586983398766707563}
   - component: {fileID: 1260579559094655036}
   - component: {fileID: 4422709220037215110}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_064
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -4603,8 +4639,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableObjects:
   - {fileID: 8063007444023335208}
+  - {fileID: 5422733145888490725}
   disableObjects:
   - {fileID: 1563334458628362641}
+  - {fileID: 2570624743394801369}
   respawnPoint: {fileID: 7951071567364548126}
   gates:
   - gateScript: {fileID: 1758051801658009612}
@@ -4712,7 +4750,7 @@ GameObject:
   - component: {fileID: 464611207839273072}
   - component: {fileID: 623709965582028487}
   - component: {fileID: 3317448494873172789}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_026
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5087,7 +5125,7 @@ GameObject:
   - component: {fileID: 1318290263193341762}
   - component: {fileID: 1890682807640621884}
   - component: {fileID: 4813867685613701347}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_042
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -5667,7 +5705,7 @@ GameObject:
   - component: {fileID: 2269892210545967377}
   - component: {fileID: 6818849423194869915}
   - component: {fileID: 3693554643377354576}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_048
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6284,7 +6322,7 @@ GameObject:
   - component: {fileID: 2527966814040761817}
   - component: {fileID: 1938840024657041251}
   - component: {fileID: 7764902249221801784}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: pendant_circle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6796,7 +6834,7 @@ GameObject:
   - component: {fileID: 3665674159477800739}
   - component: {fileID: 3532642409559259772}
   - component: {fileID: 5651669067449799771}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_050
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -6968,7 +7006,7 @@ GameObject:
   - component: {fileID: 2011697766614713487}
   - component: {fileID: 1949484657918623534}
   - component: {fileID: 9121324462338336548}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_034
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7054,7 +7092,7 @@ GameObject:
   - component: {fileID: 4907561558064173383}
   - component: {fileID: 6482088079938035235}
   - component: {fileID: 4778211616505197057}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_053
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7171,7 +7209,7 @@ GameObject:
   - component: {fileID: 2914379088440963208}
   - component: {fileID: 271034952740856973}
   - component: {fileID: 6386654491662533120}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_036
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -7668,7 +7706,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &765169815412068049
 Transform:
   m_ObjectHideFlags: 0
@@ -8345,7 +8383,7 @@ GameObject:
   - component: {fileID: 6244021314357959983}
   - component: {fileID: 5237207653671898772}
   - component: {fileID: 1952351168564558882}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_039
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8431,7 +8469,7 @@ GameObject:
   - component: {fileID: 7380473244960744506}
   - component: {fileID: 5521172940530366315}
   - component: {fileID: 8397606882786437480}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_049
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8689,7 +8727,7 @@ GameObject:
   - component: {fileID: 5919913254936351246}
   - component: {fileID: 1692813919056168167}
   - component: {fileID: 3524080963040244487}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_029
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -8775,7 +8813,7 @@ GameObject:
   - component: {fileID: 7438651353050653716}
   - component: {fileID: 7009160762911497338}
   - component: {fileID: 6510658940212723220}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_010
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9354,7 +9392,7 @@ GameObject:
   - component: {fileID: 2888783093922818458}
   - component: {fileID: 4723837611956560113}
   - component: {fileID: 2696700632002008929}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_004
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9440,7 +9478,7 @@ GameObject:
   - component: {fileID: 6200780383994255306}
   - component: {fileID: 5903864270269093033}
   - component: {fileID: 3274957086366773309}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_058
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -9993,7 +10031,7 @@ GameObject:
   - component: {fileID: 3519380942778824682}
   - component: {fileID: 7255435930452901765}
   - component: {fileID: 2832735258064254353}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_024
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10079,7 +10117,7 @@ GameObject:
   - component: {fileID: 9147142308440668208}
   - component: {fileID: 8278302990272829086}
   - component: {fileID: 7037168763934516041}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_023
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10540,7 +10578,7 @@ GameObject:
   - component: {fileID: 6254510422385209966}
   - component: {fileID: 7726928246969961097}
   - component: {fileID: 38954497060964949}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_028
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10626,7 +10664,7 @@ GameObject:
   - component: {fileID: 5421878455788958821}
   - component: {fileID: 6733805299006401056}
   - component: {fileID: 4170588439125439635}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_014
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -10748,7 +10786,7 @@ GameObject:
   - component: {fileID: 2024389646542669372}
   - component: {fileID: 6573675596506339102}
   - component: {fileID: 1347640788845115940}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_051
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11092,7 +11130,7 @@ GameObject:
   - component: {fileID: 1330175594193381784}
   - component: {fileID: 455246786144654353}
   - component: {fileID: 206453771852339190}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_047
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11749,7 +11787,7 @@ GameObject:
   - component: {fileID: 3763818521150912638}
   - component: {fileID: 7841442176484918564}
   - component: {fileID: 5359169092632963416}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_046
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -11835,7 +11873,7 @@ GameObject:
   - component: {fileID: 2190973150466241174}
   - component: {fileID: 5056834847528592725}
   - component: {fileID: 5167700060127162481}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_041
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12531,7 +12569,7 @@ GameObject:
   - component: {fileID: 3084109855626633588}
   - component: {fileID: 4675474964967534142}
   - component: {fileID: 3941252937536786569}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: pendant_heart
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -12703,7 +12741,7 @@ GameObject:
   - component: {fileID: 4864670220626931925}
   - component: {fileID: 5029518607361387079}
   - component: {fileID: 5410814116636817002}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_056
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13031,7 +13069,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &5858239015283993787
 Transform:
   m_ObjectHideFlags: 0
@@ -13062,8 +13100,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableObjects:
   - {fileID: 1563334458628362641}
+  - {fileID: 2570624743394801369}
   disableObjects:
   - {fileID: 5046237514905178815}
+  - {fileID: 8307001028624831789}
   respawnPoint: {fileID: 7771403081693247977}
   gates:
   - gateScript: {fileID: 3468586564512735430}
@@ -13105,6 +13145,7 @@ Transform:
   m_Children:
   - {fileID: 2649172631925061105}
   - {fileID: 7899513489338530453}
+  - {fileID: 2666452828084948578}
   - {fileID: 5049756932886734382}
   - {fileID: 6606955850341720178}
   m_Father: {fileID: 1239103475237004198}
@@ -13237,7 +13278,7 @@ GameObject:
   - component: {fileID: 9190465872343443836}
   - component: {fileID: 4447663727900118020}
   - component: {fileID: 2489416938651015392}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_020
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13323,7 +13364,7 @@ GameObject:
   - component: {fileID: 2749982381678172625}
   - component: {fileID: 5904810333991443178}
   - component: {fileID: 6804455942202072749}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_043
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13613,7 +13654,7 @@ GameObject:
   - component: {fileID: 6578064250197921710}
   - component: {fileID: 4833879677781718629}
   - component: {fileID: 3252001934207260594}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_031
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -13734,7 +13775,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1951747163422612993
 Transform:
   m_ObjectHideFlags: 0
@@ -13935,7 +13976,7 @@ GameObject:
   - component: {fileID: 5517866313061283236}
   - component: {fileID: 4273526005501963061}
   - component: {fileID: 6855347371567692233}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_013
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -14437,7 +14478,7 @@ GameObject:
   - component: {fileID: 6767148932352577050}
   - component: {fileID: 1141073549035379887}
   - component: {fileID: 8129120314855904517}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_052
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15029,7 +15070,7 @@ GameObject:
   - component: {fileID: 5553351790363687657}
   - component: {fileID: 1952408611686378746}
   - component: {fileID: 9037997410627533044}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_057
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15115,7 +15156,7 @@ GameObject:
   - component: {fileID: 1543701378784688940}
   - component: {fileID: 3625267571545121535}
   - component: {fileID: 7965443240300122634}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_021
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15725,7 +15766,7 @@ GameObject:
   - component: {fileID: 8612523800269202171}
   - component: {fileID: 1309559109294087584}
   - component: {fileID: 622403385233240065}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_045
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -15919,7 +15960,7 @@ GameObject:
   - component: {fileID: 5032814542361630700}
   - component: {fileID: 5035767689007205627}
   - component: {fileID: 6217080648524833082}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_005
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16557,7 +16598,7 @@ GameObject:
   - component: {fileID: 3952241040677100072}
   - component: {fileID: 4414399108911439238}
   - component: {fileID: 2315777403775861617}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_017
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -16819,7 +16860,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &708808763516171830
 Transform:
   m_ObjectHideFlags: 0
@@ -16848,7 +16889,7 @@ GameObject:
   - component: {fileID: 3690874613920966468}
   - component: {fileID: 8239108076056338121}
   - component: {fileID: 890517091814582363}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_006
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17126,6 +17167,114 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!1 &6816636443131270818
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 6839079382840821694}
+  - component: {fileID: 2743364832315856609}
+  - component: {fileID: 4310511652002984561}
+  - component: {fileID: 6694786487750113013}
+  m_Layer: 0
+  m_Name: Hint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &6839079382840821694
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6816636443131270818}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: -0.17364825, z: 0, w: 0.9848078}
+  m_LocalPosition: {x: -0.24, y: 1.19, z: 1.42}
+  m_LocalScale: {x: 1, y: 0, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 7767921040236330307}
+  m_LocalEulerAnglesHint: {x: 0, y: -20, z: 0}
+--- !u!33 &2743364832315856609
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6816636443131270818}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!23 &4310511652002984561
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6816636443131270818}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RayTracingAccelStructBuildFlagsOverride: 0
+  m_RayTracingAccelStructBuildFlags: 1
+  m_SmallMeshCulling: 1
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 6c5aae2e878a60b4892bae3f781c3d76, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!65 &6694786487750113013
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6816636443131270818}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 3
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &6837483193621742524
 GameObject:
   m_ObjectHideFlags: 0
@@ -17223,7 +17372,7 @@ GameObject:
   - component: {fileID: 4594622078722536044}
   - component: {fileID: 6437551598629126639}
   - component: {fileID: 7488731818361790570}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_054
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -17428,7 +17577,7 @@ GameObject:
   - component: {fileID: 465747651632432369}
   - component: {fileID: 3540868857251117546}
   - component: {fileID: 1418511264018906994}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_018
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18228,7 +18377,7 @@ GameObject:
   - component: {fileID: 2051626003674247807}
   - component: {fileID: 3547910510082225353}
   - component: {fileID: 7694025303633500882}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_011
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18431,7 +18580,7 @@ GameObject:
   - component: {fileID: 6831427143408898671}
   - component: {fileID: 4013918943660575853}
   - component: {fileID: 1490649345210493822}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_063
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18598,7 +18747,7 @@ GameObject:
   - component: {fileID: 8848124682959229422}
   - component: {fileID: 3100277601478917335}
   - component: {fileID: 6481486943933664569}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_062
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18888,7 +19037,7 @@ GameObject:
   - component: {fileID: 5795423279098058722}
   - component: {fileID: 3875444492802924980}
   - component: {fileID: 1099958725354751215}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_007
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -18974,7 +19123,7 @@ GameObject:
   - component: {fileID: 3690795598417405400}
   - component: {fileID: 5615085611122425236}
   - component: {fileID: 8298580308967100682}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_032
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19318,7 +19467,7 @@ GameObject:
   - component: {fileID: 1487690161209661301}
   - component: {fileID: 2645748143661920482}
   - component: {fileID: 195905410166592690}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_038
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19404,7 +19553,7 @@ GameObject:
   - component: {fileID: 5642795463195128267}
   - component: {fileID: 4860075287222239975}
   - component: {fileID: 7139691131510784705}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_002
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19667,7 +19816,7 @@ GameObject:
   - component: {fileID: 1633809305124054646}
   - component: {fileID: 2422251765194313996}
   - component: {fileID: 6991412151670009871}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_033
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -19993,8 +20142,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableObjects:
   - {fileID: 5046237514905178815}
+  - {fileID: 8307001028624831789}
   disableObjects:
   - {fileID: 7814542204701094499}
+  - {fileID: 954932691127774206}
   respawnPoint: {fileID: 5401787573459596993}
   gates:
   - gateScript: {fileID: 7629533906353571877}
@@ -20095,7 +20246,7 @@ GameObject:
   - component: {fileID: 5469563335541764587}
   - component: {fileID: 6987507658472077378}
   - component: {fileID: 6721673839776244757}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_022
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20353,7 +20504,7 @@ GameObject:
   - component: {fileID: 1993214797142686817}
   - component: {fileID: 9028162521778799744}
   - component: {fileID: 2626956880725765446}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_012
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -20648,8 +20799,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enableObjects:
   - {fileID: 7056186234428232093}
+  - {fileID: 6598807388725812194}
   disableObjects:
   - {fileID: 8063007444023335208}
+  - {fileID: 5422733145888490725}
   respawnPoint: {fileID: 5952161277275080574}
   gates:
   - gateScript: {fileID: 3127346670298711441}
@@ -20669,7 +20822,7 @@ GameObject:
   - component: {fileID: 2968907559360828369}
   - component: {fileID: 2990281179763597152}
   - component: {fileID: 9129427289008380835}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_027
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21157,7 +21310,7 @@ GameObject:
   - component: {fileID: 5703500180846639557}
   - component: {fileID: 5517689202984605112}
   - component: {fileID: 7205951138124234869}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_008
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21382,7 +21535,7 @@ GameObject:
   - component: {fileID: 2617993197208229808}
   - component: {fileID: 5711514375189311102}
   - component: {fileID: 3869393810588850682}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_003
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -21472,7 +21625,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6018657367030141525
 Transform:
   m_ObjectHideFlags: 0
@@ -21522,6 +21675,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7396689588514522901}
+  - {fileID: 6839079382840821694}
   m_Father: {fileID: 9055406258569290606}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &8431497403184720235
@@ -21621,7 +21775,7 @@ GameObject:
   - component: {fileID: 1254123854477720851}
   - component: {fileID: 8799970364579375984}
   - component: {fileID: 3685453218786360127}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_015
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22511,7 +22665,7 @@ GameObject:
   - component: {fileID: 4120148562028084785}
   - component: {fileID: 7406870131894821191}
   - component: {fileID: 1250262721209893886}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_009
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22832,7 +22986,7 @@ GameObject:
   - component: {fileID: 767995129014330638}
   - component: {fileID: 4571060368932859543}
   - component: {fileID: 2938195524256319488}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_044
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -22918,7 +23072,7 @@ GameObject:
   - component: {fileID: 1796816186006224435}
   - component: {fileID: 6561126108666855458}
   - component: {fileID: 2106730393764354707}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_035
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23004,7 +23158,7 @@ GameObject:
   - component: {fileID: 5054964594983242917}
   - component: {fileID: 7364283882474274067}
   - component: {fileID: 1794998226464504060}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Pindant_link_059
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -23122,6 +23276,10 @@ PrefabInstance:
     - target: {fileID: 2779025179287775735, guid: 92d092379327d40849b090e24befc739, type: 3}
       propertyPath: m_Name
       value: Drawer
+      objectReference: {fileID: 0}
+    - target: {fileID: 2779025179287775735, guid: 92d092379327d40849b090e24befc739, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3304168787953070925, guid: 92d092379327d40849b090e24befc739, type: 3}
       propertyPath: m_LocalScale.x
@@ -23262,6 +23420,145 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 6943976818291309894, guid: 92d092379327d40849b090e24befc739, type: 3}
   m_PrefabInstance: {fileID: 88578215145740971}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &2666452828084557052
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 3603056086442296421}
+    m_Modifications:
+    - target: {fileID: 100030, guid: 8c8ba908765f8584e9f2948b64581a1a, type: 3}
+      propertyPath: m_Name
+      value: Level2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400030, guid: 8c8ba908765f8584e9f2948b64581a1a, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -34.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 400030, guid: 8c8ba908765f8584e9f2948b64581a1a, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.58
+      objectReference: {fileID: 0}
+    - target: {fileID: 400030, guid: 8c8ba908765f8584e9f2948b64581a1a, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 80.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 400030, guid: 8c8ba908765f8584e9f2948b64581a1a, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 400030, guid: 8c8ba908765f8584e9f2948b64581a1a, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400030, guid: 8c8ba908765f8584e9f2948b64581a1a, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0.7071068
+      objectReference: {fileID: 0}
+    - target: {fileID: 400030, guid: 8c8ba908765f8584e9f2948b64581a1a, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400030, guid: 8c8ba908765f8584e9f2948b64581a1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 400030, guid: 8c8ba908765f8584e9f2948b64581a1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 400030, guid: 8c8ba908765f8584e9f2948b64581a1a, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 400030, guid: 8c8ba908765f8584e9f2948b64581a1a, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1298478884594263898}
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 8c8ba908765f8584e9f2948b64581a1a, type: 3}
+--- !u!4 &2666452828084948578 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 400030, guid: 8c8ba908765f8584e9f2948b64581a1a, type: 3}
+  m_PrefabInstance: {fileID: 2666452828084557052}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3880482344090043859
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2666452828084948578}
+    m_Modifications:
+    - target: {fileID: 2873051970925470345, guid: df582b74041d24785b6ec696e7fb0e9c, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.09999999
+      objectReference: {fileID: 0}
+    - target: {fileID: 2873051970925470345, guid: df582b74041d24785b6ec696e7fb0e9c, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.10000001
+      objectReference: {fileID: 0}
+    - target: {fileID: 2873051970925470345, guid: df582b74041d24785b6ec696e7fb0e9c, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.10000002
+      objectReference: {fileID: 0}
+    - target: {fileID: 2873051970925470345, guid: df582b74041d24785b6ec696e7fb0e9c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -0.14300539
+      objectReference: {fileID: 0}
+    - target: {fileID: 2873051970925470345, guid: df582b74041d24785b6ec696e7fb0e9c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.915
+      objectReference: {fileID: 0}
+    - target: {fileID: 2873051970925470345, guid: df582b74041d24785b6ec696e7fb0e9c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: -0.013999954
+      objectReference: {fileID: 0}
+    - target: {fileID: 2873051970925470345, guid: df582b74041d24785b6ec696e7fb0e9c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2873051970925470345, guid: df582b74041d24785b6ec696e7fb0e9c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2873051970925470345, guid: df582b74041d24785b6ec696e7fb0e9c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2873051970925470345, guid: df582b74041d24785b6ec696e7fb0e9c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2873051970925470345, guid: df582b74041d24785b6ec696e7fb0e9c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 90
+      objectReference: {fileID: 0}
+    - target: {fileID: 2873051970925470345, guid: df582b74041d24785b6ec696e7fb0e9c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2873051970925470345, guid: df582b74041d24785b6ec696e7fb0e9c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3212457585077647411, guid: df582b74041d24785b6ec696e7fb0e9c, type: 3}
+      propertyPath: m_Name
+      value: Pendant
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: df582b74041d24785b6ec696e7fb0e9c, type: 3}
+--- !u!4 &1298478884594263898 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2873051970925470345, guid: df582b74041d24785b6ec696e7fb0e9c, type: 3}
+  m_PrefabInstance: {fileID: 3880482344090043859}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &4641847491781081198
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23364,6 +23661,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Dropping Platform
       objectReference: {fileID: 0}
+    - target: {fileID: 2629380924087258085, guid: 7de4129cd6181e045b0af511b11073e1, type: 3}
+      propertyPath: m_Layer
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 7469639740654472279, guid: 7de4129cd6181e045b0af511b11073e1, type: 3}
       propertyPath: m_LocalPosition.x
       value: 63.718353
@@ -23404,6 +23705,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9153192510093163732, guid: 7de4129cd6181e045b0af511b11073e1, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 25016aceb34a7f44d96a4180d46afe17, type: 2}
     m_RemovedComponents:
     - {fileID: 5886572781988393215, guid: 7de4129cd6181e045b0af511b11073e1, type: 3}
     m_RemovedGameObjects: []
@@ -23415,6 +23720,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2629380924087258085, guid: 7de4129cd6181e045b0af511b11073e1, type: 3}
       insertIndex: -1
       addedObject: {fileID: 7415296307800364198}
+    - targetCorrespondingSourceObject: {fileID: 2629380924087258085, guid: 7de4129cd6181e045b0af511b11073e1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4218721979398608403}
+    - targetCorrespondingSourceObject: {fileID: 2629380924087258085, guid: 7de4129cd6181e045b0af511b11073e1, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5014884979577007241}
   m_SourcePrefab: {fileID: 100100000, guid: 7de4129cd6181e045b0af511b11073e1, type: 3}
 --- !u!4 &2499736841290636765 stripped
 Transform:
@@ -23441,6 +23752,40 @@ MonoBehaviour:
   interactType: 2
   weight: 3
 --- !u!114 &7415296307800364198
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7017967945483868783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cef8da769bd930245b85c39678ae85a9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isInitializationObject: 0
+  puzzleObjectsToActivate: []
+  type: 1
+  puzzleInfoProvider: {fileID: 0}
+  activationObject: {fileID: 96283074668485602}
+  isCompletionObject: 0
+  houseTransforms: []
+  spawnAreaSize: {x: 1, y: 0, z: 1}
+--- !u!114 &4218721979398608403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7017967945483868783}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ded159e80b1386348b8bd90cd108ffbf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  interactType: 2
+  weight: 3
+--- !u!114 &5014884979577007241
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -23536,7 +23881,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 100030, guid: 8c8ba908765f8584e9f2948b64581a1a, type: 3}
       propertyPath: m_Name
-      value: Sphere
+      value: Level1
       objectReference: {fileID: 0}
     - target: {fileID: 400030, guid: 8c8ba908765f8584e9f2948b64581a1a, type: 3}
       propertyPath: m_LocalPosition.x

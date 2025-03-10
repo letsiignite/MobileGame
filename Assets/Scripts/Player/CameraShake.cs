@@ -1,9 +1,14 @@
 using UnityEngine;
 using System.Collections;
 using Game;
+using Cinemachine;
+using Unity.VisualScripting;
+using System;
 
 public class CameraShake : MonoBehaviour
 {
+    [SerializeField]
+    private  CinemachineVirtualCamera playerCamera;
     private void OnEnable()
     {
         StartCoroutine(WaitForGameManager());
@@ -24,28 +29,27 @@ public class CameraShake : MonoBehaviour
     {
         GameManager._instance.OnCameraShake -= ShakeCamera;
     }
-
     private void ShakeCamera()
     {
-        StartCoroutine(Shake(50f, 10f));
+        StartCoroutine(Shake(2f, 3f));
     }
 
     private IEnumerator Shake(float duration, float magnitude)
     {
-        Vector3 originalPosition = transform.position;
-        float elapsed = 0f;
-
-        while (elapsed < duration)
-        {
-            float x = Random.Range(-1f, 1f) * magnitude;
-            float y = Random.Range(-1f, 1f) * magnitude;
-
-            transform.position = originalPosition + new Vector3(x, y, 0);
-            Debug.Log(transform.localPosition);
-            elapsed += Time.deltaTime;
-            yield return null;
+        CinemachineBasicMultiChannelPerlin cinemachineBasicMultiChannelPerlin = playerCamera.GetCinemachineComponent<CinemachineBasicMultiChannelPerlin>();
+        Debug.Log(cinemachineBasicMultiChannelPerlin);
+        cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = magnitude;
+        cinemachineBasicMultiChannelPerlin.m_FrequencyGain = duration;
+        yield return new WaitForSeconds(duration);
+        while(cinemachineBasicMultiChannelPerlin.m_AmplitudeGain>0)
+        {   
+            cinemachineBasicMultiChannelPerlin.m_AmplitudeGain -= Time.deltaTime;
+            if(cinemachineBasicMultiChannelPerlin.m_AmplitudeGain < 0)
+            {
+                cinemachineBasicMultiChannelPerlin.m_AmplitudeGain = 0;
+            }
         }
+            
 
-        transform.localPosition = originalPosition; 
     }
 }

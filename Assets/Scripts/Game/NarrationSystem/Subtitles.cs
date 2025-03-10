@@ -4,18 +4,18 @@ using UnityEngine.Audio;
 
 public class Subtitles : MonoBehaviour
 {
-    private TextMeshPro subtitleBox;
+    private TextMeshProUGUI subtitleBox;
+    [SerializeField]
     private AudioSource Narrator;
     [SerializeField]
-    private float displayDuration = 3f; 
-    //private void Awake()
-    //{
-    //    subtitleBox = GetComponent<TextMeshPro>();
-    //    subtitleBox.gameObject.SetActive(false); 
-    //}
+    private float displayDuration = 3f;
+    private void Awake()
+    {
+        subtitleBox = GetComponent<TextMeshProUGUI>();
+    }
     public void DisplayTextWithAudio(string text, AudioClip voiceClip)
     {
-
+        Debug.Log("In here");
         CancelInvoke(nameof(HideText));
 
         // Play the voice line
@@ -28,7 +28,7 @@ public class Subtitles : MonoBehaviour
 
         // Display the subtitle
         subtitleBox.text = text;
-        subtitleBox.gameObject.SetActive(true);
+        gameObject.SetActive(true);
 
 
         float duration = voiceClip != null ? voiceClip.length : displayDuration;
@@ -39,7 +39,7 @@ public class Subtitles : MonoBehaviour
     {
         if (subtitleBox != null)
         {
-            subtitleBox.gameObject.SetActive(false);
+            gameObject.SetActive(false);
         }
     }
 }

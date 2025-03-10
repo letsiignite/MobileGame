@@ -11,6 +11,7 @@ public class Interacter : MonoBehaviour
     [SerializeField] private LayerMask interactLayer;
     [SerializeField] private LayerMask uiLayer;
     [SerializeField] private UIRaycast checkUI;
+    [SerializeField] private AudioClip testClip;
 
     private Camera mainCamera;
 
@@ -43,8 +44,9 @@ public class Interacter : MonoBehaviour
                 var door = hitInformation.collider.gameObject.GetComponent<DoorCtrl>();
                 if (door != null)
                 {
-                    //Debug.Log("Toggling Door Animation
-                    GameManager._instance.TriggerCameraShake();
+                    //Debug.Log("Toggling Door Animation");
+                    //GameManager._instance.TriggerCameraShake();
+                    GameManager._instance.SubtitleDisplay("door opened, don't angry me, shut up, something just like this", testClip);
                     door.ToggleDoor(); // Toggle the door using its own state
                 }
 

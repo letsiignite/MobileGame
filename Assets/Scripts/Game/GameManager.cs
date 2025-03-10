@@ -19,8 +19,9 @@ namespace Game
         private List<VillagerContext> villagerContext;
         [SerializeField]
         private UIManager uiManager;
-        [SerializeField]
         private Subtitles subtitleScript;
+        [SerializeField]
+        private GameObject subtitleObj;
         public event Action OnCameraShake;
 
         /// <summary>
@@ -46,6 +47,7 @@ namespace Game
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
+            subtitleScript = subtitleObj.GetComponent<Subtitles>();
             Invoke("InitAllObjects", 0.4f);
         }
 

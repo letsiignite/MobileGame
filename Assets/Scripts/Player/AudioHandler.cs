@@ -4,7 +4,6 @@ public class AudioHandler : MonoBehaviour
 {
     [Header("Audio Settings")]
     public AudioSource playerAudioSrc;
-    public AudioSource sfxAudioSrc;
     public AudioClip heavyBreathingClip;
     public AudioClip jumpClip;
 
@@ -23,15 +22,9 @@ public class AudioHandler : MonoBehaviour
         {
             Debug.LogError("Add Player Audio source to audiohandler");
         }
-        if (sfxAudioSrc == null)
-        {
-            Debug.LogError("Add sfx Audio source to audiohandler");
-        }
         playerAudioSrc.loop = false;
         playerAudioSrc.playOnAwake = false;
 
-        sfxAudioSrc.loop = false;
-        sfxAudioSrc.playOnAwake = false;
     }
 
     void Update()
@@ -82,14 +75,6 @@ public class AudioHandler : MonoBehaviour
     }
     private void PlaySfx(AudioClip clip)
     {
-        if (sfxAudioSrc.clip != clip)
-        {
-            sfxAudioSrc.Stop();
-            sfxAudioSrc.clip = clip;
-        }
-        if (!sfxAudioSrc.isPlaying && clip)
-        {
-            sfxAudioSrc.Play();
-        }
+        playerAudioSrc.PlayOneShot(clip);
     }
 }

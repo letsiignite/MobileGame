@@ -5,8 +5,11 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
-    path: Assets/Scenes/Night.unity
+  - enabled: 0
+    path: Assets/Scenes/Night Puzzle Setup.unity
     guid: 3397056f38d06774eaaf0b6d73756542
+  - enabled: 1
+    path: Assets/NightUI.unity
+    guid: d721edf275107c846ae6444acbd86a4c
   m_configObjects: {}
   m_UseUCBPForAssetBundles: 0

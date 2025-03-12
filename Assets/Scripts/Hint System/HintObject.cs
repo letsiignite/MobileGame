@@ -1,3 +1,4 @@
+using Game;
 using Interactable;
 using LevelProgression;
 using System.Collections.Generic;
@@ -23,6 +24,11 @@ public class HintObject : MonoBehaviour
     private bool animBoolTrig;
     private AudioClip clip;
     private LevelProgressionObject levelObject;
+
+    private void Start()
+    {
+        levelObject = GetComponentInParent<LevelProgressionObject>();
+    }
 
     public void TriggerHint()
     {

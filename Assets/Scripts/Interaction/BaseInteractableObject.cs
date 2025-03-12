@@ -66,7 +66,7 @@ namespace Interactable
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         void Start()
         {
-            gameObject.layer = GameManager._instance.GetPlayerReference().GetComponent<Interacter>().InteractLayer;
+            gameObject.layer = LayerMask.NameToLayer("Item");
         }
 
         // Update is called once per frame

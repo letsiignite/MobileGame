@@ -903,9 +903,6 @@ MonoBehaviour:
   interactLayer:
     serializedVersion: 2
     m_Bits: 8
-  uiLayer:
-    serializedVersion: 2
-    m_Bits: 32
   checkUI: {fileID: 0}
   testClip: {fileID: 8300000, guid: 3c5e662627131064e90947be1889787d, type: 3}
 --- !u!114 &7976374559944179665

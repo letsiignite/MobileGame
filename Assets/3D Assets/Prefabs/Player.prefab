@@ -138,7 +138,7 @@ Transform:
   m_GameObject: {fileID: 1668935932227939163}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.375, z: 0}
+  m_LocalPosition: {x: 0, y: 1.3749999, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -519,7 +519,7 @@ MonoBehaviour:
   m_Priority: 10
   m_StandbyUpdate: 2
   m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 0}
+  m_Follow: {fileID: 7233083793579663157}
   m_Lens:
     FieldOfView: 40
     OrthographicSize: 10
@@ -669,6 +669,7 @@ GameObject:
   - component: {fileID: 5857199821456353748}
   - component: {fileID: 7299590154327314633}
   - component: {fileID: 4587441775907503342}
+  - component: {fileID: 5731664950195683157}
   m_Layer: 7
   m_Name: Player
   m_TagString: Player
@@ -887,7 +888,7 @@ MonoBehaviour:
   crouch: 0
   analogMovement: 0
   cursorLocked: 0
-  cursorInputForLook: 0
+  cursorInputForLook: 1
 --- !u!114 &2662983634670818124
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1069,6 +1070,21 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &5731664950195683157
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4679212055576885083}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6ebe192f2d8a8743b10f597704bbbb4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sanityMeter: 1
+  timeTaken: 1
+  levelIndex: 0
 --- !u!1 &4818014697464227900
 GameObject:
   m_ObjectHideFlags: 0
@@ -1244,7 +1260,7 @@ Light:
   serializedVersion: 11
   m_Type: 2
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 5
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.80208

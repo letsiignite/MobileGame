@@ -59,4 +59,9 @@ public class SaveLoadData : MonoBehaviour
         GameManager._instance.GetLevelProgObj().levelObjects[levelIndex-1].LevelCompleted();
         GameManager._instance.GetLevelProgObj().levelObjects[levelIndex].gameObject.SetActive(true);
     }
+
+    public void LateUpdate()
+    {
+        this.enabled = true;
+    }
 }

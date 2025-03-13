@@ -326506,10 +326506,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 136714418476231643, guid: 75bccc521edc1cf4d977b17f1e77488f, type: 3}
-      propertyPath: houseTransforms.Array.size
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 801796431750306754, guid: 75bccc521edc1cf4d977b17f1e77488f, type: 3}
       propertyPath: ghostRef
       value: 
@@ -326562,10 +326558,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: Level Progression Objects
       objectReference: {fileID: 0}
-    - target: {fileID: 6816636443131270818, guid: 75bccc521edc1cf4d977b17f1e77488f, type: 3}
-      propertyPath: m_StaticEditorFlags
-      value: 2147483647
-      objectReference: {fileID: 0}
     - target: {fileID: 7177361282463437673, guid: 75bccc521edc1cf4d977b17f1e77488f, type: 3}
       propertyPath: ghostRef
       value: 
@@ -326579,16 +326571,11 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 509176476}
     - target: {fileID: 8595504168752370955, guid: 75bccc521edc1cf4d977b17f1e77488f, type: 3}
-      propertyPath: HintText
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 8595504168752370955, guid: 75bccc521edc1cf4d977b17f1e77488f, type: 3}
       propertyPath: 'h_enableObjects.Array.data[0]'
       value: 
       objectReference: {fileID: 860285900}
     m_RemovedComponents: []
-    m_RemovedGameObjects:
-    - {fileID: 1180028947428078400, guid: 75bccc521edc1cf4d977b17f1e77488f, type: 3}
+    m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75bccc521edc1cf4d977b17f1e77488f, type: 3}

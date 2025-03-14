@@ -24,7 +24,6 @@ namespace UI
 
         void Start()
         {
-            
             if (interactButton != null)
             {
                 interactButton.onClick.AddListener(pickup);

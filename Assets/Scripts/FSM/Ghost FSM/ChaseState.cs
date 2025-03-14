@@ -1,3 +1,4 @@
+using Game;
 using UnityEngine;
 
 namespace GhostFSM
@@ -21,7 +22,7 @@ namespace GhostFSM
                 timer = 0f;
                 if(Vector3.Distance(geAI.playerRef.transform.position, geAI.transform.position) <= geAI.agent.stoppingDistance)
                 {
-                    geAI.gameManager.DeathDisplay("Ghost");
+                    GameManager._instance.DeathDisplay("Ghost");
                 }
             }
             else if (!geAI.los.visibleEnemy.Contains(geAI.playerRef) || timer > geAI.chaseTime)

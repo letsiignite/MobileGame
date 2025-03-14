@@ -9,11 +9,14 @@ namespace GhostFSM
         private float rangeOfSearch = 10f;
         private bool walkPointSet;
         private Vector3 destPoint;
+        private GEntityAI geAI;
 
         public override void EnterState(GEntityAI geAI)
         {
             //data change related like changing speed and other attributes.
             name = "Wander";
+            this.geAI = geAI;
+            geAI.getNewWayPoint += GetWayPoint;
         }
 
         public override void UpdateState(GEntityAI geAI)
@@ -24,11 +27,13 @@ namespace GhostFSM
                 //Switch To Alert State
                 //Debug.Log(geAI.playerIsNearby);
                 geAI.SwitchState(geAI.alertState);
+                geAI.getNewWayPoint -= GetWayPoint;
             }
             else if (geAI.los.visibleEnemy.Count != 0)
             {
                 //Infect others
                 geAI.SwitchState(geAI.infectState);
+                geAI.getNewWayPoint -= GetWayPoint;
             }
             else
             {
@@ -42,12 +47,12 @@ namespace GhostFSM
                 }
                 else
                 {
-                    GetWayPoint(geAI);
+                    geAI.getNewWayPoint.Invoke();
                 }
             }
         }
 
-        private void GetWayPoint(GEntityAI geAI)
+        public void GetWayPoint()
         {
             float z = Random.Range(-rangeOfSearch, rangeOfSearch);
             float x = Random.Range(-rangeOfSearch, rangeOfSearch);
@@ -55,7 +60,7 @@ namespace GhostFSM
             //destPoint = new Vector3(geAI.transform.position.x + x, 0, geAI.transform.position.z + z);
             for(int i = 0; i < geAI.waypoints.Count; i++)
             {
-                if (geAI.waypoints[i].gameObject.activeSelf)
+                if (geAI.waypoints[i].gameObject.activeInHierarchy)
                 {
                     activeWP.Add(geAI.waypoints[i]);
                 }

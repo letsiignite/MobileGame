@@ -11,15 +11,6 @@ public class SaveLoadData : MonoBehaviour
     private void Awake()
     {
         saveDatainstance = this;
-        PlayerData loadedData = SaveSystem.LoadPlayer();
-        if (loadedData == null)
-        {
-            SavePlayer();
-        }
-        else
-        {
-            LoadPlayer();
-        }
     }
 
     #region UI Methods
@@ -56,8 +47,8 @@ public class SaveLoadData : MonoBehaviour
         {
             levelObj.gameObject.SetActive(false);
         }
-        GameManager._instance.GetLevelProgObj().levelObjects[levelIndex-1].LevelCompleted();
         GameManager._instance.GetLevelProgObj().levelObjects[levelIndex].gameObject.SetActive(true);
+        GameManager._instance.GetLevelProgObj().levelObjects[levelIndex-1].LevelCompleted();
     }
 
     public void LateUpdate()

@@ -4,6 +4,7 @@ using UnityEngine.AI;
 using Game;
 using Puzzle;
 using GhostFSM;
+using System;
 
 public class GEntityAI : MonoBehaviour
 {
@@ -33,6 +34,9 @@ public class GEntityAI : MonoBehaviour
     public AlertState alertState = new();
     public ChaseState chaseState = new();
     public InfectState infectState = new();
+
+    public delegate void GetNewWayPoint();
+    public GetNewWayPoint getNewWayPoint;
     
     public void SetDistractedObject(GameObject distract)
     {

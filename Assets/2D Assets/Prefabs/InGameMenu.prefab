@@ -473,7 +473,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &3008827050964314507
 RectTransform:
   m_ObjectHideFlags: 0
@@ -575,6 +575,7 @@ MonoBehaviour:
   SettingsButton: {fileID: 1050667258545600572}
   ExitButton: {fileID: 4960592490096099324}
   inGameMenu: {fileID: 0}
+  SettingsMenu: {fileID: 0}
 --- !u!1 &2619729502303904668
 GameObject:
   m_ObjectHideFlags: 0

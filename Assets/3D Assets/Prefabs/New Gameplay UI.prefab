@@ -344,7 +344,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &8422635561176761874
 RectTransform:
   m_ObjectHideFlags: 0
@@ -484,9 +484,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9879de01068e48d4dba3186cb9589018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiObjectsToHideOnPause: []
+  uiObjectsToHideOnPause:
+  - {fileID: 2288509676204024308}
   pausePanel: {fileID: 7384189465930726432, guid: 65ed672b1e642b2458e08b987adff63f, type: 3}
-  pauseButton: {fileID: 0}
+  pauseButton: {fileID: 2903348773532646838}
   interactButton: {fileID: 0}
 --- !u!1 &2359801419153675621
 GameObject:
@@ -2487,6 +2488,26 @@ PrefabInstance:
       propertyPath: m_Colors.m_DisabledColor.a
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3844685099819325628, guid: 0c8ce7e72187e0e45bfa1fad6b3a0c6c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3844685099819325628, guid: 0c8ce7e72187e0e45bfa1fad6b3a0c6c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3844685099819325628, guid: 0c8ce7e72187e0e45bfa1fad6b3a0c6c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_CallState
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3844685099819325628, guid: 0c8ce7e72187e0e45bfa1fad6b3a0c6c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: set_enabled
+      objectReference: {fileID: 0}
+    - target: {fileID: 3844685099819325628, guid: 0c8ce7e72187e0e45bfa1fad6b3a0c6c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: UnityEngine.Behaviour, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 6357573822083178056, guid: 0c8ce7e72187e0e45bfa1fad6b3a0c6c, type: 3}
       propertyPath: m_Name
       value: PauseBtn
@@ -2512,6 +2533,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0c8ce7e72187e0e45bfa1fad6b3a0c6c, type: 3}
+--- !u!114 &2903348773532646838 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3844685099819325628, guid: 0c8ce7e72187e0e45bfa1fad6b3a0c6c, type: 3}
+  m_PrefabInstance: {fileID: 2094689402630268170}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &4530995519582565250 stripped
 RectTransform:
   m_CorrespondingSourceObject: {fileID: 2589711085482776200, guid: 0c8ce7e72187e0e45bfa1fad6b3a0c6c, type: 3}

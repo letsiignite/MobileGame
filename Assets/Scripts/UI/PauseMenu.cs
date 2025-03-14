@@ -16,6 +16,9 @@ namespace UI
         [SerializeField]
         private InGameMenu inGameMenu;
 
+        [SerializeField]
+        private Canvas SettingsMenu;
+
         void Start()
         {
 
@@ -75,6 +78,15 @@ namespace UI
         void OpenSettings()
         {
             Debug.Log("Opening Settings...");
+            if (SettingsMenu != null)
+            {
+                SettingsMenu.gameObject.SetActive(true);
+            }
+            else
+            {
+                Debug.LogError("SettingsMenu reference not found!");
+            }
+
         }
 
         void ExitGame()

@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.UI;
 using UI;
+using Unity.VisualScripting;
 
 namespace UI
 {
@@ -16,6 +17,8 @@ namespace UI
         public float fadeSpeed = 1f;
 
         public string buttonName;
+
+        public GameObject SettingsMenu;
 
         [SerializeField]
         private List<GameObject> resetableGameObjects = new List<GameObject>();
@@ -160,6 +163,10 @@ namespace UI
         IEnumerator Settings()
         {
             Debug.Log("Opening Settings...");
+
+
+            SettingsMenu.SetActive(true);
+
             // Future implementation:
             // 1. Disable MainMenu canvas
             // MainMenu.gameObject.SetActive(false);
@@ -209,6 +216,7 @@ namespace UI
             fadeCanvas.enabled = false;
             MainMenu.gameObject.SetActive(false);
             GameplayUI.gameObject.SetActive(true);
+
         }
     }
 

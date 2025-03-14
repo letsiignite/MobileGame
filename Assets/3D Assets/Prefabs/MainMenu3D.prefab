@@ -252,7 +252,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &5162957894019031444
 RectTransform:
   m_ObjectHideFlags: 0
@@ -1014,6 +1014,7 @@ GameObject:
   - component: {fileID: 8450078643225531941}
   - component: {fileID: 4580799271206716943}
   - component: {fileID: 1413929106361669359}
+  - component: {fileID: 7306514802081019396}
   m_Layer: 3
   m_Name: SettingsButton
   m_TagString: Untagged
@@ -1115,6 +1116,27 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &7306514802081019396
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7252180080948382527}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5d0159ee3ffe454cbfc0c8d1751ec6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameplayUI: {fileID: 0}
+  MainMenu: {fileID: 7384189465930726432}
+  clickAnimationDepth: 0.1
+  animationDuration: 0.1
+  actionDelay: 0.5
+  fadeSpeed: 1
+  buttonName: SettingsButton
+  SettingsMenu: {fileID: 0}
+  resetableGameObjects: []
 --- !u!1 &7268267015710317832
 GameObject:
   m_ObjectHideFlags: 0
@@ -1469,6 +1491,7 @@ MonoBehaviour:
   actionDelay: 0.5
   fadeSpeed: 1
   buttonName: NewGameButton
+  SettingsMenu: {fileID: 0}
   resetableGameObjects:
   - {fileID: 0}
   - {fileID: 0}

@@ -109,6 +109,7 @@ namespace Puzzle
                     {
                         GameManager._instance.GetGhostController().SetDistractedObject(gameObject);
                         Deactivate();
+                        Debug.Log(levelObject.gameObject.name);
                         levelObject.LevelCompleted();
                         Debug.Log("Problem Solved");
                     }

@@ -37,8 +37,8 @@ public class SaveLoadData : MonoBehaviour
     /// </summary>
     public void LoadPlayer()
     {
+        Debug.Log("Pass - 1");
         PlayerData data = SaveSystem.LoadPlayer();
-        if(data == null) return;
         sanityMeter = data.sanityMeter;
         timeTaken = data.timeTaken;
         levelIndex = data.levelIndex;
@@ -48,6 +48,7 @@ public class SaveLoadData : MonoBehaviour
         {
             levelObj.gameObject.SetActive(false);
         }
+        Debug.Log("Pass - 4");
         GameManager._instance.GetLevelProgObj().levelObjects[levelIndex].gameObject.SetActive(true);
         GameManager._instance.GetLevelProgObj().levelObjects[levelIndex-1].LevelCompleted();
     }

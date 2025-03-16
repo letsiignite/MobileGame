@@ -63,7 +63,7 @@ namespace LevelProgression
                 {
                     ghostRef.GetComponent<NavMeshAgent>().ResetPath();
                     ghostRef.GetComponent<NavMeshAgent>().Warp(GhostWarpPosition.position);
-                    ghostRef.GetComponent<GEntityAI>().getNewWayPoint.Invoke();
+                    ghostRef.GetComponent<GEntityAI>().getNewWayPoint?.Invoke();
                     ghostRef.transform.rotation = GhostWarpPosition.rotation;
                 }
             }

@@ -9,7 +9,8 @@ namespace Interactable
         CONSUME_ITEM,
         PICKUP_ITEM,
         PUZZLE_ITEM,
-        HINT_ITEM
+        HINT_ITEM,
+        GAME_MECHS_ANIM
     }
 
     public class BaseInteractableObject : MonoBehaviour, IBaseInteractableObject
@@ -42,11 +43,15 @@ namespace Interactable
             {
                 GameManager._instance.GetPlayerReference().GetComponent<Inventory>().PickUpItem(gameObject);
             }
-            else if(interactType == InteractType.PUZZLE_ITEM)
+            else if (interactType == InteractType.PUZZLE_ITEM)
             {
                 //Debug.Log("Pass 2");
                 TryGetComponent<PuzzleObject>(out puzzleObject);
                 puzzleObject.OnInteraction();
+            }
+            else if (interactType == InteractType.GAME_MECHS_ANIM)
+            {
+                GetComponent<Animator>().SetTrigger("Interact");
             }
         }
 

@@ -595,6 +595,7 @@ GameObject:
   - component: {fileID: 124885811892985115}
   - component: {fileID: 2263888017236588975}
   - component: {fileID: 7653522278952975214}
+  - component: {fileID: 374558436361797235}
   m_Layer: 3
   m_Name: LoadGameButton
   m_TagString: Untagged
@@ -696,6 +697,31 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &374558436361797235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3498829973816608999}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5d0159ee3ffe454cbfc0c8d1751ec6c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  GameplayUI: {fileID: 0}
+  MainMenu: {fileID: 7384189465930726432}
+  clickAnimationDepth: 0.1
+  animationDuration: 0.1
+  actionDelay: 0.5
+  fadeSpeed: 1
+  buttonName: LoadGameButton
+  SettingsMenu: {fileID: 0}
+  resetableGameObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
 --- !u!1 &4254509327756476127
 GameObject:
   m_ObjectHideFlags: 0

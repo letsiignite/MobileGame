@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine.UI;
 using UI;
 using Unity.VisualScripting;
+using Game;
 
 namespace UI
 {
@@ -27,6 +28,8 @@ namespace UI
         private Canvas fadeCanvas;
         private Image fadePanel;
         private Camera mainCamera;
+
+        public List<GameObject> ResetableGameObjects { get => resetableGameObjects; }
 
         void Awake()
         {
@@ -157,6 +160,29 @@ namespace UI
             //    - Load game state from PlayerPrefs or save file
             //    - Initialize game with loaded state
             //    - Switch to gameplay UI
+
+            yield return StartCoroutine(FadeIn());
+
+            foreach (GameObject obj in resetableGameObjects)
+            {
+                if (obj != null)
+                {
+                    obj.SetActive(true);
+                }
+            }
+            try
+            {
+                GameManager._instance.GetPlayerReference().GetComponent<SaveLoadData>().LoadPlayer();
+            }
+            catch
+            {
+                GameManager._instance.GetPlayerReference().GetComponent<SaveLoadData>().SavePlayer();
+            }
+
+            yield return StartCoroutine(FadeOut());
+
+            Debug.Log("Pass - 0");
+
             yield break;
         }
 
@@ -189,7 +215,6 @@ namespace UI
 
         IEnumerator FadeIn()
         {
-            Debug.Log("fading in");
             fadeCanvas.enabled = true;
             Color panelColor = fadePanel.color;
             panelColor.a = 0f;
@@ -206,7 +231,6 @@ namespace UI
         IEnumerator FadeOut()
         {
             Color panelColor = fadePanel.color;
-            Debug.Log("fading out");
             while (panelColor.a > 0)
             {
                 panelColor.a -= Time.deltaTime * fadeSpeed;
@@ -216,7 +240,6 @@ namespace UI
             fadeCanvas.enabled = false;
             MainMenu.gameObject.SetActive(false);
             GameplayUI.gameObject.SetActive(true);
-
         }
     }
 

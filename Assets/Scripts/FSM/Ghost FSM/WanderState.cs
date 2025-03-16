@@ -27,13 +27,11 @@ namespace GhostFSM
                 //Switch To Alert State
                 //Debug.Log(geAI.playerIsNearby);
                 geAI.SwitchState(geAI.alertState);
-                geAI.getNewWayPoint -= GetWayPoint;
             }
             else if (geAI.los.visibleEnemy.Count != 0)
             {
                 //Infect others
                 geAI.SwitchState(geAI.infectState);
-                geAI.getNewWayPoint -= GetWayPoint;
             }
             else
             {

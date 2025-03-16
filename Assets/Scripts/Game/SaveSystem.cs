@@ -20,12 +20,17 @@ public static class SaveSystem
     public static PlayerData LoadPlayer() 
     {
         string path = Application.persistentDataPath + "/player.savedata";
+        PlayerData data = null;
         if (File.Exists(path)) 
         {
             BinaryFormatter formatter = new BinaryFormatter();
             FileStream stream = new FileStream (path, FileMode.Open);
-
-            PlayerData data = formatter.Deserialize(stream) as PlayerData;
+            Debug.Log(" stream = "+ stream.Length);
+            if (stream.Length > 0)
+            {
+                data = formatter.Deserialize(stream) as PlayerData;
+            }
+            
             stream.Close();
             return data;
         }

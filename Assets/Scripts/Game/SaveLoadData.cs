@@ -38,6 +38,7 @@ public class SaveLoadData : MonoBehaviour
     public void LoadPlayer()
     {
         PlayerData data = SaveSystem.LoadPlayer();
+        if(data == null) return;
         sanityMeter = data.sanityMeter;
         timeTaken = data.timeTaken;
         levelIndex = data.levelIndex;

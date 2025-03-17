@@ -8,8 +8,6 @@ namespace UI
     public class InGameMenu : MonoBehaviour
     {
         [SerializeField]
-        private List<GameObject> uiObjectsToHideOnPause;
-        [SerializeField]
         private Canvas pausePanel;
         [SerializeField]
         private Button pauseButton;
@@ -41,15 +39,6 @@ namespace UI
 
         public void OnPauseClicked()
         {
-            if (uiObjectsToHideOnPause.Count > 0)
-            {
-                Debug.Log("Passed hide");
-                foreach (GameObject go in uiObjectsToHideOnPause)
-                {
-                    go.SetActive(false);
-                }
-            }
-
             if (pauseListeners.Count > 0)
             {
                 foreach (Action callback in pauseListeners)
@@ -57,6 +46,7 @@ namespace UI
                     callback.Invoke();
                 }
             }
+            this.gameObject.SetActive(false);
             pausePanel.gameObject.SetActive(true);
         }
 
@@ -64,20 +54,6 @@ namespace UI
         {
             //Debug.Log("Adding Pause Listener");
             pauseListeners.Add(callback);
-        }
-
-        public void ResumeGame()
-        {
-            if (uiObjectsToHideOnPause.Count > 0)
-            {
-                Debug.Log("Passed show");
-                foreach (GameObject go in uiObjectsToHideOnPause)
-                {
-                    go.SetActive(true);
-                }
-            }
-
-            pausePanel.gameObject.SetActive(false);
         }
     }
 }

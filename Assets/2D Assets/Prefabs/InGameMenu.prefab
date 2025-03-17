@@ -534,7 +534,7 @@ MonoBehaviour:
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
-  m_MatchWidthOrHeight: 0
+  m_MatchWidthOrHeight: 0.5
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
@@ -574,7 +574,7 @@ MonoBehaviour:
   LoadLevelButton: {fileID: 8709082864115110414}
   SettingsButton: {fileID: 1050667258545600572}
   ExitButton: {fileID: 4960592490096099324}
-  inGameMenu: {fileID: 0}
+  newGameplayUI: {fileID: 0}
   SettingsMenu: {fileID: 0}
 --- !u!1 &2619729502303904668
 GameObject:
@@ -908,7 +908,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7373833244525437092}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: SaveLoadData, Assembly-CSharp
+        m_MethodName: LoadPlayer
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &3164225818965444037
 GameObject:
   m_ObjectHideFlags: 0
@@ -1745,7 +1757,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 4534273889020033501}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 0}
+        m_TargetAssemblyTypeName: UI.UIManager, Assembly-CSharp
+        m_MethodName: OnClickQuitBtn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &8485877932686040415
 GameObject:
   m_ObjectHideFlags: 0

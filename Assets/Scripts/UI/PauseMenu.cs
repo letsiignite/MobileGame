@@ -1,7 +1,6 @@
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
-using System.Collections.Generic;
 
 namespace UI
 {
@@ -14,22 +13,45 @@ namespace UI
         public Button ExitButton;
 
         [SerializeField]
-        private InGameMenu inGameMenu;
+        private Canvas newGameplayUI;
 
         [SerializeField]
         private Canvas SettingsMenu;
 
         void Start()
         {
-
-            ResumeButton.onClick.AddListener(() => StartCoroutine(HandleButtonClick(ResumeButton, ResumeGame)));
+            this.gameObject.SetActive(true);
             RestartButton.onClick.AddListener(() => StartCoroutine(HandleButtonClick(RestartButton, RestartLevel)));
+            ResumeButton.onClick.AddListener(() => StartCoroutine(ResumeGame()));
             LoadLevelButton.onClick.AddListener(() => StartCoroutine(HandleButtonClick(LoadLevelButton, LoadLevel)));
             SettingsButton.onClick.AddListener(() => StartCoroutine(HandleButtonClick(SettingsButton, OpenSettings)));
             ExitButton.onClick.AddListener(() => StartCoroutine(HandleButtonClick(ExitButton, ExitGame)));
         }
 
+        IEnumerator ResumeGame()
+        {
+            Debug.Log("Resuming Game from PauseMenu...");
+
+            yield return StartCoroutine(AnimateButton(ResumeButton));
+
+            if (newGameplayUI != null)
+            {
+                newGameplayUI.gameObject.SetActive(true);
+                gameObject.SetActive(false);
+            }
+            else
+            {
+                Debug.LogError("New GameplayUI reference not found!");
+            }
+        }
+
         IEnumerator HandleButtonClick(Button button, System.Action task)
+        {
+            yield return StartCoroutine(AnimateButton(button));
+            task.Invoke();
+        }
+
+        IEnumerator AnimateButton(Button button)
         {
             Transform btnTransform = button.transform;
             Vector3 originalScale = btnTransform.localScale;
@@ -46,33 +68,19 @@ namespace UI
                 yield return null;
             }
             btnTransform.localScale = originalScale;
-
             yield return new WaitForSeconds(0.1f);
-            task.Invoke();
-        }
-
-        void ResumeGame()
-        {
-            Debug.Log("Resuming Game from PauseMenu...");
-            // Call ResumeGame on InGameMenu
-            if (inGameMenu != null)
-            {
-                inGameMenu.ResumeGame();
-            }
-            else
-            {
-                Debug.LogError("InGameMenu reference not found!");
-            }
         }
 
         void RestartLevel()
         {
             Debug.Log("Restarting Level...");
+            // Add level restart logic
         }
 
         void LoadLevel()
         {
             Debug.Log("Loading Level...");
+            // Add level loading logic
         }
 
         void OpenSettings()
@@ -80,18 +88,18 @@ namespace UI
             Debug.Log("Opening Settings...");
             if (SettingsMenu != null)
             {
-                SettingsMenu.gameObject.SetActive(true);
+                SettingsMenu.gameObject.GetComponent<SettingsMenu>().OpenFromPauseMenu();
             }
             else
             {
                 Debug.LogError("SettingsMenu reference not found!");
             }
-
         }
 
         void ExitGame()
         {
             Debug.Log("Exiting Game...");
+            // Application.Quit(); // Uncomment this line to quit the game in a built version
         }
     }
 }

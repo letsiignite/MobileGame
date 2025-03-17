@@ -19,7 +19,7 @@ namespace UI
 
         public string buttonName;
 
-        public GameObject SettingsMenu;
+        public Canvas SettingsMenu;
 
         [SerializeField]
         private List<GameObject> resetableGameObjects = new List<GameObject>();
@@ -190,8 +190,8 @@ namespace UI
         {
             Debug.Log("Opening Settings...");
 
+            SettingsMenu.gameObject.GetComponent<SettingsMenu>().OpenFromMainMenu();
 
-            SettingsMenu.SetActive(true);
 
             // Future implementation:
             // 1. Disable MainMenu canvas

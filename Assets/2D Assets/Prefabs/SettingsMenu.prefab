@@ -326,7 +326,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc42784cf147c0c48a680349fa168899, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_IgnoreReversedGraphics: 1
+  m_IgnoreReversedGraphics: 0
   m_BlockingObjects: 0
   m_BlockingMask:
     serializedVersion: 2
@@ -345,6 +345,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   slider1: {fileID: 1588720811115418523}
   slider2: {fileID: 7901532244968372979}
+  CrossButton: {fileID: 4897103619061138938}
+  Settings: {fileID: 5238919245353661943}
+  MainMenu: {fileID: 0}
   object1: {fileID: 0}
   object2: {fileID: 0}
 --- !u!1 &1664465016223663187
@@ -754,19 +757,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 6128435391392806988}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 1389341673024700602}
-        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
-        m_MethodName: SetActive
-        m_Mode: 6
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 1
+      m_Calls: []
 --- !u!1 &2602198951653893245
 GameObject:
   m_ObjectHideFlags: 0

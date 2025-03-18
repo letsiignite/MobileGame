@@ -14,7 +14,7 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 10
-  m_Fog: 0
+  m_Fog: 1
   m_FogColor: {r: 0.33962262, g: 0.26432893, b: 0.28315234, a: 1}
   m_FogMode: 3
   m_FogDensity: 0.02
@@ -94670,10 +94670,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 1811813398810714274, guid: d23c0918e953a9043ab95ddd3e277fd7, type: 3}
-      propertyPath: m_Intensity
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 2640160979382197909, guid: d23c0918e953a9043ab95ddd3e277fd7, type: 3}
       propertyPath: m_LocalPosition.x
       value: 15.52
@@ -94742,26 +94738,6 @@ PrefabInstance:
       propertyPath: 'levelObjects.Array.data[4]'
       value: 
       objectReference: {fileID: 1423149415533242867}
-    - target: {fileID: 6119760527639708352, guid: d23c0918e953a9043ab95ddd3e277fd7, type: 3}
-      propertyPath: levelIndex
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7926844053005101065, guid: d23c0918e953a9043ab95ddd3e277fd7, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8048140430541755126, guid: d23c0918e953a9043ab95ddd3e277fd7, type: 3}
-      propertyPath: m_Follow
-      value: 
-      objectReference: {fileID: 830481627}
-    - target: {fileID: 8825079686228946859, guid: d23c0918e953a9043ab95ddd3e277fd7, type: 3}
-      propertyPath: cursorLocked
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8825079686228946859, guid: d23c0918e953a9043ab95ddd3e277fd7, type: 3}
-      propertyPath: cursorInputForLook
-      value: 1
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -127219,11 +127195,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 830101787}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
---- !u!4 &830481627 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 7233083793579663157, guid: d23c0918e953a9043ab95ddd3e277fd7, type: 3}
-  m_PrefabInstance: {fileID: 628872737}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &830711535
 GameObject:
   m_ObjectHideFlags: 0

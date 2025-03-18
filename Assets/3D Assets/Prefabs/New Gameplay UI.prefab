@@ -163,7 +163,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6081324175389744280}
   - component: {fileID: 4776083809170415941}
-  - component: {fileID: 1306305010280505020}
+  - component: {fileID: 5735386537845786362}
   - component: {fileID: 6388492700509977818}
   m_Layer: 5
   m_Name: DeathInfoBG
@@ -187,6 +187,7 @@ RectTransform:
   - {fileID: 869153558289601465}
   - {fileID: 2068320166827391728}
   - {fileID: 4240954146141155809}
+  - {fileID: 1255582961829053108}
   m_Father: {fileID: 8422635561176761874}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -202,7 +203,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1399212074850738925}
   m_CullTransparentMesh: 1
---- !u!114 &1306305010280505020
+--- !u!114 &5735386537845786362
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -211,27 +212,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 1399212074850738925}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 0}
-  m_Type: 0
-  m_PreserveAspect: 0
-  m_FillCenter: 1
-  m_FillMethod: 4
-  m_FillAmount: 1
-  m_FillClockwise: 1
-  m_FillOrigin: 0
-  m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1
+  m_Texture: {fileID: 8400000, guid: c70f3648b87b6da45a461375d3cf3cde, type: 2}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
 --- !u!114 &6388492700509977818
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -322,6 +320,72 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &1688478851461260436
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1255582961829053108}
+  - component: {fileID: 5450124349850290652}
+  m_Layer: 0
+  m_Name: Video Player
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1255582961829053108
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688478851461260436}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -1199.175, y: -447.47183, z: 212.83072}
+  m_LocalScale: {x: 2.2766545, y: 2.2766545, z: 2.2766545}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6081324175389744280}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!328 &5450124349850290652
+VideoPlayer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1688478851461260436}
+  m_Enabled: 1
+  m_VideoClip: {fileID: 32900000, guid: 7218dc885adac1e4c92d408e36364fb9, type: 3}
+  m_TargetCameraAlpha: 1
+  m_TargetCamera3DLayout: 0
+  m_TargetCamera: {fileID: 0}
+  m_TargetTexture: {fileID: 8400000, guid: c70f3648b87b6da45a461375d3cf3cde, type: 2}
+  m_TimeReference: 0
+  m_TargetMaterialRenderer: {fileID: 0}
+  m_TargetMaterialProperty: <noninit>
+  m_RenderMode: 2
+  m_AspectRatio: 2
+  m_DataSource: 0
+  m_TimeUpdateMode: 2
+  m_PlaybackSpeed: 1
+  m_AudioOutputMode: 2
+  m_TargetAudioSources: []
+  m_DirectAudioVolumes: []
+  m_Url: 
+  m_EnabledAudioTracks: 
+  m_DirectAudioMutes: 
+  m_ControlledAudioTrackCount: 0
+  m_PlayOnAwake: 1
+  m_SkipOnDrop: 1
+  m_Looping: 0
+  m_WaitForFirstFrame: 1
+  m_FrameReadyEventEnabled: 0
+  m_VideoShaders: []
 --- !u!1 &2288509676204024308
 GameObject:
   m_ObjectHideFlags: 0
@@ -344,7 +408,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &8422635561176761874
 RectTransform:
   m_ObjectHideFlags: 0
@@ -484,9 +548,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9879de01068e48d4dba3186cb9589018, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  uiObjectsToHideOnPause:
-  - {fileID: 2288509676204024308}
-  pausePanel: {fileID: 7384189465930726432, guid: 65ed672b1e642b2458e08b987adff63f, type: 3}
+  pausePanel: {fileID: 0}
   pauseButton: {fileID: 2903348773532646838}
   interactButton: {fileID: 0}
 --- !u!1 &2359801419153675621

@@ -348,6 +348,7 @@ MonoBehaviour:
   CrossButton: {fileID: 4897103619061138938}
   Settings: {fileID: 5238919245353661943}
   MainMenu: {fileID: 0}
+  PauseMenu: {fileID: 0}
   object1: {fileID: 0}
   object2: {fileID: 0}
 --- !u!1 &1664465016223663187
@@ -842,9 +843,9 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2770835969897361184}
   m_Direction: 0
   m_MinValue: 0
-  m_MaxValue: 0.5
+  m_MaxValue: 1
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.4
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []
@@ -1083,7 +1084,7 @@ MonoBehaviour:
   m_MinValue: 0
   m_MaxValue: 2
   m_WholeNumbers: 0
-  m_Value: 0
+  m_Value: 0.75
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls: []

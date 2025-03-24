@@ -163,7 +163,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6081324175389744280}
   - component: {fileID: 4776083809170415941}
-  - component: {fileID: 5735386537845786362}
+  - component: {fileID: 396532005284383455}
   - component: {fileID: 6388492700509977818}
   m_Layer: 5
   m_Name: DeathInfoBG
@@ -203,7 +203,7 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1399212074850738925}
   m_CullTransparentMesh: 1
---- !u!114 &5735386537845786362
+--- !u!114 &396532005284383455
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -360,7 +360,7 @@ VideoPlayer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1688478851461260436}
   m_Enabled: 1
-  m_VideoClip: {fileID: 32900000, guid: 7218dc885adac1e4c92d408e36364fb9, type: 3}
+  m_VideoClip: {fileID: 32900000, guid: d5ae598f15d0824418469a1a1778cc91, type: 3}
   m_TargetCameraAlpha: 1
   m_TargetCamera3DLayout: 0
   m_TargetCamera: {fileID: 0}

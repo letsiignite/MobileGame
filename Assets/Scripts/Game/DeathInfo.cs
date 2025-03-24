@@ -3,13 +3,16 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using Game;
+using System;
+using UI;
+using System.Collections;
 
 
 namespace UI
 {
     public class DeathInfo : MonoBehaviour
     {
-        [SerializeField]    
+        [SerializeField]
         private GameObject deathPanel; // Reference to the UI panel
         [SerializeField]
         private TMP_Text deathMessageText; // Reference to the Text component
@@ -39,28 +42,32 @@ namespace UI
 
         public void DeathDisplay(string cause)
         {
-
             // Switch UI panel to death panel
             deathPanel.SetActive(true);
+            UI.InGameMenu inGameMenu = FindFirstObjectByType<InGameMenu>();
+            inGameMenu.InvokePauseListener();
 
             string message = GetDeathMessage(cause);
-            deathMessageText.text = message+"\n"+"You will relive to fulfill your Destiny";
+            deathMessageText.text = message + "\n" + "You will relive to fulfill your Destiny";
+            StartCoroutine(DisplayDeathMessage());
+        }
 
+        private IEnumerator DisplayDeathMessage()
+        {
+            yield return new WaitForSeconds(5f);
             gameManager.ReloadCheckpoint(3);
-
-            //Debug.Log("Displayed death message: " + message);
         }
 
         private string GetDeathMessage(string cause)
         {
             Dictionary<string, string> deathCause = new Dictionary<string, string>
-            {
-                { "Ghost", "You were caught by a ghost." },
-                { "Trap", "You fell into a trap." },
-                { "Water", "You drowned in water." },
-                { "Sanity", "You lost your sanity." },
-                { "Food", "You succumbed to starvation." }
-            };
+                {
+                    { "Ghost", "You were caught by a ghost." },
+                    { "Trap", "You fell into a trap." },
+                    { "Water", "You drowned in water." },
+                    { "Sanity", "You lost your sanity." },
+                    { "Food", "You succumbed to starvation." }
+                };
 
             if (deathCause.ContainsKey(cause))
             {

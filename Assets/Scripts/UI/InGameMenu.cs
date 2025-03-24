@@ -13,6 +13,7 @@ namespace UI
         private Button pauseButton;
         [SerializeField]
         private Button interactButton;
+        [SerializeField]
         private List<Action> pauseListeners;
 
         private void Awake()
@@ -39,6 +40,13 @@ namespace UI
 
         public void OnPauseClicked()
         {
+            InvokePauseListener();
+            this.gameObject.SetActive(false);
+            pausePanel.gameObject.SetActive(true);
+        }
+
+        public void InvokePauseListener()
+        {
             if (pauseListeners.Count > 0)
             {
                 foreach (Action callback in pauseListeners)
@@ -46,10 +54,7 @@ namespace UI
                     callback.Invoke();
                 }
             }
-            this.gameObject.SetActive(false);
-            pausePanel.gameObject.SetActive(true);
         }
-
         public void AddPauseListeners(Action callback)
         {
             //Debug.Log("Adding Pause Listener");
